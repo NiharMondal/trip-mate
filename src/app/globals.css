@@ -31,6 +31,10 @@ body{
   h3{
     @apply text-[1.6rem] md:text-[2rem]
   }
+
+  h4{
+    @apply text-[1.1rem]
+  }
   
   h5{
     @apply text-xs font-semibold
@@ -42,10 +46,15 @@ body{
 
 
 @layer components{
-  .heading, .href{
+  .href, .highlight{
+    font-family: geistMono;
+  }
+  .primary-font{
     font-family: geistSans;
   }
-
+  .heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
   .nav-link-style{
     @apply hover:border-b-primary border-b-[2px] border-transparent transition-all duration-500 cursor-pointer hover:text-primary capitalize
   }
