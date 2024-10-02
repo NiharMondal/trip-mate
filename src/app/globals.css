@@ -3,25 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fef3f6;
+  --foreground: #0f0206;
+}
+@font-face {
+  font-family: geistSans;
+  src: url(./fonts/GeistVF.woff);
+}
+@font-face {
+  font-family: geistMono;
+  src: url(./fonts/GeistMonoVF.woff);
+}
+body{
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+ 
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base{
+  h1{
+    @apply text-[3rem] md:text-[3.5rem]
+  }
+  h2{
+    @apply text-[2rem] md:text-[2.5rem]
+  }
+  h3{
+    @apply text-[1.6rem] md:text-[2rem]
+  }
+  
+  h5{
+    @apply text-xs font-semibold
+  }
+  h6{
+    @apply text-xs font-semibold italic
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components{
+  .heading{
+    font-family: geistSans;
+  }
+  .link{
+    @apply text-[.85rem] font-semibold text-accent hover:underline
   }
 }
