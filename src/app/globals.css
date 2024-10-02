@@ -42,10 +42,24 @@ body{
 
 
 @layer components{
-  .heading{
+  .heading, .href{
     font-family: geistSans;
+  }
+
+  .nav-link-style{
+    @apply hover:border-b-primary border-b-[2px] border-transparent transition-all duration-500 cursor-pointer hover:text-primary capitalize
   }
   .link{
     @apply text-[.85rem] font-semibold text-accent hover:underline
+  }
+
+  .btn{
+    @apply px-5 py-2 font-semibold tracking-wide rounded shadow hover:shadow-lg
+  }
+  .btn-primary{
+    @apply bg-primary 
+  }
+  .btn-secondary{
+    @apply border border-secondary hover:bg-secondary 
   }
 }
