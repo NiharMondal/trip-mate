@@ -3,6 +3,8 @@ import HighlightSection from "@/components/home/HighlightSection";
 import PopularTour from "@/components/home/PopularTour";
 import RecentlyAdded from "@/components/home/RecentlyAdded";
 import TopDestination from "@/components/home/TopDestination";
+import WebsiteOverview from "@/components/home/WebsiteOverview";
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import React from "react";
 
@@ -11,11 +13,12 @@ export default function Home() {
 		<section className="space-y-20">
 			<Navbar />
 			<Banner />
-			<TopDestination/>
-			<PopularTour/>
-			<RecentlyAdded/>
-			<HighlightSection/>
-			<div></div>
+			<TopDestination />
+			<PopularTour />
+			<RecentlyAdded />
+			<HighlightSection />
+			<WebsiteOverview />
+			<Footer />
 		</section>
 	);
 }

@@ -8,7 +8,7 @@ export default function RecentlyAdded() {
 		<div className="max-w-7xl mx-auto px-5">
 			<SectionHeading text1="Freshly" text2="Added" />
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 my-16">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-16 mb-12">
 				<VCardWithDetails />
 				<VCardWithDetails />
 				<VCardWithDetails />
