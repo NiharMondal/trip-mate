@@ -5,14 +5,15 @@ import React from 'react'
 export default function Footer() {
   return (
 		<footer className="bg-gray-900 py-20 px-5">
-			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 text-white">
+			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-white gap-8">
 				<div>
 					<Image
 						src={assets.logo}
-						width={200}
-						height={200}
+						width={150}
+						height={150}
 						alt="logo"
 					/>
+                    <p className='heading text-2xl'>Voyage Vibe</p>
 				</div>
 				<div>
 					<h3 className="heading">Contact</h3>

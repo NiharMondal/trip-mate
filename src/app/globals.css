@@ -37,7 +37,7 @@ body{
   }
   
   h5{
-    @apply text-xs font-semibold
+    @apply text-base font-semibold
   }
   h6{
     @apply text-xs font-semibold italic
@@ -76,5 +76,9 @@ body{
     background-position: center;
     object-position: center;
     object-fit: contain;
+  }
+
+  .filter-wrapper h5{
+    @apply text-gray-500
   }
 }
