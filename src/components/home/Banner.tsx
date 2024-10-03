@@ -16,7 +16,7 @@ export default function Banner() {
 							Book With Us!
 						</p>
 						<h1 className="lg:text-8xl heading">
-							Find Next Place To Visit
+							Find Next Place To <span className="text-primary">Visit</span>
 						</h1>
 
 						<p className="max-w-lg text-lg ">
@@ -72,8 +72,13 @@ export default function Banner() {
 				</div>
 				{/* photo section */}
 				<div className="col-span-2 relative z-[-1] hidden lg:flex">
-                    <Image src={avatar} fill alt="avatar" className="object-center object-cover"/>
-                </div>
+					<Image
+						src={avatar}
+						fill
+						alt="avatar"
+						className="object-center object-cover"
+					/>
+				</div>
 			</div>
 		</section>
 	);

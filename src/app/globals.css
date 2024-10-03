@@ -29,7 +29,7 @@ body{
     @apply text-[2rem] md:text-[2.5rem]
   }
   h3{
-    @apply text-[1.6rem] md:text-[2rem]
+    @apply text-[1.8rem] md:text-[2.5rem]
   }
 
   h4{
@@ -70,5 +70,11 @@ body{
   }
   .btn-secondary{
     @apply border border-secondary hover:bg-secondary 
+  }
+  .beach-bg{
+    background-image: url('../assets/bg-image/beach-bg.jpg');
+    background-position: center;
+    object-position: center;
+    object-fit: contain;
   }
 }
