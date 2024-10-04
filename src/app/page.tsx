@@ -18,6 +18,7 @@ export default function Home() {
 			<RecentlyAdded />
 			<HighlightSection />
 			<WebsiteOverview />
+			
 			<Footer />
 		</section>
 	);

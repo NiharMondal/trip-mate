@@ -42,14 +42,18 @@ body{
   h6{
     @apply text-xs font-semibold italic
   }
+
+  input[type="checkbox"]{
+    @apply size-4
+  }
 }
 
 
 @layer components{
-  .href, .highlight{
+  .geist-mono{
     font-family: geistMono;
   }
-  .primary-font{
+  .geist-sans{
     font-family: geistSans;
   }
   .heading {
@@ -74,8 +78,6 @@ body{
   .beach-bg{
     background-image: url('../assets/bg-image/beach-bg.jpg');
     background-position: center;
-    object-position: center;
-    object-fit: contain;
   }
 
   .filter-wrapper h5{

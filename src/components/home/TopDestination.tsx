@@ -13,7 +13,7 @@ export default function TopDestination() {
 	return (
 		<div className=" max-w-7xl mx-auto">
 			<SectionHeading text1="Top" text2="Destination" />
-			<p className="text-center max-w-md mx-auto primary-font text-lg mt-6">
+			<p className="text-center max-w-md mx-auto geist-sans text-lg mt-6">
 				Explore our top destinations voted by more than 100,000+
 				customers around the world.
 			</p>
@@ -21,13 +21,13 @@ export default function TopDestination() {
 			<LinkButton href="/destination" title="All Destination" />
 
 			<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-				<VCard  />
-				<VCard  />
-				<VCard  />
-				<VCard  />
-				<VCard  />
-				<VCard  />
-				<VCard  />
+				<VCard />
+				<VCard />
+				<VCard />
+				<VCard />
+				<VCard />
+				<VCard />
+				<VCard />
 			</div>
 		</div>
 	);

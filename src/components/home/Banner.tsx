@@ -1,14 +1,12 @@
 import React from "react";
-import {AiOutlineSearch} from 'react-icons/ai'
+import { AiOutlineSearch } from "react-icons/ai";
 
-import avatar from '../../assets/image/avatar.jpg'
+import avatar from "../../assets/images/avatar.jpg";
 import Image from "next/image";
-
-
 
 export default function Banner() {
 	return (
-		<section className="mx-auto max-w-6xl primary-font">
+		<section className="mx-auto max-w-6xl geist-sans">
 			<div className="grid grid-cols-1 lg:grid-cols-5 min-h-[560px]">
 				<div className="col-span-3 px-5">
 					<div className="space-y-8">
@@ -16,7 +14,8 @@ export default function Banner() {
 							Book With Us!
 						</p>
 						<h1 className="lg:text-8xl heading">
-							Find Next Place To <span className="text-primary">Visit</span>
+							Find Next Place To{" "}
+							<span className="text-primary">Visit</span>
 						</h1>
 
 						<p className="max-w-lg text-lg ">
