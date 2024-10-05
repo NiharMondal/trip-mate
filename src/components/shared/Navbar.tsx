@@ -20,7 +20,7 @@ export default function Navbar() {
 						<li key={nav.name}>
 							<Link
 								href={nav.path}
-								className="nav-link-style href"
+								className="nav-link-style geist-sans"
 							>
 								{nav.name}
 							</Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
 							<li key={nav.name}>
 								<Link
 									href={nav.path}
-									className="nav-link-style href text-text"
+									className="nav-link-style geist-sans text-text"
 								>
 									{nav.name}
 								</Link>

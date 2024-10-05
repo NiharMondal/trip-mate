@@ -1,5 +1,6 @@
-import { assets } from "@/assets/image";
-import Image from "next/image";
+
+import Logo from "@/components/@ui/Logo";
+
 import Link from "next/link";
 import React from "react";
 
@@ -8,13 +9,7 @@ export default function SignUp() {
 		<div className="grid grid-cols-1 place-items-center h-screen px-5">
 			<div className="shadow-md rounded-md p-8">
 				<div className="flex justify-center mb-8">
-					<Link href="/">
-						<Image
-							src={assets.logo}
-							alt="logo"
-							className="size-32"
-						/>
-					</Link>
+					<Logo/>
 				</div>
 				<h4 className="geist-sans text-2xl font-medium">
 					Create a new account
