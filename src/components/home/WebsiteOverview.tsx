@@ -14,7 +14,7 @@ type WOInfoProps  = {
 export default function WebsiteOverview() {
   return (
 		<div className="bg-white py-28 px-5 sm:px-28 md:px-5">
-			<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-5">
+			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-5">
 				<WOInfo
 					icon={<LiaGlobeAmericasSolid />}
 					subHeading="700 Destinations"

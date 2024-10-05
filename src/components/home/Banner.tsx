@@ -3,6 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 import avatar from "../../assets/images/avatar.jpg";
 import Image from "next/image";
+import { imageHelpers } from "@/assets/image-helpers";
 
 export default function Banner() {
 	return (
@@ -23,7 +24,7 @@ export default function Banner() {
 							Shop, Visit interesting places around the world.
 						</p>
 					</div>
-					<div className="mt-10  bg-white w-full md:min-w-[800px] grid grid-cols-1 md:grid-cols-4 rounded-md gap-x-5 overflow-hidden z-10">
+					<div className="mt-10  bg-white w-full lg:min-w-[800px] grid grid-cols-1 lg:grid-cols-4 rounded-md gap-x-5 overflow-hidden z-10">
 						<div className="space-y-2 p-5">
 							<h4>Keywords</h4>
 							<input
@@ -72,10 +73,10 @@ export default function Banner() {
 				{/* photo section */}
 				<div className="col-span-2 relative z-[-1] hidden lg:flex">
 					<Image
-						src={avatar}
+						src={imageHelpers.heroRight}
 						fill
 						alt="avatar"
-						className="object-center object-cover"
+						className="object-center object-cover rounded-md"
 					/>
 				</div>
 			</div>
