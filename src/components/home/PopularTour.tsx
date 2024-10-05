@@ -13,7 +13,7 @@ export default function PopularTour() {
           <VCard cardHeight='h-[450px]' />
           <VCard cardHeight='h-[450px]' />
         </div>
-        <LinkButton href='/tour' title='See more'/>
+        <LinkButton href='/tours' title='See more'/>
     </div>
   )
 }

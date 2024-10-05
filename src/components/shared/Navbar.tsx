@@ -7,14 +7,23 @@ import { CiMenuFries } from "react-icons/ci";
 import Logo from "../@ui/Logo";
 import { helpers } from "@/helpers";
 import Link from "next/link";
+import Image from "next/image";
+import { imageHelpers } from "@/assets/image-helpers";
 
 export default function Navbar() {
 	const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
 	return (
-		<header className="px-5 sm:px-10 lg:px-28">
-			<nav className="flex items-center justify-between w-full relative ">
-				<Logo />
+		<header className="px-5 sm:px-10 lg:px-28 border">
+			<nav className="flex items-center justify-between w-full relative py-5">
+				<Link href="/">
+					<Image
+						src={imageHelpers.logo}
+						alt="logo"
+						className="size-[60px]"
+						
+					/>
+				</Link>
 				<ul className="hidden lg:flex items-center gap-[20px] text-[1rem] text-text">
 					{helpers.navlinks.map((nav) => (
 						<li key={nav.name}>

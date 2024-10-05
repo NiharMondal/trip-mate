@@ -13,7 +13,7 @@ export default function Footer() {
 						height={150}
 						alt="logo"
 					/>
-                    <p className='heading text-2xl'>Voyage Vibe</p>
+                    <p className='heading text-2xl mt-2 text-accent pl-5'>Trip Mate</p>
 				</div>
 				<div>
 					<h3 className="heading">Contact</h3>
