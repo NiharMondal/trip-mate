@@ -42,7 +42,7 @@ body{
   h6{
     @apply text-xs font-semibold italic
   }
-
+  
   input[type="checkbox"]{
     @apply size-4
   }
