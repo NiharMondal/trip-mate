@@ -7,6 +7,8 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { SlCalender } from "react-icons/sl";
 import { BsCalendarDate } from "react-icons/bs";
 
+
+
 export default function TourDetailsPage() {
 	return (
 		<div className="bg-white py-20 px-5 sm:px-20 lg:px-5">

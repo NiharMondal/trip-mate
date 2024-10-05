@@ -79,6 +79,10 @@ body{
     background-image: url('../assets/bg-image/beach-bg.jpg');
     background-position: center;
   }
+  .page-title-bg{
+    background-image: url('../assets/bg-image/page-title-bg.jpg');
+    background-position: center;
+  }
 
   .filter-wrapper h5{
     @apply text-gray-500
