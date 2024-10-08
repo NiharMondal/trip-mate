@@ -1,5 +1,6 @@
 
 import Logo from "@/components/@ui/Logo";
+import TMSvg from "@/components/shared/TMSvg";
 
 import Link from "next/link";
 import React from "react";
@@ -9,7 +10,7 @@ export default function SignUp() {
 		<div className="grid grid-cols-1 place-items-center h-screen px-5">
 			<div className="shadow-md rounded-md p-8">
 				<div className="flex justify-center mb-8">
-					<Logo/>
+					<Logo />
 				</div>
 				<h4 className="geist-sans text-2xl font-medium">
 					Create a new account
@@ -37,14 +38,14 @@ export default function SignUp() {
 						/>
 					</div>
 					<button className="btn btn-primary w-full text-white">
-						Login
+						Sign up
 					</button>
 					<div>
 						<p>
 							Already have an account?{" "}
 							<Link
 								href="/login"
-								className="text-accent hover:underline geist-sans"
+								className="text-primary hover:underline geist-sans"
 							>
 								Login
 							</Link>
@@ -52,6 +53,7 @@ export default function SignUp() {
 					</div>
 				</form>
 			</div>
+			<TMSvg/>
 		</div>
 	);
 }

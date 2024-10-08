@@ -9,3 +9,14 @@ const navlinks = [
 export const helpers = {
     navlinks
 }
+
+export const svgColors = {
+    primary:{
+        light:"#fbcfe8",
+        lighter:"#fce7f3",
+    },
+    secondary:{
+        light:"#ecfdf5",
+        lighter:"#d1fae5"
+    }
+}

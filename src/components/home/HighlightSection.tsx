@@ -8,9 +8,9 @@ export default function HighlightSection() {
 				<div className="h-[330px] rounded-md beach-bg">
 					<div className="flex flex-col space-y-4 justify-center p-10 h-full z-10 text-white">
 						<h3 className="heading">Discover Special Deals!</h3>
-						<p className="max-w-[270px]">Make sure to check out these special promotions</p>
+						<p className="max-w-[270px] text-gray-100">Make sure to check out these special promotions</p>
 
-						<Link href="/tours" className="btn btn-primary max-w-fit">See Tours</Link>
+						<Link href="/tours" className="btn btn-primary max-w-fit text-gray-100">See Tours</Link>
 					</div>
 				</div>
 				<div className="bg-secondary p-10 flex flex-col justify-center h-full rounded-md space-y-4 text-xl">

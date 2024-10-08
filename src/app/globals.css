@@ -7,18 +7,17 @@
   --foreground: #0f0206;
 }
 @font-face {
-  font-family: geistSans;
-  src: url(./fonts/GeistVF.woff);
+  font-family: roboto;
+  src: url(./fonts/Roboto-Regular.ttf);
 }
 @font-face {
-  font-family: geistMono;
-  src: url(./fonts/GeistMonoVF.woff);
+  font-family: playfairDisplay;
+  src: url(./fonts/PlayfairDisplay.ttf);
 }
 body{
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
- 
+  font-family: robotoRegular,  sans-serif;
 }
 
 @layer base{
@@ -50,15 +49,11 @@ body{
 
 
 @layer components{
-  .geist-mono{
-    font-family: geistMono;
-  }
-  .geist-sans{
-    font-family: geistSans;
-  }
   .heading {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: playfairDisplay;
+    font-weight: 600;
   }
+
   .nav-link-style{
     @apply hover:border-b-primary border-b-[2px] border-transparent transition-all duration-500 cursor-pointer hover:text-primary capitalize
   }

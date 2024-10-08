@@ -39,7 +39,7 @@ export default function Navbar() {
 
 				<div className="flex items-center gap-[10px]">
 					<button className="btn btn-primary hidden lg:flex">
-						<Link href="/login" className="text-sm">
+						<Link href="/login" className="text-sm text-white">
 							Login
 						</Link>
 					</button>

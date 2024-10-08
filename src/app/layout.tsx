@@ -2,19 +2,20 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-export const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+export const playFair = localFont({
+  src: "./fonts/PlayfairDisplay.ttf",
+  variable: "--font-playfair-display",
   weight: "100 900",
 });
-export const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+export const roboto = localFont({
+  src: "./fonts/Roboto-Regular.ttf",
+  variable: "--font-roboto",
   weight: "100 900",
 });
 
+
 export const metadata: Metadata = {
-  title: "Home | Find Buddy",
+  title: "Trip Mate | Home",
   description: "This is a tour and travel website. ",
 };
 
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				className={`${playFair.variable} ${roboto.variable} antialiased`}
 			>
 				{children}
 			</body>

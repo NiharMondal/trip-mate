@@ -1,15 +1,17 @@
-import { assets } from "@/assets/image";
+
 import Logo from "@/components/@ui/Logo";
-import Image from "next/image";
+import TMSvg from "@/components/shared/TMSvg";
+import { svgColors } from "@/helpers";
 import Link from "next/link";
 import React from "react";
 
+
 export default function LoginPage() {
 	return (
-		<div className="grid grid-cols-1 place-items-center h-screen px-5">
-			<div className="shadow-md rounded-md p-8">
+		<div className="relative grid grid-cols-1 place-items-center h-screen px-5">
+			<div className="shadow-md rounded-md p-8 z-10">
 				<div className="flex justify-center mb-8">
-					<Logo/>
+					<Logo />
 				</div>
 				<h4 className="geist-sans text-2xl font-medium">
 					Login to your account
@@ -37,7 +39,7 @@ export default function LoginPage() {
 							Don&apos;t have an account?{" "}
 							<Link
 								href="/sign-up"
-								className="text-accent hover:underline geist-sans"
+								className="text-primary hover:underline geist-sans"
 							>
 								Create one
 							</Link>
@@ -45,6 +47,7 @@ export default function LoginPage() {
 					</div>
 				</form>
 			</div>
+			<TMSvg fill={svgColors.primary.lighter} position="top-0" />
 		</div>
 	);
 }
