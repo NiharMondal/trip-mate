@@ -1,11 +1,6 @@
 import React from "react";
 import SectionHeading from "../shared/SectionHeading";
-import Link from "next/link";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import Image from "next/image";
-import { helpers } from "@/helpers";
-import { assets } from "@/assets/image";
-import DestinationCard from "../@ui/DestinationCard";
+
 import VCard from "../@ui/VCard";
 import LinkButton from "../@ui/LinkButton";
 
