@@ -20,3 +20,10 @@ export const svgColors = {
         lighter:"#d1fae5"
     }
 }
+
+export const destinationIntroductionText = {
+    'asia': "Hello world",
+    "africa": "What is your name",
+    "south-africa":"Gelo Gelo"
+}
+

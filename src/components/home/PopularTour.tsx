@@ -4,6 +4,7 @@ import VCard from '../@ui/VCard'
 import LinkButton from '../@ui/LinkButton'
 
 export default function PopularTour() {
+  
   return (
     <div className='max-w-7xl mx-auto px-5'>
         <SectionHeading text1='Popular' text2='Tours'/>
