@@ -1,27 +1,36 @@
 export type TResponseFromServer<T> = {
-    success: boolean;
-    message: string;
-    result: T;
-}
+	success: boolean;
+	message: string;
+	result: T;
+};
+
+export type TTrip = {
+	title: string;
+	from: string;
+	destination: string;
+	availableSeats: number;
+	budget: number;
+	photos: string[];
+	startDate: string;
+	endDate: string;
+	details: string;
+};
+export type TResponseTrip = {
+	_id: string;
+	isDeleted: boolean;
+	slug: string;
+} & TTrip;
 
 
-export interface Trip {
-    _id:string
-    title: string;
-    from: string;
-    availableSeats:number;
-    budget: number;
-    destination: string;
-    photos: string[];
-    startDate: string;
-    endDate:string;
-    slug: string;
-    details: string;
+export type TDestination = {
+	destination:string;
+	shortInfo:string;
+	
 }
-
-export type TDestinationResponse ={
-    _id:string;
-    destination: string;
-    slug: string;
-    trips?: string[]
-}
+export type TDestinationResponse = {
+	_id: string;
+	destination: string;
+	shortInfo: string;
+	slug: string;
+	trips?: string[];
+};

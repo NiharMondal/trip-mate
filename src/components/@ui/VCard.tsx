@@ -1,5 +1,5 @@
 import { assets } from '@/assets/image';
-import { destinationIntroductionText } from '@/helpers';
+
 import { TDestinationResponse } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,7 +22,7 @@ export default function VCard({data, cardHeight="h-[250px]", translate="translat
 			<div className={`space-y-3 p-5 text-center flex flex-col items-center justify-center h-full group-hover:translate-y-0 duration-300 group-hover:bg-black/70 text-white ${translate}`}>
 				<h4 className="text-2xl">{data?.destination}</h4>
 				<p className="opacity-0 group-hover:opacity-100">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum, veritatis.
+					{data.shortInfo}
 				</p>
 				<p>
 					<Link href={""}>See all</Link>
