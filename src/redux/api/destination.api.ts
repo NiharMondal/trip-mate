@@ -2,6 +2,7 @@ import { baseApi } from "./base.api";
 
 const destinationApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
+		//create-destination
 		createDestination: builder.mutation({
 			query: (payload) => ({
 				url: "/destination",
@@ -9,19 +10,25 @@ const destinationApi = baseApi.injectEndpoints({
 				body: payload,
 			}),
 		}),
+
+		//fetech all destination
 		allDestination: builder.query({
-			query: (payload) => ({
+			query: () => ({
 				url: "/destination",
 				method: "GET",
+				
 			}),
 		}),
 
+		//update destination
 		updateDestination: builder.mutation({
 			query: (id) => ({
 				url: `/destination/${id}`,
 				method: "PATCH",
 			}),
 		}),
+
+		//delete destinaiton
 		deleteDestination: builder.mutation({
 			query: (id) => ({
 				url: `/destination/${id}`,
@@ -30,6 +37,7 @@ const destinationApi = baseApi.injectEndpoints({
 		}),
 	}),
 });
+
 
 export const {
 	useCreateDestinationMutation,
