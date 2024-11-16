@@ -2,6 +2,7 @@ import { baseApi } from "./base.api";
 
 const destinationApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
+		
 		//create-destination
 		createDestination: builder.mutation({
 			query: (payload) => ({
