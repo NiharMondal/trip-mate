@@ -1,3 +1,5 @@
+
+
 "use server";
 
 import { TDestinationResponse, TResponseFromServer } from "@/types";
@@ -8,6 +10,22 @@ export const getAllDestination = async (): Promise<
 > => {
 	try {
 		const res = await fetch(`${base_url}/destination`, {
+			cache: "no-store",
+		});
+		if (res.ok) {
+			const data = await res.json();
+			return data;
+		}
+	} catch (error) {
+		console.log("Error fetching destinations", error);
+		return undefined;
+	}
+};
+export const getPopularDestination = async (): Promise<
+	TResponseFromServer<TDestinationResponse[]> | undefined
+> => {
+	try {
+		const res = await fetch(`${base_url}/destination?limit=6`, {
 			cache: "no-store",
 		});
 		if (res.ok) {

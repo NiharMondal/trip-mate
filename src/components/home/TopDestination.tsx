@@ -5,10 +5,11 @@ import SectionHeading from "../shared/SectionHeading";
 import VCard from "../@ui/VCard";
 import LinkButton from "../@ui/LinkButton";
 
-import { getAllDestination } from "@/actions/destination";
+import { getPopularDestination } from "@/actions/destination";
 
 export default async function TopDestination() {
-	const des = await getAllDestination();
+	
+	const des = await getPopularDestination();
 
 	return (
 		<div className=" max-w-7xl mx-auto">
