@@ -15,7 +15,7 @@ type VCardProps = {
 export default function VCard({data, cardHeight="h-[250px]", translate="translate-y-[50%]"}:VCardProps) {
   return (
 		<div
-			className={`relative rounded-xl bg-gray-200  overflow-hidden group ${cardHeight}`}
+			className={` relative rounded-xl bg-gray-200  overflow-hidden group ${cardHeight}`}
 		>
 			<div className="absolute top-3 right-3 px-4 py-2 bg-primary text-white z-50">
 				<p className='font-semibold text-sm'>{data.trips?.length} tours</p>
@@ -37,7 +37,7 @@ export default function VCard({data, cardHeight="h-[250px]", translate="translat
 					{data.shortInfo}
 				</p>
 				<p>
-					<Link href={""}>See all</Link>
+					<Link href={`/tour-destination/${data.slug}`}>See all</Link>
 				</p>
 			</div>
 		</div>

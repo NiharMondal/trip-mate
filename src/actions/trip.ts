@@ -38,3 +38,20 @@ export const recentTrip = async (): Promise<
 		return undefined;
 	}
 };
+
+
+export const popularTrip = async(): Promise<
+	TResponseFromServer<TResponseTrip[]> | undefined
+> => {
+	try {
+		const res  = await fetch(`${base_url}/trip/popular-trip`);
+		if(!res.ok){
+			throw new Error("Failed to fetch popular trip");
+		}
+		const data = await res.json()
+		return data;
+	} catch (error:any) {
+		console.log("Error fetching popular trip", error.message);
+		return undefined;
+	}
+}

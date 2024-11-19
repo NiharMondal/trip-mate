@@ -10,11 +10,12 @@
 body{
   background-color: var(--background);
   color: var(--foreground);
+  font-family: var(--font-poppins) ;
 }
 
 @layer base{
   h1{
-    @apply text-[3rem] md:text-[3.5rem]
+    @apply text-[3rem] md:text-[3.5rem] 
   }
   h2{
     @apply text-[2rem] md:text-[2.5rem]

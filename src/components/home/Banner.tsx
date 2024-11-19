@@ -1,7 +1,6 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-import avatar from "../../assets/images/avatar.jpg";
 import Image from "next/image";
 import { imageHelpers } from "@/assets/image-helpers";
 
@@ -19,7 +18,7 @@ export default function Banner() {
 							<span className="text-primary">Visit</span>
 						</h1>
 
-						<p className="max-w-lg text-lg ">
+						<p className="max-w-lg text-lg leading-6 font-mono">
 							Discover amzaing places at exclusive deals. Eat,
 							Shop, Visit interesting places around the world.
 						</p>

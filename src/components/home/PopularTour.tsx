@@ -2,9 +2,11 @@ import React from 'react'
 import SectionHeading from '../shared/SectionHeading'
 // import VCard from '../@ui/VCard'
 import LinkButton from '../@ui/LinkButton'
+import { popularTrip } from '@/actions/trip'
 
-export default function PopularTour() {
-  
+export default async function PopularTour() {
+  const data = await popularTrip()
+  console.log(data)
   return (
     <div className='max-w-7xl mx-auto px-5'>
         <SectionHeading text1='Popular' text2='Tours'/>

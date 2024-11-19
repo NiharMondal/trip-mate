@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // react icons
 import { IoMdClose } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
-import Logo from "../@ui/Logo";
+
 import { helpers } from "@/helpers";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,7 +21,6 @@ export default function Navbar() {
 						src={imageHelpers.logo}
 						alt="logo"
 						className="size-[60px]"
-						
 					/>
 				</Link>
 				<ul className="hidden lg:flex items-center gap-[20px] text-[1rem] text-text">
@@ -38,11 +37,12 @@ export default function Navbar() {
 				</ul>
 
 				<div className="flex items-center gap-[10px]">
-					<button className="btn btn-primary hidden lg:flex">
-						<Link href="/login" className="text-sm text-white">
-							Login
-						</Link>
-					</button>
+					<Link
+						href="/login"
+						className="btn btn-primary hidden lg:flex"
+					>
+						<button className="text-sm text-white">Login</button>
+					</Link>
 
 					<CiMenuFries
 						className="text-[1.6rem] text-text cursor-pointer lg:hidden flex"
@@ -79,9 +79,9 @@ export default function Navbar() {
 						))}
 					</ul>
 					<div>
-						<button className="btn btn-primary">
-							<Link href="/login">Login</Link>
-						</button>
+						<Link href="/login">
+							<button className="btn btn-primary">Login</button>
+						</Link>
 					</div>
 				</aside>
 			</nav>
