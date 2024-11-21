@@ -8,7 +8,7 @@ export type TTrip = {
 	title: string;
 	from: string;
 	destination: string;
-	availableSeats: number;
+	maxGuests: number;
 	budget: number;
 	photos: string[];
 	startDate: string;
@@ -19,10 +19,11 @@ export type TReview = {
 	rating: number;
 	message:string;
 }
-export type TResponseTrip = {
+export type TTripResponse = {
 	_id: string;
+	availAbleSeats: number;
 	rating: number;
-	reviews: TReview[]
+	reviews: TReview[];
 	isDeleted: boolean;
 	slug: string;
 } & TTrip;
@@ -33,6 +34,7 @@ export type TDestination = {
 	shortInfo:string;
 	
 }
+
 export type TDestinationResponse = {
 	_id: string;
 	destination: string;

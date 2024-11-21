@@ -1,15 +1,14 @@
-
 import Image from "next/image";
 import { Rating } from "@smastrom/react-rating";
 import Link from "next/link";
 import { TTripResponse } from "@/types";
 
-type VCardWithDetailsProps = {
+type FreshlyAddedCardProps = {
 	trip: TTripResponse;
 };
-export default function VCardWithDetails({ trip }: VCardWithDetailsProps) {
+export default function FreshlyAddedCard({ trip }: FreshlyAddedCardProps) {
 	return (
-		<div className="bg-white rounded-lg shadow-md">
+		<div className="bg-white rounded-lg shadow-md overflow-hidden h-[450px]">
 			<Link href={`/tours/${trip.slug}`}>
 				<Image
 					alt={trip.slug}
@@ -35,7 +34,10 @@ export default function VCardWithDetails({ trip }: VCardWithDetailsProps) {
 				</div>
 
 				<p className="mt-3 text-gray-600">
-					From <span className="text-primary font-bold font-mono">${trip.budget}</span>
+					From{" "}
+					<span className="text-primary font-bold font-mono">
+						${trip.budget}
+					</span>
 				</p>
 			</div>
 		</div>

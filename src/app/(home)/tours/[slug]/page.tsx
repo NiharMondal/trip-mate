@@ -1,39 +1,57 @@
-import { imageHelpers } from "@/assets/image-helpers";
 import Image from "next/image";
 import React from "react";
-
+import { Rating } from "@smastrom/react-rating";
 import { FcClock } from "react-icons/fc";
 import { HiOutlineUserGroup } from "react-icons/hi2";
-import { SlCalender } from "react-icons/sl";
-import { BsCalendarDate } from "react-icons/bs";
 
 
+import { getSingleTrip } from "@/actions/trip";
+import { calculateDayDifference } from "@/helpers/calculateDate";
+import BookingSection from "./BookingSection";
 
-export default function TourDetailsPage() {
+export default async function TourDetailsPage({
+	params,
+}: {
+	params: { slug: string };
+}) {
+	const trip = await getSingleTrip(params.slug);
+	if (!trip.result) return <p>No data found!</p>;
+
+	const duration = calculateDayDifference(
+		trip.result.startDate,
+		trip.result.endDate
+	);
+
 	return (
 		<div className="bg-white py-20 px-5 sm:px-20 lg:px-5">
 			<div className="max-w-7xl mx-auto">
 				<div className="space-y-5">
-					<h2>Dubai -- All Stunning Places</h2>
-					<p> Number of Review</p>
-					<div className="max-w-2xl flex items-center justify-between">
+					<h2 className="font-semibold font-mono">
+						{trip.result.title}
+					</h2>
+					<div className="inline-flex gap-x-2 items-center text-gray-500">
+
+					<Rating
+						value={trip.result.rating}
+						readOnly={true}
+						className="max-w-[100px]"
+					/>
+					<p className="text-xs">( {trip.result.reviews.length} Review )</p>
+					</div>
+					<div className="max-w-2xl flex items-center justify-between text-gray-600">
 						<div className="inline-flex gap-x-3 items-center">
 							<span>
-								<FcClock className="text-gray-500 size-8" />
+								<FcClock className=" size-8" />
 							</span>
-							<span>Number of Days</span>
+							<span>{duration} Days</span>
 						</div>
 						<div className="inline-flex gap-x-3 items-center">
 							<span>
-								<HiOutlineUserGroup className="text-gray-500 size-8" />
+								<HiOutlineUserGroup className=" size-8" />
 							</span>
-							<span>Max Guests: 40</span>
-						</div>
-						<div className="inline-flex gap-x-3 items-center">
 							<span>
-								<SlCalender className="text-gray-500 size-8" />
+								Max Guests: {trip?.result?.maxGuests}
 							</span>
-							<span>Apr - Oct</span>
 						</div>
 					</div>
 				</div>
@@ -42,7 +60,7 @@ export default function TourDetailsPage() {
 					{/* image section  */}
 					<div className="lg:col-span-2">
 						<Image
-							src={imageHelpers.beach}
+							src={trip.result.photos[0]}
 							height={300}
 							width={200}
 							alt="photo"
@@ -51,47 +69,11 @@ export default function TourDetailsPage() {
 					</div>
 
 					{/* booking section  */}
-					<div className="bg-secondary rounded-md shadow-lg p-8">
-						<h5>Price</h5>
-						<h2 className="font-semibold">$1200</h2>
-						<div className="space-y-8 mt-5">
-							<div className="inline-flex gap-x-8">
-								<span>
-									<BsCalendarDate className="size-8 text-primary" />
-								</span>
-								<span>February 1,2025</span>
-							</div>
-
-							<div >
-								<p className="pl-16 mb-3">Available: 0 seats</p>
-								<div className="flex gap-x-8">
-									<span>
-										<HiOutlineUserGroup className="size-8 text-primary" />
-									</span>
-									<select
-										name="people"
-										id="people"
-										className="w-full p-4 rounded-md outline-none"
-									>
-										<option value="">
-											Number of People
-										</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-									</select>
-								</div>
-							</div>
-
-							<div>
-								<button className="btn btn-primary w-full py-5 mt-5">proceed booking</button>
-							</div>
-						</div>
-					</div>
+					<BookingSection budget={trip.result.budget} seats={trip.result.availAbleSeats} date={trip.result.startDate} />
 				</div>
+				<div className="py-10">{trip.result.details}</div>
 			</div>
 		</div>
 	);
 }
+

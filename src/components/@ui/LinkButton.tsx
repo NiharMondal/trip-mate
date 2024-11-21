@@ -9,7 +9,7 @@ type LinkButtonProps = {
 
 export default function LinkButton({href, title}:LinkButtonProps) {
   return (
-		<p className="mx-auto max-w-fit border-b-2 border-gray-300 hover:border-primary duration-150 href mt-7">
+		<p className="mx-auto max-w-fit border-b-2 border-gray-300 hover:border-primary duration-150 href mt-16">
 			<Link
 				href={`${href}`}
 				className="inline-flex items-center gap-x-3"

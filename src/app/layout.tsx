@@ -8,6 +8,12 @@ import Providers from "@/components/Providers";
 
 // for rating
 import "@smastrom/react-rating/style.css";
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/bundle';
+import "swiper/css/navigation";
+
+
 //font initializing
 const lato = Lato({
 	weight: ["100", "300", "400", "700", "900"],
