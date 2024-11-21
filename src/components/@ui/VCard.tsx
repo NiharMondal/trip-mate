@@ -34,7 +34,7 @@ export default function VCard({data, cardHeight="h-[250px]", translate="translat
 			>
 				<h4 className="text-2xl">{data?.destination}</h4>
 				<p className="opacity-0 group-hover:opacity-100">
-					{data.shortInfo}
+					{data?.shortInfo}
 				</p>
 				<p>
 					<Link href={`/tour-destination/${data.slug}`}>See all</Link>

@@ -75,4 +75,8 @@ body{
   .filter-wrapper h5{
     @apply text-gray-500
   }
+
+  .bg_darken{
+    @apply absolute inset-0 bg-black/30 group-hover:bg-black/70 duration-200
+  }
 }

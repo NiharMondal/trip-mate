@@ -1,16 +1,13 @@
-
 import React from "react";
 import SectionHeading from "../shared/SectionHeading";
-
-import VCard from "../@ui/VCard";
 import LinkButton from "../@ui/LinkButton";
 
 import { getPopularDestination } from "@/actions/destination";
+import DestinationCard from "../@ui/DestinationCard";
 
 export default async function TopDestination() {
-	
-	const des = await getPopularDestination();
-
+	const destinations = await getPopularDestination();
+	if (!destinations?.result) return <p>No data found!</p>;
 	return (
 		<div className=" max-w-7xl mx-auto">
 			<SectionHeading text1="Top" text2="Destination" />
@@ -22,10 +19,9 @@ export default async function TopDestination() {
 			<LinkButton href="/destination" title="All Destination" />
 
 			<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-				{des?.result?.length &&
-					des?.result?.map((data) => (
-						<VCard data={data && data} key={data._id} />
-					))}
+				{destinations?.result?.map((data) => (
+					<DestinationCard data={data} key={data._id} />
+				))}
 			</div>
 		</div>
 	);

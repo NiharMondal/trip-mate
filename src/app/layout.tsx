@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
+//goggle font
 import { Lato ,  Roboto_Mono} from "next/font/google";
+
+//redux or other providers
 import Providers from "@/components/Providers";
 
+// for rating
+import "@smastrom/react-rating/style.css";
 //font initializing
 const lato = Lato({
 	weight: ["100", "300", "400", "700", "900"],

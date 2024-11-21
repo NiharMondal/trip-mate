@@ -15,8 +15,14 @@ export type TTrip = {
 	endDate: string;
 	details: string;
 };
+export type TReview = {
+	rating: number;
+	message:string;
+}
 export type TResponseTrip = {
 	_id: string;
+	rating: number;
+	reviews: TReview[]
 	isDeleted: boolean;
 	slug: string;
 } & TTrip;
