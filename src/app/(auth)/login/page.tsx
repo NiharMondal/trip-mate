@@ -1,19 +1,40 @@
-"use client"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
 import Logo from "@/components/@ui/Logo";
 import TMForm from "@/components/form/TMForm";
 import TMInput from "@/components/form/TMInput";
 import TMSvg from "@/components/shared/TMSvg";
 import { svgColors } from "@/helpers";
+import { decodeToken } from "@/helpers/decodeToken";
+import { useLoginMutation } from "@/redux/api/auth.api";
+import { useAppDispatch } from "@/redux/hooks";
+import { setCredentials } from "@/redux/slice/authSlice";
+
 import Link from "next/link";
 import React from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-
+import { toast } from "react-toastify";
 
 export default function LoginPage() {
+	const dispatch = useAppDispatch();
+	const [login] = useLoginMutation();
 
-	const handleSubmit: SubmitHandler<FieldValues> = (data) => {
-		console.log(data)
-	}
+	const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+		try {
+			const response = await login(data).unwrap();
+			if (response.success) {
+				const token = response?.result?.accessToken;
+				const user: any = decodeToken(token);
+
+				dispatch(setCredentials({ user: user, token: token }));
+
+				toast.success("Logged in successfully");
+			}
+		} catch (error: any) {
+			toast.error(error?.data?.message)
+		}
+	};
+
 	return (
 		<div className="relative grid grid-cols-1 place-items-center h-screen px-5">
 			<div className="shadow-md rounded-md p-8 z-10">
@@ -23,7 +44,7 @@ export default function LoginPage() {
 				<h4 className="geist-sans text-2xl font-medium">
 					Login to your account
 				</h4>
-				
+
 				<div className="min-w-[400px] mt-5">
 					<TMForm onSubmit={handleSubmit}>
 						<TMInput name="email" type="email" label="Email" />
@@ -32,7 +53,10 @@ export default function LoginPage() {
 							type="password"
 							label="Password"
 						/>
-						<button className="btn btn-primary w-full text-white" type="submit">
+						<button
+							className="btn btn-primary w-full text-white"
+							type="submit"
+						>
 							Login
 						</button>
 						<div className="mt-5">

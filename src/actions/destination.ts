@@ -10,7 +10,7 @@ export const getAllDestination = async (): Promise<
 > => {
 	try {
 		const res = await fetch(`${base_url}/destination`, {
-			cache: "no-store",
+			cache:"no-store"
 		});
 		if (res.ok) {
 			const data = await res.json();

@@ -17,7 +17,7 @@ export default function RecentlyAdded() {
 	if (!data?.result) return <p>No data found!</p>;
 	return (
 		<div className="max-w-7xl mx-auto px-5">
-			<SectionHeading text1="Popular" text2="Tours" />
+			<SectionHeading text1="Freshly" text2="Added" />
 			{isLoading && <p>Loading...</p>}
 			<div className="flex justify-end items-center gap-x-6 mt-20 text-white">
 				<button

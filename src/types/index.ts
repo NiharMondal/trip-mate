@@ -17,8 +17,8 @@ export type TTrip = {
 };
 export type TReview = {
 	rating: number;
-	message:string;
-}
+	message: string;
+};
 export type TTripResponse = {
 	_id: string;
 	availAbleSeats: number;
@@ -28,12 +28,10 @@ export type TTripResponse = {
 	slug: string;
 } & TTrip;
 
-
 export type TDestination = {
-	destination:string;
-	shortInfo:string;
-	
-}
+	destination: string;
+	shortInfo: string;
+};
 
 export type TDestinationResponse = {
 	_id: string;
@@ -42,3 +40,8 @@ export type TDestinationResponse = {
 	slug: string;
 	trips?: string[];
 };
+
+export type TLoginRequest ={
+	email: string;
+	password: string;
+}

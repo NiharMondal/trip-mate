@@ -1,25 +1,29 @@
-import { imageHelpers } from "@/assets/image-helpers";
-import VCard from "@/components/@ui/VCard";
+import { getAllDestination } from "@/actions/destination";
+import DestinationCard from "@/components/@ui/DestinationCard";
+
 import PageTitle from "@/components/shared/PageTitle";
-import Image from "next/image";
+
 import React from "react";
 
-export default function DestinationPage() {
+export default async function DestinationPage() {
+	const destinations = await getAllDestination();
+	
 	return (
-		<div className="space-y-5 bg-white">
+		<div className="">
 			<PageTitle
 				title="Destinations"
 				subTitle="Explore Tours By Destinations"
 			/>
-			
-			<div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-5 py-20">
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				<VCard cardHeight="h-[320px] lg:h-[500px]" />
-				
+			<div className="bg-white py-20">
+				<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 px-5  max-w-7xl mx-auto">
+					{destinations?.result?.map((data) => (
+						<DestinationCard
+							data={data}
+							height="h-[400px]"
+							key={data._id}
+						/>
+					))}
+				</div>
 			</div>
 		</div>
 	);
