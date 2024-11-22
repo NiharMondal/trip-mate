@@ -3,27 +3,27 @@ import { baseApi } from "./base.api";
 
 const tripApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		//create-destination
+		//create-trip
 		createTrip: builder.mutation({
 			query: (payload) => ({
-				url: "/destination",
+				url: "/trip",
 				method: "POST",
 				body: payload,
 			}),
 		}),
 
-		//fetech all destination
-		getTrips: builder.query({
+		//fetech all trip
+		getAllTrips: builder.query<TResponseFromServer<TTripResponse[]>, void>({
 			query: () => ({
-				url: "/destination",
+				url: "/trip",
 				method: "GET",
 			}),
 		}),
 
-		//update destination
+		//update trip
 		getSingleTrip: builder.mutation({
 			query: (id) => ({
-				url: `/destination/${id}`,
+				url: `/trip/${id}`,
 				method: "PATCH",
 			}),
 		}),
@@ -31,7 +31,7 @@ const tripApi = baseApi.injectEndpoints({
 		//delete destinaiton
 		deleteTrip: builder.mutation({
 			query: (id) => ({
-				url: `/destination/${id}`,
+				url: `/trip/${id}`,
 				method: "DELETE",
 			}),
 		}),
@@ -60,6 +60,7 @@ const tripApi = baseApi.injectEndpoints({
 });
 
 export const {
+	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery
 } = tripApi;
