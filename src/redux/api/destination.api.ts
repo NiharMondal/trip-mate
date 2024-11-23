@@ -1,8 +1,14 @@
+import { TResponseFromServer } from "@/types";
 import { baseApi } from "./base.api";
+
+type TSlugOnly = {
+	_id: string;
+	slug: string;
+	destination: string;
+};
 
 const destinationApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
-		
 		//create-destination
 		createDestination: builder.mutation({
 			query: (payload) => ({
@@ -14,10 +20,21 @@ const destinationApi = baseApi.injectEndpoints({
 
 		//fetech all destination
 		allDestination: builder.query({
+			query: () => {
+				return {
+					url: "/destination",
+					method: "GET",
+				};
+			},
+		}),
+
+		getOnlyDestinationSlug: builder.query<
+			TResponseFromServer<TSlugOnly[]>,
+			void
+		>({
 			query: () => ({
-				url: "/destination",
+				url: "/destination?fields=slug,destination",
 				method: "GET",
-				
 			}),
 		}),
 
@@ -39,10 +56,10 @@ const destinationApi = baseApi.injectEndpoints({
 	}),
 });
 
-
 export const {
 	useCreateDestinationMutation,
 	useAllDestinationQuery,
+	useGetOnlyDestinationSlugQuery,
 	useUpdateDestinationMutation,
 	useDeleteDestinationMutation,
 } = destinationApi;

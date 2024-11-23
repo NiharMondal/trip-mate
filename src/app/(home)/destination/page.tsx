@@ -9,7 +9,7 @@ export default async function DestinationPage() {
 	const destinations = await getAllDestination();
 	
 	return (
-		<div className="">
+		<div >
 			<PageTitle
 				title="Destinations"
 				subTitle="Explore Tours By Destinations"

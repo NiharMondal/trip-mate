@@ -15,6 +15,7 @@ export default async function TourDetailsPage({
 	params: { slug: string };
 }) {
 	const trip = await getSingleTrip(params.slug);
+	
 	if (!trip.result) return <p>No data found!</p>;
 
 	const duration = calculateDayDifference(
@@ -69,7 +70,7 @@ export default async function TourDetailsPage({
 					</div>
 
 					{/* booking section  */}
-					<BookingSection budget={trip.result.budget} seats={trip.result.availAbleSeats} date={trip.result.startDate} />
+					<BookingSection budget={trip.result.budget} seats={trip.result.availAbleSeats} date={trip.result.startDate} tripId={trip.result._id} />
 				</div>
 				<div className="py-10">{trip.result.details}</div>
 			</div>

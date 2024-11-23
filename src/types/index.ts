@@ -1,3 +1,4 @@
+
 export type TResponseFromServer<T> = {
 	success: boolean;
 	message: string;
@@ -41,7 +42,18 @@ export type TDestinationResponse = {
 	trips?: string[];
 };
 
-export type TLoginRequest ={
+export type TLoginRequest = {
 	email: string;
 	password: string;
-}
+};
+
+export type TBookingRequest = {
+	user: string;
+	trip: string;
+	people: number;
+	totalCost: number;
+};
+export type TBookingResponse = {
+	_id: string;
+	status: string;
+} & TBookingRequest;

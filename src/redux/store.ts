@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { baseApi } from "./api/base.api";
 import authReducer from "./slice/authSlice";
-
+import queryReducer from "./slice/querySlice";
 import {
 	persistReducer,
 	FLUSH,
@@ -23,12 +23,11 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 
 
 export const store = configureStore({
-
-
 	reducer: {
 		[baseApi.reducerPath]: baseApi.reducer,
 
 		auth: authPersistedReducer,
+		query: queryReducer,
 	},
 
 	middleware: (getDefaultMiddleware) =>
