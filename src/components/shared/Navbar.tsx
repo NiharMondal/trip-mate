@@ -50,12 +50,14 @@ export default function Navbar() {
 					/>
 				</div>
 
+				
+				{/** for small device */}
 				<aside
 					className={` ${
 						mobileSidebarOpen
 							? "translate-x-0 opacity-100 z-50"
 							: "translate-x-full opacity-0 z-[-1]"
-					} lg:hidden bg-secondary p-4 text-center fixed top-0 right-0 h-screen w-full sm:w-[330px] transition-all duration-300 overflow-hidden`}
+					} lg:hidden bg-accent p-4 text-center fixed top-0 right-0 h-screen w-full sm:w-[330px] transition-all duration-300 overflow-hidden`}
 				>
 					<div className="flex items-center justify-end pb-10 pt-3 pr-1">
 						<IoMdClose

@@ -1,16 +1,19 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
-import { IoMdClose } from "react-icons/io";
 import { useGetOnlyDestinationSlugQuery } from "@/redux/api/destination.api";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { clearQueries, updateQueries } from "@/redux/slice/querySlice";
+import { useRouter } from "next/navigation";
 
-export type TFilters = {
+
+type QueryParams = {
 	search: string;
 	destination: string;
 	minBudget: string;
 	maxBudget: string;
+	sortBy: string;
+	order: string;
 };
 
 type TEvent =
@@ -18,7 +21,9 @@ type TEvent =
 	| React.ChangeEvent<HTMLSelectElement>;
 
 export default function FilterComponent() {
+	const router = useRouter();
 	const dispatch = useAppDispatch();
+
 	const query = useAppSelector((state) => state.query);
 
 	const { data } = useGetOnlyDestinationSlugQuery();
@@ -27,6 +32,21 @@ export default function FilterComponent() {
 		const { value, name } = e.target;
 		dispatch(updateQueries({ [name]: value }));
 	};
+
+	useEffect(() => {
+		const params = new URLSearchParams();
+
+		if (query.queries && Object.keys(query.queries).length) {
+			(Object.keys(query.queries) as Array<keyof QueryParams>).forEach(
+				(key) => {
+					if (query.queries[key] && query.queries[key].length > 0) {
+						params.append(key, query.queries[key].toString());
+					}
+				}
+			);
+			router.push(`?${params.toString()}`, { scroll: false });
+		}
+	}, [query.queries, router]);
 	return (
 		<div className="w-full col-span-full lg:col-span-1">
 			<div className=" border border-gray-300 p-8 rounded-md space-y-5 filter-wrapper col-span-4 sm:col-span-2 lg:col-span-1">
@@ -94,18 +114,11 @@ export default function FilterComponent() {
 					</div>
 				</div>
 
-				<div
-					className="inline-flex items-center gap-x-2 text-primary/70 hover:text-primary/85 cursor-pointer duration-150"
+				<button
 					onClick={() => dispatch(clearQueries())}
+					className="btn bg-accent w-full text-white uppercase text-sm py-4"
 				>
-					<span>
-						<IoMdClose />
-					</span>{" "}
 					Clear Filter
-				</div>
-
-				<button className="btn btn-primary w-full text-white uppercase text-sm py-4">
-					Search
 				</button>
 			</div>
 		</div>

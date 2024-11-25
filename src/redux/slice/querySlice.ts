@@ -5,6 +5,8 @@ const initialState = {
 		destination: "",
 		minBudget: "",
 		maxBudget: "",
+		sortBy: "",
+		order:"",
 	},
 };
 
@@ -22,6 +24,8 @@ export const querySlice = createSlice({
 				destination: "",
 				maxBudget: "",
 				minBudget: "",
+				sortBy: "",
+				order: "",
 			};
 		},
 	},

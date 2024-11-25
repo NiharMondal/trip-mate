@@ -5,33 +5,19 @@ import ResultComponent from "./ResultComponent";
 import SortComponent from "./SortComponent";
 import { useGetAllTripsQuery } from "@/redux/api/trip.api";
 import { useAppSelector } from "@/redux/hooks";
-// import { useRouter } from "next/navigation";
-// const initialState = {
-// 	search: "",
-// 	destination: "",
-// 	minBudget: "",
-// 	maxBudget: "",
-// };
+import { useDebounce } from "use-debounce";
+
 export default function ParentComponent() {
 	const query = useAppSelector((state) => state.query);
-	console.log(query)
-	// const router = useRouter()
-	// const [filters, setFilters] = useState( initialState);
-
-	// useEffect(() => {
-	// 	const params = new URLSearchParams();
-
-	// 	if (filters && Object.keys(filters).length) {
-	// 		Object.keys(filters).forEach((key) => {
-	// 			if (filters[key]  && filters[key].length > 0) {
-	// 				params.append(key, filters[key].toString());
-	// 			}
-	// 		});
-	// 	}
-	// 	router.push(`?${params.toString()}`, undefined)
-	// }, [filters, router]);
-
-	const { data, isLoading } = useGetAllTripsQuery(query.queries);
+	const [search] = useDebounce(query.queries.search, 750);
+	const [minBudget] = useDebounce(query.queries.minBudget, 750);
+	const [maxBudget] = useDebounce(query.queries.maxBudget, 750);
+	const { data, isLoading } = useGetAllTripsQuery({
+		...query.queries,
+		search,
+		minBudget,
+		maxBudget,
+	});
 	return (
 		<div className="max-w-7xl mx-auto px-5 py-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
 			<FilterComponent />

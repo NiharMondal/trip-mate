@@ -18,6 +18,7 @@ const tripApi = baseApi.injectEndpoints({
 			Record<string, string>
 		>({
 			query: (query) => {
+				console.log(query)
 				const params = new URLSearchParams();
 
 				if (query && Object.keys(query).length) {
