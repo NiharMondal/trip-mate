@@ -1,7 +1,7 @@
 "use client";
 
 import ClassicCard from "@/components/@ui/ClassicCard";
-import GridCard from "@/components/@ui/GridCard";
+
 
 import React, { useState } from "react";
 import { CiGrid41 } from "react-icons/ci";
@@ -49,7 +49,7 @@ export default function Tours() {
 
 			{/* tours card  */}
 			<div className={`${toggleView === "grid" ? "block" : "hidden"}`}>
-				<GridCard/>
+			
 			</div>
 
 			{/** classic card */}

@@ -9,7 +9,7 @@ import { useGetFreshlyAddedTripQuery } from "@/redux/api/trip.api";
 import { Swiper as SwiperInstance } from "swiper/types";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 
-import FreshlyAddedCard from "../@ui/FreshlyAddedCard";
+import TMCardWithDetails from "../@ui/TMCardWithDetails";
 
 export default function RecentlyAdded() {
 	const swiperRef = useRef<SwiperInstance | null>(null);
@@ -57,7 +57,7 @@ export default function RecentlyAdded() {
 			>
 				{data?.result.map((trip) => (
 					<SwiperSlide key={trip._id}>
-						<FreshlyAddedCard trip={trip} />
+						<TMCardWithDetails trip={trip} />
 					</SwiperSlide>
 				))}
 			</Swiper>

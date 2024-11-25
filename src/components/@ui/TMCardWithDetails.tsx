@@ -3,22 +3,24 @@ import { Rating } from "@smastrom/react-rating";
 import Link from "next/link";
 import { TTripResponse } from "@/types";
 
-type FreshlyAddedCardProps = {
+type TMCardWithDetailsProps = {
 	trip: TTripResponse;
+	imageHeight?: string
+    cardHeight?: string;
 };
-export default function FreshlyAddedCard({ trip }: FreshlyAddedCardProps) {
+export default function TMCardWithDetails({ trip, imageHeight="h-[200px]", cardHeight="h-[400px]" }: TMCardWithDetailsProps) {
 	return (
-		<div className="bg-white rounded-lg shadow-md overflow-hidden h-[450px]">
+		<div className={`bg-white rounded-lg shadow-md overflow-hidden ${cardHeight}`}>
 			<Link href={`/tours/${trip.slug}`}>
 				<Image
 					alt={trip.slug}
 					src={trip.photos[0]}
 					height={200}
 					width={200}
-					className="w-full h-[250px]"
+					className={`w-full object-cover object-center ${imageHeight}`}
 				/>
 			</Link>
-			<div className="p-8">
+			<div className="p-6">
 				<Link href={`/tours/${trip.slug}`}>
 					<h4 className="text-2xl heading mb-2">{trip.title}</h4>
 				</Link>
