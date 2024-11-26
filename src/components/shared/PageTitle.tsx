@@ -1,7 +1,7 @@
 import React from "react";
 type PageTitleProps = {
 	title: string;
-	subTitle: string;
+	subTitle?: string;
 };
 export default function PageTitle({ title, subTitle }: PageTitleProps) {
 	return (

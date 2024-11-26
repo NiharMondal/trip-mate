@@ -8,11 +8,16 @@ export default function TourDestination({
 }: {
 	params: { slug: string };
 }) {
+
+
+	let title = params.slug;
+
+	title = title.split("-").join(" ").toUpperCase()
+
 	return (
 		<div className="pb-10 space-y-12 bg-white">
 			<PageTitle
-				title="Search Tours"
-				subTitle="Filter according your desire"
+				title={title}
 			/>
 			<TourDestinationWrapper destination={params.slug} />
 		</div>
