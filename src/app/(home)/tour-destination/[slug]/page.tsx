@@ -1,17 +1,20 @@
-import React from 'react'
+import React from "react";
 
-import Tours from '../../tours/Tours';
+import PageTitle from "@/components/shared/PageTitle";
+import TourDestinationWrapper from "./TourDestinationWrapper";
 
-export default function TourDestination() {
-  return (
-		<div className='py-20'>
-			<div className="mx-auto max-w-7xl px-5 sm:px-36 md:px-5 grid grid-cols-1 md:grid-cols-4 gap-8">
-				{/* start of left side */}
-				{/* <ToursQuery /> */}
-
-				{/* start of right side */}
-				<Tours />
-			</div>
+export default function TourDestination({
+	params,
+}: {
+	params: { slug: string };
+}) {
+	return (
+		<div className="pb-10 space-y-12 bg-white">
+			<PageTitle
+				title="Search Tours"
+				subTitle="Filter according your desire"
+			/>
+			<TourDestinationWrapper destination={params.slug} />
 		</div>
-  );
+	);
 }

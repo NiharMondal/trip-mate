@@ -18,7 +18,7 @@ const tripApi = baseApi.injectEndpoints({
 			Record<string, string>
 		>({
 			query: (query) => {
-				console.log(query)
+				console.log(query);
 				const params = new URLSearchParams();
 
 				if (query && Object.keys(query).length) {
@@ -72,6 +72,17 @@ const tripApi = baseApi.injectEndpoints({
 				method: "GET",
 			}),
 		}),
+		
+		//get trips by destination
+		getTripByDestination: builder.query<
+			TResponseFromServer<TTripResponse[]>,
+			string
+		>({
+			query: (id) => ({
+				url: `/trip/destination/${id}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 
@@ -79,4 +90,5 @@ export const {
 	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,
+	useGetTripByDestinationQuery
 } = tripApi;

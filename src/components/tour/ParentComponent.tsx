@@ -7,6 +7,7 @@ import { useGetAllTripsQuery } from "@/redux/api/trip.api";
 import { useAppSelector } from "@/redux/hooks";
 import { useDebounce } from "use-debounce";
 
+
 export default function ParentComponent() {
 	const query = useAppSelector((state) => state.query);
 	const [search] = useDebounce(query.queries.search, 750);
