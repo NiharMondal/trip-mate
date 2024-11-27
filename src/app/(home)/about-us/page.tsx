@@ -44,9 +44,7 @@ export default function AboutUsPage() {
 						<WOInfo
 							icon={<FaMapLocationDot />}
 							subHeading="Dive into Culture"
-							details="Immerse yourself in the rich traditions and vibrant lifestyles of the places you visit. Connect with local experiences that let you truly live the culture, not just see it.
-
-"
+							details="Immerse yourself in the rich traditions and vibrant lifestyles of the places you visit. Connect with local experiences that let you truly live the culture, not just see it."
 						/>
 					</div>
 				</div>

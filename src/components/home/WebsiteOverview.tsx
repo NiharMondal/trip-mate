@@ -18,13 +18,13 @@ export default function WebsiteOverview() {
 				/>
 				<WOInfo
 					icon={<FaHandHoldingDollar />}
-					subHeading="700 Destinations"
-					details="Our expert team handpicked all destinations in this site"
+					subHeading="Best Price Gurantee"
+					details="Price match within 48 hours of order confirmation"
 				/>
 				<WOInfo
 					icon={<MdSupportAgent />}
-					subHeading="700 Destinations"
-					details="Our expert team handpicked all destinations in this site"
+					subHeading="Top Notch Support"
+					details="We are here to help, before, during, and even after your trip."
 				/>
 			</div>
 		</div>
