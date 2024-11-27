@@ -1,4 +1,4 @@
-import { TResponseFromServer } from "@/types";
+import { TResponseFromServer, TTripResponse } from "@/types";
 import { baseApi } from "./base.api";
 
 type TSlugOnly = {
@@ -53,6 +53,24 @@ const destinationApi = baseApi.injectEndpoints({
 				method: "DELETE",
 			}),
 		}),
+
+		//get trips by destination
+		getTripByDestination: builder.query<
+			TResponseFromServer<TTripResponse[]>,
+			Record<string, string>
+		>({
+			query: (query) => {
+				const params = new URLSearchParams();
+				if (query.search) {
+					params.append("search", query.search);
+				}
+				return {
+					url: `/destination/${query.destination}/trips`,
+					method: "GET",
+					params: params,
+				};
+			},
+		}),
 	}),
 });
 
@@ -62,4 +80,8 @@ export const {
 	useGetOnlyDestinationSlugQuery,
 	useUpdateDestinationMutation,
 	useDeleteDestinationMutation,
+
+	//
+
+	useGetTripByDestinationQuery,
 } = destinationApi;

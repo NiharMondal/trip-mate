@@ -73,16 +73,7 @@ const tripApi = baseApi.injectEndpoints({
 			}),
 		}),
 		
-		//get trips by destination
-		getTripByDestination: builder.query<
-			TResponseFromServer<TTripResponse[]>,
-			string
-		>({
-			query: (id) => ({
-				url: `/trip/destination/${id}`,
-				method: "GET",
-			}),
-		}),
+	
 	}),
 });
 
@@ -90,5 +81,5 @@ export const {
 	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,
-	useGetTripByDestinationQuery
+	
 } = tripApi;
