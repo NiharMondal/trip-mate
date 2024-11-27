@@ -72,8 +72,17 @@ const tripApi = baseApi.injectEndpoints({
 				method: "GET",
 			}),
 		}),
-		
-	
+
+		//get related trip
+		relatedTrip: builder.query<
+			TResponseFromServer<TTripResponse[]>,
+			string
+		>({
+			query: (id) => ({
+				url: `/trip/related-trip/${id}`,
+				method: "GET",
+			}),
+		}),
 	}),
 });
 
@@ -81,5 +90,5 @@ export const {
 	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,
-	
+	useRelatedTripQuery
 } = tripApi;

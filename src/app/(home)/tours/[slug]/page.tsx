@@ -8,6 +8,7 @@ import { HiOutlineUserGroup } from "react-icons/hi2";
 import { getSingleTrip } from "@/actions/trip";
 import { calculateDayDifference } from "@/helpers/calculateDate";
 import BookingSection from "./BookingSection";
+import RelatedTrips from "./RelatedTrips";
 
 export default async function TourDetailsPage({
 	params,
@@ -73,6 +74,8 @@ export default async function TourDetailsPage({
 					<BookingSection budget={trip.result.budget} seats={trip.result.availAbleSeats} date={trip.result.startDate} tripId={trip.result._id} />
 				</div>
 				<div className="py-10">{trip.result.details}</div>
+
+				<RelatedTrips tripId={trip.result._id}/>
 			</div>
 		</div>
 	);

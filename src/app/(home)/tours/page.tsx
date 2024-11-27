@@ -7,7 +7,6 @@ export default  function TourPage() {
 		<div className="pb-10 space-y-12 bg-white">
 			<PageTitle
 				title="Search Tours"
-				subTitle="Filter according your desire"
 			/>
 			<ParentComponent/>
 		</div>
