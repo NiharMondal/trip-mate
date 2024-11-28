@@ -16,15 +16,12 @@ export type TTrip = {
 	endDate: string;
 	details: string;
 };
-export type TReview = {
-	rating: number;
-	message: string;
-};
+
 export type TTripResponse = {
 	_id: string;
 	availAbleSeats: number;
 	rating: number;
-	reviews: TReview[];
+	reviews: TReviewsResponse[];
 	isDeleted: boolean;
 	slug: string;
 } & TTrip;
@@ -57,3 +54,23 @@ export type TBookingResponse = {
 	_id: string;
 	status: string;
 } & TBookingRequest;
+
+
+export type TReviewRequest = {
+	userId:string;
+	tripId:string;
+	comment: string;
+	rating:number;
+}
+
+
+export type TReviewsResponse = {
+	_id:string;
+	userId:{
+		_id: string;
+		name:string;
+		avatar: string;
+	},
+	createdAt:string;
+	updatedAt:string
+} & TReviewRequest;
