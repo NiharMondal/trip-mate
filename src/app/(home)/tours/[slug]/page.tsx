@@ -9,6 +9,7 @@ import { calculateDayDifference } from "@/helpers/calculateDate";
 import BookingSection from "./BookingSection";
 import RelatedTrips from "./RelatedTrips";
 import Review from "./Review";
+import ReviewModal from "@/components/@trip/ReviewModal";
 
 export default async function TourDetailsPage({
 	params,
@@ -92,9 +93,7 @@ export default async function TourDetailsPage({
 							</span>{" "}
 							Reviews
 						</h4>
-						<button className="btn btn-primary text-white">
-							Write Review
-						</button>
+						<ReviewModal  tripId={trip.result._id}/>
 					</div>
 					<div className=" p-5">
 						{!trip.result.reviews.length && (

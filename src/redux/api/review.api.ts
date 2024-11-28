@@ -5,7 +5,7 @@ const reviewApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
 		// create review
 		giveReview: builder.mutation<
-			TResponseFromServer<TReviewsResponse>,
+			TResponseFromServer<TReviewRequest>,
 			TReviewRequest
 		>({
 			query: (payload) => ({
