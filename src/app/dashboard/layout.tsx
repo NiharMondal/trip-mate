@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardWrapper from "./DashboardWrapper";
+import DashboardWrapper from "../../components/dashboard/DashboardWrapper";
 
 export default function DasboardLayout({
 	children,

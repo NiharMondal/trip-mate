@@ -1,10 +1,12 @@
-
 import React from "react";
 import UserPopover from "../@ui/Popover";
 
+
 export default function DashboardTopbar() {
 	return (
-		<div className="p-5 bg-accent flex justify-end">
+		<div
+			className="px-10 py-3 bg-accent flex justify-end items-center w-full"
+		>
 			<UserPopover />
 		</div>
 	);

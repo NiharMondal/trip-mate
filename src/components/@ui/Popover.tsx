@@ -8,8 +8,8 @@ export default function UserPopover() {
 			<PopoverButton className="outline-none">
 				<Image
 					src={imageHelpers.logo}
-					height={60}
-					width={60}
+					height={40}
+					width={40}
 					alt="user-avatar"
 					className="w-full h-full object-cover object-center z-10"
 				/>

@@ -8,12 +8,13 @@ export default function DashboardWrapper({
 }: {
 	children: React.ReactNode;
 }) {
-	return (
-		<div>
-			<DashboardTopbar />
 
-			<div className="flex gap-x-8">
-				<DashboardNavBar />
+	
+	return (
+		<div className="flex">
+			<DashboardNavBar  />
+			<div className="w-full">
+				<DashboardTopbar />
 				<div className="p-5">{children}</div>
 			</div>
 		</div>
