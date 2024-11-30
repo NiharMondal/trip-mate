@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 
 export default function Loading() {
+
+	
 	return (
 		<div className="grid place-content-center place-items-center h-screen">
 			<Image
@@ -10,6 +12,7 @@ export default function Loading() {
 				width={60}
 				alt="loading"
 				className="object-contain object-center"
+				unoptimized
 			/>
 		</div>
 	);

@@ -10,6 +10,7 @@ const tripApi = baseApi.injectEndpoints({
 				method: "POST",
 				body: payload,
 			}),
+			invalidatesTags: ["trip"],
 		}),
 
 		//fetech all trip
@@ -18,7 +19,6 @@ const tripApi = baseApi.injectEndpoints({
 			Record<string, string>
 		>({
 			query: (query) => {
-				
 				const params = new URLSearchParams();
 
 				if (query && Object.keys(query).length) {
@@ -34,15 +34,10 @@ const tripApi = baseApi.injectEndpoints({
 					params,
 				};
 			},
+			providesTags: ["trip"],
 		}),
 
-		//update trip
-		getSingleTrip: builder.mutation({
-			query: (id) => ({
-				url: `/trip/${id}`,
-				method: "PATCH",
-			}),
-		}),
+		
 
 		//delete destinaiton
 		deleteTrip: builder.mutation({
@@ -50,6 +45,7 @@ const tripApi = baseApi.injectEndpoints({
 				url: `/trip/${id}`,
 				method: "DELETE",
 			}),
+			invalidatesTags: ["trip"],
 		}),
 
 		//get popular trip
@@ -61,6 +57,7 @@ const tripApi = baseApi.injectEndpoints({
 				url: "/trip/popular-trip",
 				method: "GET",
 			}),
+			providesTags: ["trip"],
 		}),
 		//get recently added trip
 		getFreshlyAddedTrip: builder.query<
@@ -71,6 +68,7 @@ const tripApi = baseApi.injectEndpoints({
 				url: "/trip/freshly-added",
 				method: "GET",
 			}),
+			providesTags: ["trip"],
 		}),
 
 		//get related trip
@@ -82,6 +80,15 @@ const tripApi = baseApi.injectEndpoints({
 				url: `/trip/related-trip/${id}`,
 				method: "GET",
 			}),
+			providesTags: ["trip"],
+		}),
+
+		getMyTrip: builder.query({
+			query: (userId) => ({
+				url: `/trip/my-trip/${userId}`,
+				method: "GET",
+			}),
+			providesTags: ["trip"],
 		}),
 	}),
 });
@@ -90,5 +97,7 @@ export const {
 	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,
-	useRelatedTripQuery
+	useRelatedTripQuery,
+	useDeleteTripMutation,
+	useGetMyTripQuery
 } = tripApi;

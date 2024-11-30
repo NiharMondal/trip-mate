@@ -8,4 +8,5 @@ export const baseApi = createApi({
 		baseUrl: base_url,
 	}),
 	endpoints: () => ({}),
+	tagTypes:["trip","buddyRequest","destination","review",]
 });
