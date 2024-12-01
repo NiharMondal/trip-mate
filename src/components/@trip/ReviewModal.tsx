@@ -1,7 +1,7 @@
 "use client";
 import { useGiveReviewMutation } from "@/redux/api/review.api";
 import { useAppSelector } from "@/redux/hooks";
-import { seletedUser } from "@/redux/slice/authSlice";
+import { selectedUser } from "@/redux/slice/authSlice";
 import { TReviewRequest } from "@/types";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { Rating } from "@smastrom/react-rating";
@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 export default function ReviewModal({ tripId }: { tripId: string }) {
 	const router = useRouter();
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const user: any = useAppSelector(seletedUser);
+	const user: any = useAppSelector(selectedUser);
 	const [giveReview] = useGiveReviewMutation();
 	const { register, handleSubmit } = useForm<TReviewRequest>();
 	const [rating, setRating] = useState(5);
@@ -81,7 +81,7 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 								<div className="flex flex-col">
 									<label htmlFor="rating" className="mb-2">
 										Select Rating *
-										<pre className="text-sm">
+										<pre className="text-xs">
 											By default rating is 5
 										</pre>
 									</label>

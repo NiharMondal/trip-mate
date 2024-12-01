@@ -74,3 +74,38 @@ export type TReviewsResponse = {
 	createdAt:string;
 	updatedAt:string
 } & TReviewRequest;
+
+
+export type TMyTripList = {
+	_id: string;
+	title: string;
+	from: string;
+	availAbleSeats: number;
+	budget: number;
+	startDate: string;
+	endDate: string;
+};
+
+// start of get incoming requests type
+
+export type TGetMyIncomingRequests = {
+	_id: string;
+	title: string;
+	availAbleSeats: number;
+	startDate: string; // ISO string
+	endDate: string; // ISO string
+	buddyRequest: BuddyRequest[];
+};
+
+type BuddyRequest = {
+	_id: string;
+	user: User;
+	people: number;
+	status: "PENDING" | "APPROVED" | "REJECTED"; // Enumerated status
+	totalCost: number;
+};
+
+type User = {
+	_id: string;
+	name: string;
+};

@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-
+type AuthUser = {
+	id: string;
+	email: string;
+	name: string;
+	role: string;
+	iat:number;
+}
 type AuthState = {
-	user: null;
+	user: AuthUser | null;
 	token: string | null;
 };
 

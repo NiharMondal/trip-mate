@@ -39,7 +39,7 @@ export default  function PopularTour() {
 			</div>
 			<Swiper
 				className="mt-5 rounded-xl overflow-hidden"
-				loop={true}
+				
 				modules={[Navigation, Autoplay]}
 				slidesPerView={3}
 				spaceBetween={30}

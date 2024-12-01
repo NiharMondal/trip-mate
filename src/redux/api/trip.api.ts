@@ -1,4 +1,4 @@
-import { TResponseFromServer, TTripResponse } from "@/types";
+import { TMyTripList, TResponseFromServer, TTripResponse } from "@/types";
 import { baseApi } from "./base.api";
 
 const tripApi = baseApi.injectEndpoints({
@@ -36,8 +36,6 @@ const tripApi = baseApi.injectEndpoints({
 			},
 			providesTags: ["trip"],
 		}),
-
-		
 
 		//delete destinaiton
 		deleteTrip: builder.mutation({
@@ -83,7 +81,7 @@ const tripApi = baseApi.injectEndpoints({
 			providesTags: ["trip"],
 		}),
 
-		getMyTrip: builder.query({
+		getMyTrip: builder.query<TResponseFromServer<TMyTripList[]>, string>({
 			query: (userId) => ({
 				url: `/trip/my-trip/${userId}`,
 				method: "GET",

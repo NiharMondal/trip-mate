@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { COMMON_ITEMS, MENU_ITEMS } from "./menu";
 import { IoCloseSharp } from "react-icons/io5";
+import Link from "next/link";
 type DashboardNavBarProps = {
 	show: boolean;
 	toggle: () => void;
@@ -16,7 +17,9 @@ export default function DashboardNavBar({
 
 	return (
 		<aside
-			className={`lg:relative min-w-[300px] fixed bg-primary min-h-screen  ${show? "block":"hidden"}`}
+			className={`lg:relative min-w-[300px] fixed bg-gray-500 min-h-screen  ${
+				show ? "" : "hidden lg:block"
+			}`}
 		>
 			<div className="absolute top-4 right-4">
 				<IoCloseSharp
@@ -31,7 +34,7 @@ export default function DashboardNavBar({
 						key={index}
 						className="hover:text-secondary transition-colors duration-200 cursor-pointer"
 					>
-						<a href={item.path}>{item.label}</a>
+						<Link href={item.path}>{item.label}</Link>
 					</li>
 				))}
 
@@ -41,7 +44,7 @@ export default function DashboardNavBar({
 						key={`common-${index}`}
 						className="hover:text-secondary transition-colors duration-200 cursor-pointer"
 					>
-						<a href={item.path}>{item.label}</a>
+						<Link href={item.path}>{item.label}</Link>
 					</li>
 				))}
 			</ul>
