@@ -121,3 +121,9 @@ export type TOutGoingResponse = {
 	};
 	status: "APPROVED" | "PENDING" | "REJECTED"; // Include other possible statuses if needed
 };
+
+export type TChangePassword = {
+	oldPassword: string;
+	newPassword: string;
+	confirmPassword: string;
+};
