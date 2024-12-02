@@ -1,4 +1,3 @@
-
 export type TResponseFromServer<T> = {
 	success: boolean;
 	message: string;
@@ -55,26 +54,23 @@ export type TBookingResponse = {
 	status: string;
 } & TBookingRequest;
 
-
 export type TReviewRequest = {
-	userId:string;
-	tripId:string;
+	userId: string;
+	tripId: string;
 	comment: string;
-	rating:number;
-}
-
+	rating: number;
+};
 
 export type TReviewsResponse = {
-	_id:string;
-	userId:{
+	_id: string;
+	userId: {
 		_id: string;
-		name:string;
+		name: string;
 		avatar: string;
-	},
-	createdAt:string;
-	updatedAt:string
+	};
+	createdAt: string;
+	updatedAt: string;
 } & TReviewRequest;
-
 
 export type TMyTripList = {
 	_id: string;
@@ -108,4 +104,20 @@ type BuddyRequest = {
 type User = {
 	_id: string;
 	name: string;
+};
+
+// get outgoing request
+export type TOutGoingResponse = {
+	_id: string;
+	trip: {
+		_id: string;
+		title: string;
+		startDate: string; // ISO string format for date
+		endDate: string; // ISO string format for date
+		user: {
+			_id: string;
+			name: string;
+		};
+	};
+	status: "APPROVED" | "PENDING" | "REJECTED"; // Include other possible statuses if needed
 };
