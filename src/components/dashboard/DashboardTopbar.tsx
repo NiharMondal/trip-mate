@@ -1,5 +1,5 @@
 import React from "react";
-import UserPopover from "../@ui/Popover";
+import UserPopover from "../shared/Popover";
 import { LuMenuSquare } from "react-icons/lu";
 type DashboardTopbarProps = {
 	

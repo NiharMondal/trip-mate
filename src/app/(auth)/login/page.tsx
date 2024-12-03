@@ -11,11 +11,13 @@ import { useAppDispatch } from "@/redux/hooks";
 import { setCredentials } from "@/redux/slice/authSlice";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
+	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const [login] = useLoginMutation();
 
@@ -29,9 +31,14 @@ export default function LoginPage() {
 				dispatch(setCredentials({ user: user, token: token }));
 
 				toast.success("Logged in successfully");
-			}
+				if (user?.role === "admin") {
+					router.push("/dashboard/admin");
+				} else {
+					router.push("/dashboard");
+				}
+			} 
 		} catch (error: any) {
-			toast.error(error?.data?.message)
+			toast.error(error?.data?.message);
 		}
 	};
 

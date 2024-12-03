@@ -5,8 +5,8 @@ type AuthUser = {
 	email: string;
 	name: string;
 	role: string;
-	iat:number;
-}
+	iat: number;
+};
 type AuthState = {
 	user: AuthUser | null;
 	token: string | null;
@@ -16,6 +16,7 @@ export const authSlice = createSlice({
 	name: "auth",
 	initialState: { user: null, token: null } as AuthState,
 	reducers: {
+
 		setCredentials: (
 			state,
 			{ payload: { user, token } }: PayloadAction<AuthState>
@@ -24,10 +25,15 @@ export const authSlice = createSlice({
 			state.user = user;
 			state.token = token;
 		},
+
+		logout: (state) => {
+			state.token = null;
+			state.user = null;
+		},
 	},
 });
 
-export const { setCredentials } = authSlice.actions;
+export const { setCredentials, logout } = authSlice.actions;
 
 export default authSlice.reducer;
 
