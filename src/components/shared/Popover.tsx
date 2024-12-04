@@ -1,4 +1,5 @@
 import { imageHelpers } from "@/assets/image-helpers";
+import { useLogoutMutation } from "@/redux/api/auth.api";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout, selectedUser } from "@/redux/slice/authSlice";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
@@ -6,11 +7,13 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function UserPopover() {
+	const [apiLogout] = useLogoutMutation();
 	const router = useRouter();
 	const user = useAppSelector(selectedUser);
 	const dispatch = useAppDispatch();
 
-	const handleLogout = () => {
+	const handleLogout = async () => {
+		await apiLogout({}).unwrap();
 		dispatch(logout());
 		router.push("/");
 	};

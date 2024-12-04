@@ -22,13 +22,16 @@ export const getAllDestination = async (): Promise<
 export const getPopularDestination = async (): Promise<
 	TResponseFromServer<TDestinationResponse[]> | undefined
 > => {
-	const res = await fetch(`${base_url}/destination?limit=6`, {
-		cache: "no-store",
-	});
+	try {
+		const res = await fetch(`${base_url}/destination?limit=6`, {
+			cache: "no-store",
+		});
 
-	if (!res.ok) {
-		throw null;
+		const data = await res.json();
+		return data;
+	} catch (error) {
+		console.log("Error fetching destinations", error);
+		return undefined;
 	}
-	const data = await res.json();
-	return data;
+	
 };
