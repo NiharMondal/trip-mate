@@ -48,7 +48,7 @@ export default function TripList() {
 						<tbody>
 							{myTrips?.result?.map((mt) => (
 								<tr key={mt._id}>
-									<td className="p-2">{mt.title}</td>
+									<td >{mt.title}</td>
 									<td>{mt.from}</td>
 									<td>{mt.startDate.split("T")[0]}</td>
 									<td>{mt.endDate.split("T")[0]}</td>

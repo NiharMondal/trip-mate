@@ -19,11 +19,11 @@ export const MENU_ITEMS: TMenuItems = {
 			path: "/dashboard/user/outgoing-requests",
 		},
 	],
+	
 	admin: [
-		{ label: "Dashboard", path: "/dashboard/admin/dashboard" },
+		{ label: "Dashboard", path: "/dashboard/admin" },
 		{ label: "Manage Trips", path: "/dashboard/admin/manage-trips" },
 		{ label: "User Management", path: "/dashboard/admin/user-management" },
-		{ label: "Reports", path: "/dashboard/admin/reports" },
 	],
 };
 

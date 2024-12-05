@@ -12,7 +12,7 @@ export default function DashboardNavBar({
 	show,
 	toggle,
 }: DashboardNavBarProps) {
-	const [role] = useState<"admin" | "user">("user");
+	const [role] = useState<"admin" | "user">("admin");
 	const roleBasedRoutes = MENU_ITEMS[role] || [];
 
 	return (

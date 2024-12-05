@@ -3,80 +3,85 @@
 @tailwind utilities;
 
 :root {
-  --background: #fef3f6;
-  --foreground: #0f0206;
+	--background: #fef3f6;
+	--foreground: #0f0206;
 }
 
-body{
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-poppins) ;
+body {
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-poppins);
 }
 
-@layer base{
-  h1{
-    @apply text-[3rem] md:text-[3.5rem] 
-  }
-  h2{
-    @apply text-[2rem] md:text-[2.5rem]
-  }
-  h3{
-    @apply text-[1.8rem] md:text-[2.5rem]
-  }
+@layer base {
+	h1 {
+		@apply text-[3rem] md:text-[3.5rem];
+	}
+	h2 {
+		@apply text-[2rem] md:text-[2.5rem];
+	}
+	h3 {
+		@apply text-[1.8rem] md:text-[2.5rem];
+	}
 
-  h4{
-    @apply text-[1.1rem]
-  }
-  
-  h5{
-    @apply text-base font-semibold
-  }
-  h6{
-    @apply text-xs font-semibold italic
-  }
-  
-  input[type="checkbox"]{
-    @apply size-4
-  }
+	h4 {
+		@apply text-[1.1rem];
+	}
+
+	h5 {
+		@apply text-base font-semibold;
+	}
+	h6 {
+		@apply text-xs font-semibold italic;
+	}
+
+	input[type="checkbox"] {
+		@apply size-4;
+	}
+	table th {
+		@apply px-2 py-4 rounded;
+	}
+	table td {
+		@apply px-2 py-1;
+	}
 }
 
+@layer components {
+	.heading {
+		font-family: playfairDisplay;
+		font-weight: 600;
+	}
 
-@layer components{
-  .heading {
-    font-family: playfairDisplay;
-    font-weight: 600;
-  }
+	.nav-link-style {
+		@apply hover:border-b-primary border-b-[2px] border-transparent transition-all duration-500 cursor-pointer hover:text-primary capitalize;
+	}
+	.link {
+		@apply text-[.85rem] font-semibold text-accent hover:underline;
+	}
 
-  .nav-link-style{
-    @apply hover:border-b-primary border-b-[2px] border-transparent transition-all duration-500 cursor-pointer hover:text-primary capitalize
-  }
-  .link{
-    @apply text-[.85rem] font-semibold text-accent hover:underline
-  }
+	.btn {
+		@apply px-5 py-3 font-semibold tracking-wide rounded shadow hover:shadow-lg;
+	}
+	.btn-primary {
+		@apply bg-primary;
+	}
+	.btn-secondary {
+		@apply border border-secondary hover:bg-secondary;
+	}
+	.beach-bg {
+		background-image: url("../assets/bg-image/beach-bg.jpg");
+		background-position: center;
+	}
+	.page-title-bg {
+		background-image: url("../assets/bg-image/page-title-bg.jpg");
+		background-position: center;
+	}
 
-  .btn{
-    @apply px-5 py-3 font-semibold tracking-wide rounded shadow hover:shadow-lg
-  }
-  .btn-primary{
-    @apply bg-primary 
-  }
-  .btn-secondary{
-    @apply border border-secondary hover:bg-secondary 
-  }
-  .beach-bg{
-    background-image: url('../assets/bg-image/beach-bg.jpg');
-    background-position: center;
-  }
-  .page-title-bg{
-    background-image: url('../assets/bg-image/page-title-bg.jpg');
-    background-position: center;
-  }
+	.filter-wrapper h5 {
+		@apply text-gray-500;
+	}
 
-  .filter-wrapper h5{
-    @apply text-gray-500
-  }
-
-  .bg_darken{
-    @apply absolute inset-0 bg-black/30 group-hover:bg-black/70 duration-200
-  }
+	.bg_darken {
+		@apply absolute inset-0 bg-black/30 group-hover:bg-black/70 duration-200;
+	}
 }
