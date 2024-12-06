@@ -39,10 +39,10 @@ body {
 		@apply size-4;
 	}
 	table th {
-		@apply px-2 py-4 rounded;
+		@apply px-2 py-4 rounded border border-slate-300 ;
 	}
 	table td {
-		@apply px-2 py-1;
+		@apply border border-slate-300 p-3;
 	}
 }
 

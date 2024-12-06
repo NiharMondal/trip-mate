@@ -13,7 +13,7 @@ const tripApi = baseApi.injectEndpoints({
 			invalidatesTags: ["trip"],
 		}),
 
-		//fetech all trip
+		//fetech all trip : public
 		getAllTrips: builder.query<
 			TResponseFromServer<TTripResponse[]>,
 			Record<string, string>

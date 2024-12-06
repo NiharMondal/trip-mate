@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { COMMON_ITEMS, MENU_ITEMS } from "./menu";
 import { IoCloseSharp } from "react-icons/io5";
 import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
+import { selectedUser } from "@/redux/slice/authSlice";
 type DashboardNavBarProps = {
 	show: boolean;
 	toggle: () => void;
@@ -12,8 +14,8 @@ export default function DashboardNavBar({
 	show,
 	toggle,
 }: DashboardNavBarProps) {
-	const [role] = useState<"admin" | "user">("admin");
-	const roleBasedRoutes = MENU_ITEMS[role] || [];
+	const user = useAppSelector(selectedUser);
+	const roleBasedRoutes = MENU_ITEMS[(user?.role as "user") || "admin"] || [];
 
 	return (
 		<aside

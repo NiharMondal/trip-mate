@@ -9,10 +9,30 @@ import { helpers } from "@/helpers";
 import Link from "next/link";
 import Image from "next/image";
 import { imageHelpers } from "@/assets/image-helpers";
+import { useAppSelector } from "@/redux/hooks";
+import { selectedUser } from "@/redux/slice/authSlice";
+import UserPopover from "./Popover";
 
 export default function Navbar() {
+	const user = useAppSelector(selectedUser);
 	const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
+	const Content = ({ role }: { role: string }) => {
+		let link = "";
+
+		if (role === "admin") {
+			link = "/dashboard/admin";
+		} else {
+			link = "/dashboard";
+		}
+		return (
+			<Link href={link}>
+				<button className="btn btn-primary text-white">
+					Go to dashboard
+				</button>
+			</Link>
+		);
+	};
 	return (
 		<header className="px-5 sm:px-10 lg:px-28 border">
 			<nav className="flex items-center justify-between w-full relative py-5">
@@ -37,12 +57,20 @@ export default function Navbar() {
 				</ul>
 
 				<div className="flex items-center gap-[10px]">
-					<Link
-						href="/login"
-						className="btn btn-primary hidden lg:flex"
-					>
-						<button className="text-sm text-white">Login</button>
-					</Link>
+					{!user?.id ? (
+						<Link
+							href="/login"
+							className="btn btn-primary hidden lg:flex"
+						>
+							<button className="text-sm text-white">
+								Login
+							</button>
+						</Link>
+					) : (
+						<div className="hidden lg:flex">
+							<UserPopover />
+						</div>
+					)}
 
 					<CiMenuFries
 						className="text-[1.6rem] text-text cursor-pointer lg:hidden flex"
@@ -50,7 +78,6 @@ export default function Navbar() {
 					/>
 				</div>
 
-				
 				{/** for small device */}
 				<aside
 					className={` ${
@@ -81,9 +108,15 @@ export default function Navbar() {
 						))}
 					</ul>
 					<div>
-						<Link href="/login">
-							<button className="btn btn-primary">Login</button>
-						</Link>
+						{!user?.id ? (
+							<Link href="/login">
+								<button className="btn btn-primary">
+									Login
+								</button>
+							</Link>
+						) : (
+							<Content role={user?.role} />
+						)}
 					</div>
 				</aside>
 			</nav>
