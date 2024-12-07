@@ -1,22 +1,53 @@
 import { userLogout } from "@/actions/auth";
 import { imageHelpers } from "@/assets/image-helpers";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { logout, selectedUser } from "@/redux/slice/authSlice";
+import useFetchUser from "@/lib/loadUser";
+import { useAppDispatch } from "@/redux/hooks";
+import { logout } from "@/redux/slice/authSlice";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function UserPopover() {
 	const router = useRouter();
-	const user = useAppSelector(selectedUser);
+	const { user } = useFetchUser();
 	const dispatch = useAppDispatch();
 
 	const handleLogout = async () => {
-		
-		userLogout(); //remove cookie from cookie session using server action
-		dispatch(logout()); //remove user details from local session
+		userLogout(); //remove cookie from cookie  using server action
+		dispatch(logout()); //remove user details from local storage
 
 		router.push("/");
+	};
+
+	const renderRoutes = () => {
+		switch (user?.role) {
+			case "admin":
+				return (
+					<div className="space-y-1 flex flex-col">
+						<Link
+							href="/dashboard/admin"
+							className="hover:text-primary"
+						>
+							Dashboard
+						</Link>
+					</div>
+				);
+			case "user":
+				return (
+					<div className="space-y-1 flex flex-col">
+						<Link href="/dashboard" className="hover:text-primary">
+							Dashboard
+						</Link>
+						<Link
+							href="/dashboard/user/trips"
+							className="hover:text-primary"
+						>
+							My Trips List
+						</Link>
+					</div>
+				);
+		}
 	};
 
 	return (
@@ -40,13 +71,10 @@ export default function UserPopover() {
 					</h4>
 				</div>
 				<hr />
-				<a href="/analytics">Analytics</a>
-				<a href="/engagement">Engagement</a>
-				<a href="/security">Security</a>
-				<a href="/integrations">Integrations</a>
+				{renderRoutes()}
 
 				<button
-					className="btn btn-primary text-white"
+					className="btn btn-primary text-white mt-3"
 					onClick={handleLogout}
 				>
 					Logout
