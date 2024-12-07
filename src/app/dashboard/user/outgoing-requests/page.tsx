@@ -1,4 +1,4 @@
-import OutGoingRequest from "@/components/dashboard/@user/@my-trip/OutGoingRequest";
+import OutGoingRequest from "@/components/dashboard/@user/OutGoingRequest";
 import React from "react";
 
 export default function UserOutGoingRequest() {

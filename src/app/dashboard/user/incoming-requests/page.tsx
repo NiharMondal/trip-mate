@@ -1,4 +1,4 @@
-import IncomingRequests from "@/components/dashboard/@user/@my-trip/IncomingRequests";
+import IncomingRequests from "@/components/dashboard/@user/IncomingRequests";
 import React from "react";
 
 export default function UserIncommingRequest() {

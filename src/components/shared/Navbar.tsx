@@ -9,13 +9,15 @@ import { helpers } from "@/helpers";
 import Link from "next/link";
 import Image from "next/image";
 import { imageHelpers } from "@/assets/image-helpers";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
 import UserPopover from "./Popover";
+import useFetchUser from "@/lib/loadUser";
 
 export default function Navbar() {
-	const user = useAppSelector(selectedUser);
+	const { user, loading } = useFetchUser();
+	
 	const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+	if (loading) return <p>Please wait...</p>;
 
 	const Content = ({ role }: { role: string }) => {
 		let link = "";

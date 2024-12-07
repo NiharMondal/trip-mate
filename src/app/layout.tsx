@@ -45,7 +45,6 @@ export default function RootLayout({
 			<body className={`${lato.variable} ${roboto_mono.variable} antialiased`}>
 				<Providers>
 					{children}
-					
 				</Providers>
 			</body>
 		</html>
