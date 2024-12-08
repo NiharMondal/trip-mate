@@ -20,10 +20,19 @@ const destinationApi = baseApi.injectEndpoints({
 
 		//fetech all destination
 		allDestination: builder.query({
-			query: () => {
+			query: (query) => {
+				const params = new URLSearchParams();
+				if (query && Object.keys(query).length) {
+					Object.keys(query).forEach((key) => {
+						if (query[key] && query[key].length > 0) {
+							params.append(key, query[key].toString());
+						}
+					});
+				}
 				return {
 					url: "/destination",
 					method: "GET",
+					params,
 				};
 			},
 		}),

@@ -92,6 +92,7 @@ const tripApi = baseApi.injectEndpoints({
 });
 
 export const {
+	useCreateTripMutation,
 	useGetAllTripsQuery,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,

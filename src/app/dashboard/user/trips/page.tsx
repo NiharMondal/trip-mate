@@ -6,6 +6,7 @@ import { useGetMyTripQuery } from "@/redux/api/trip.api";
 import { useAppSelector } from "@/redux/hooks";
 import { selectedUser } from "@/redux/slice/authSlice";
 import React from "react";
+import CreateTrip from "./CreateTrip";
 
 export default function UserTripList() {
 	const user = useAppSelector(selectedUser);
@@ -13,9 +14,7 @@ export default function UserTripList() {
 	if (isLoading) return <TMLoading />;
 	return (
 		<div className="space-y-5">
-			<button className="text-white btn btn-primary">
-				Create new trip
-			</button>
+			<CreateTrip/>
 			<div>
 				{!myTrips?.result.length ? (
 					<TMNoData />

@@ -9,16 +9,19 @@ import {
 } from "react-hook-form";
 
 type TMFormProps = {
+	
 	children: React.ReactNode;
 	onSubmit: SubmitHandler<FieldValues>;
 };
 
-export default function TMForm({ children, onSubmit }: TMFormProps) {
+export default function TMForm({  children, onSubmit }: TMFormProps) {
 	const method = useForm();
 
 	return (
 		<FormProvider {...method}>
-			<form onSubmit={method.handleSubmit(onSubmit)}>{children}</form>
+			<form onSubmit={method.handleSubmit(onSubmit)} >
+				{children}
+			</form>
 		</FormProvider>
 	);
 }
