@@ -62,7 +62,7 @@ export default async function TourDetailsPage({
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
 					<div className="lg:col-span-2">
 						<Image
-							src={trip.result.photos[0]}
+							src={trip.result?.photo}
 							height={300}
 							width={200}
 							alt="photo"

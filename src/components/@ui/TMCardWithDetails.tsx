@@ -14,7 +14,7 @@ export default function TMCardWithDetails({ trip, imageHeight="h-[200px]", cardH
 			<Link href={`/tours/${trip.slug}`}>
 				<Image
 					alt={trip.slug}
-					src={trip.photos[0]}
+					src={trip.photo}
 					height={200}
 					width={200}
 					className={`w-full object-cover object-center ${imageHeight}`}

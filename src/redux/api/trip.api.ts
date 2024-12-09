@@ -23,9 +23,7 @@ const tripApi = baseApi.injectEndpoints({
 
 				if (query && Object.keys(query).length) {
 					Object.keys(query).forEach((key) => {
-						if (query[key] && query[key].length > 0) {
-							params.append(key, query[key].toString());
-						}
+						params.append(key, query[key].toString());
 					});
 				}
 				return {
@@ -98,5 +96,5 @@ export const {
 	useGetFreshlyAddedTripQuery,
 	useRelatedTripQuery,
 	useDeleteTripMutation,
-	useGetMyTripQuery
+	useGetMyTripQuery,
 } = tripApi;

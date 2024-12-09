@@ -10,15 +10,16 @@ import { Swiper as SwiperInstance } from "swiper/types";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
 
 import TMCardWithDetails from "../@ui/TMCardWithDetails";
+import TMLoading from "../shared/TMLoading";
 
 export default function RecentlyAdded() {
 	const swiperRef = useRef<SwiperInstance | null>(null);
 	const { data, isLoading } = useGetFreshlyAddedTripQuery();
-	if (!data?.result) return <p>No data found!</p>;
+	console.log(data);
 	return (
 		<div className="max-w-7xl mx-auto px-5">
 			<SectionHeading text1="Freshly" text2="Added" />
-			{isLoading && <p>Loading...</p>}
+			{isLoading && <TMLoading />}
 			<div className="flex justify-end items-center gap-x-6 mt-20 text-white">
 				<button
 					className="size-[56px] p-4 bg-primary rounded-full"
@@ -55,7 +56,7 @@ export default function RecentlyAdded() {
 					1024: { slidesPerView: 4, spaceBetween: 30 }, // Desktop
 				}}
 			>
-				{data?.result.map((trip) => (
+				{data?.result?.map((trip) => (
 					<SwiperSlide key={trip._id}>
 						<TMCardWithDetails trip={trip} />
 					</SwiperSlide>

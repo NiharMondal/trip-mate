@@ -23,7 +23,7 @@ export const getPopularDestination = async (): Promise<
 	TResponseFromServer<TDestinationResponse[]> | undefined
 > => {
 	try {
-		const res = await fetch(`${base_url}/destination?limit=6`, {
+		const res = await fetch(`${base_url}/destination/popular-destination`, {
 			cache: "no-store",
 		});
 

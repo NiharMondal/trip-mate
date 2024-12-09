@@ -7,12 +7,9 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { IoPlanetOutline } from "react-icons/io5";
 import MetaCard from "@/components/dashboard/MetaCard";
 
-
 export default function DashboardPage() {
 	const { user } = useFetchUser();
 	const { data: metaData, isLoading } = useUserMetaDataQuery(user?.id);
-
-	console.log(metaData);
 
 	if (isLoading) return <TMLoading />;
 

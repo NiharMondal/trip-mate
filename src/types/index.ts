@@ -10,7 +10,7 @@ export type TTrip = {
 	destination: string;
 	maxGuests: number;
 	budget: number;
-	photos: string[];
+	photo: string;
 	startDate: string;
 	endDate: string;
 	details: string;
@@ -26,6 +26,7 @@ export type TTripResponse = {
 } & TTrip;
 
 export type TDestination = {
+	thumbnail: string;
 	destination: string;
 	shortInfo: string;
 };
@@ -34,6 +35,7 @@ export type TDestinationResponse = {
 	_id: string;
 	destination: string;
 	shortInfo: string;
+	thumbnail: string;
 	slug: string;
 	trips?: string[];
 };

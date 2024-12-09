@@ -17,7 +17,7 @@ export default function PopularTripCard({ data }: PopularTripCardProops) {
 		<div>
 			<div className="relative rounded-xl overflow-hidden group h-[480px] group">
 				<Image
-					src={data.photos[0]}
+					src={data?.photo}
 					alt={data.title}
 					fill={true}
 					className="h-full w-full object-cover object-left"

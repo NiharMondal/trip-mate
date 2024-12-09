@@ -38,16 +38,16 @@ export default function CreateTrip() {
 		data.budget = Number(data.budget);
 		data.maxGuests = Number(data.maxGuests);
 		console.log(data)
-		// try {
-		// 	const res = await createTrip(data).unwrap();
-		// 	if (res.success) {
-		// 		toast.success("Trip created successfully");
-		// 		close();
-		// 	}
-		// 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		// } catch (error: any) {
-		// 	toast.error(error?.data?.message);
-		// }
+		try {
+			const res = await createTrip(data).unwrap();
+			if (res.success) {
+				toast.success("Trip created successfully");
+				close();
+			}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			toast.error(error?.data?.message);
+		}
 	};
 
 	return (

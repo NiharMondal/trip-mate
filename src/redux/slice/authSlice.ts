@@ -21,7 +21,6 @@ export const authSlice = createSlice({
 			state,
 			{ payload: { user, token } }: PayloadAction<AuthState>
 		) => {
-			console.log(user);
 			state.user = user;
 			state.token = token;
 		},
