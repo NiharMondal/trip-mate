@@ -1,6 +1,12 @@
+type TMeta = {
+	totalDocs: number;
+	totalPages: number;
+	currentPage: number;
+};
 export type TResponseFromServer<T> = {
 	success: boolean;
 	message: string;
+	meta?: TMeta;
 	result: T;
 };
 

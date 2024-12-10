@@ -1,11 +1,11 @@
 type TRoute = {
-    label:string;
-    path: string;
-}
+	label: string;
+	path: string;
+};
 type TMenuItems = {
-    user: TRoute[];
-    admin: TRoute[]
-}
+	user: TRoute[];
+	admin: TRoute[];
+};
 export const MENU_ITEMS: TMenuItems = {
 	user: [
 		{ label: "Dashboard", path: "/dashboard" },
@@ -19,17 +19,21 @@ export const MENU_ITEMS: TMenuItems = {
 			path: "/dashboard/user/outgoing-requests",
 		},
 	],
-	
+
 	admin: [
 		{ label: "Dashboard", path: "/dashboard/admin" },
 		{ label: "Manage Trips", path: "/dashboard/admin/manage-trips" },
 		{ label: "User Management", path: "/dashboard/admin/user-management" },
+		{
+			label: "Manage Destination",
+			path: "/dashboard/admin/all-destinations",
+		},
 	],
 };
 
-export const COMMON_ITEMS : TRoute[]= [
-    {
-        label: "Change Password",
-        path:"/dashboard/change-password"
-    }
-]
+export const COMMON_ITEMS: TRoute[] = [
+	{
+		label: "Change Password",
+		path: "/dashboard/change-password",
+	},
+];
