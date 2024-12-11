@@ -8,6 +8,7 @@ type TMenuItems = {
 };
 export const MENU_ITEMS: TMenuItems = {
 	user: [
+		{ label: "Home", path: "/" },
 		{ label: "Dashboard", path: "/dashboard" },
 		{ label: "My Trips List", path: "/dashboard/user/trips" },
 		{
@@ -21,6 +22,7 @@ export const MENU_ITEMS: TMenuItems = {
 	],
 
 	admin: [
+		{ label: "Home", path: "/" },
 		{ label: "Dashboard", path: "/dashboard/admin" },
 		{ label: "Manage Trips", path: "/dashboard/admin/manage-trips" },
 		{ label: "User Management", path: "/dashboard/admin/user-management" },

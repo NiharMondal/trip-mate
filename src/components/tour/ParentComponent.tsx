@@ -19,6 +19,7 @@ export default function ParentComponent() {
 		minBudget,
 		maxBudget,
 	});
+	console.log(data)
 	return (
 		<div className="max-w-7xl mx-auto px-5 py-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
 			<FilterComponent />

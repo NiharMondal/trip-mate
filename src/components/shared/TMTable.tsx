@@ -28,7 +28,7 @@ const TMTable = <T,>({ columns, data, keyField }: TableProps<T>) => {
 
 				{/* Render table body */}
 				<tbody>
-					{data.map((row, rowIndex) => (
+					{data?.map((row, rowIndex) => (
 						<tr key={String(row[keyField]) || rowIndex}>
 							{columns.map((col, colIndex) => (
 								<td

@@ -23,7 +23,9 @@ const tripApi = baseApi.injectEndpoints({
 
 				if (query && Object.keys(query).length) {
 					Object.keys(query).forEach((key) => {
-						params.append(key, query[key].toString());
+						if (query[key] && query[key].length > 0) {
+							params.append(key, query[key].toString());
+						}
 					});
 				}
 				return {

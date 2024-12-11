@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Logo from "@/components/@ui/Logo";
+import SubmitBtn from "@/components/@ui/SubmitBtn";
 import TMForm from "@/components/form/TMForm";
 import TMInput from "@/components/form/TMInput";
 import TMSvg from "@/components/shared/TMSvg";
@@ -19,7 +20,7 @@ import { toast } from "react-toastify";
 export default function LoginPage() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const [login] = useLoginMutation();
+	const [login, { isLoading }] = useLoginMutation();
 
 	const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
 		try {
@@ -36,7 +37,7 @@ export default function LoginPage() {
 				} else {
 					router.push("/dashboard");
 				}
-			} 
+			}
 		} catch (error: any) {
 			toast.error(error?.data?.message);
 		}
@@ -60,12 +61,9 @@ export default function LoginPage() {
 							type="password"
 							label="Password"
 						/>
-						<button
-							className="btn btn-primary w-full text-white"
-							type="submit"
-						>
+						<SubmitBtn loading={isLoading} className="btn btn-primary">
 							Login
-						</button>
+						</SubmitBtn>
 						<div className="mt-5">
 							<p>
 								Don&apos;t have an account?{" "}

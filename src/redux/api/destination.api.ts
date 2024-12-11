@@ -1,4 +1,4 @@
-import { TResponseFromServer, TTripResponse } from "@/types";
+import { TDestinationResponse, TResponseFromServer, TTripResponse } from "@/types";
 import { baseApi } from "./base.api";
 
 type TSlugOnly = {
@@ -16,6 +16,7 @@ const destinationApi = baseApi.injectEndpoints({
 				method: "POST",
 				body: payload,
 			}),
+			invalidatesTags: ["destination"],
 		}),
 
 		//fetech all destination
@@ -35,6 +36,7 @@ const destinationApi = baseApi.injectEndpoints({
 					params,
 				};
 			},
+			providesTags: ["destination"],
 		}),
 
 		getOnlyDestinationSlug: builder.query<
@@ -45,6 +47,7 @@ const destinationApi = baseApi.injectEndpoints({
 				url: "/destination?fields=slug,destination",
 				method: "GET",
 			}),
+			providesTags: ["destination"],
 		}),
 
 		//update destination
@@ -53,14 +56,19 @@ const destinationApi = baseApi.injectEndpoints({
 				url: `/destination/${id}`,
 				method: "PATCH",
 			}),
+			invalidatesTags: ["destination"],
 		}),
 
 		//delete destinaiton
-		deleteDestination: builder.mutation({
+		deleteDestination: builder.mutation<
+			TResponseFromServer<TDestinationResponse>,
+			string
+		>({
 			query: (id) => ({
 				url: `/destination/${id}`,
 				method: "DELETE",
 			}),
+			invalidatesTags: ["destination"],
 		}),
 
 		//get trips by destination
@@ -79,6 +87,7 @@ const destinationApi = baseApi.injectEndpoints({
 					params: params,
 				};
 			},
+			providesTags: ["destination"],
 		}),
 	}),
 });

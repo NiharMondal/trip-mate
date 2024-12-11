@@ -3,7 +3,7 @@ import React from "react";
 interface ISubmitBtnProps extends React.HTMLAttributes<HTMLButtonElement> {
 	children: React.ReactNode;
 	loading?: boolean;
-	className?: "btn btn-primary";
+	className?: string;
 }
 export default function SubmitBtn({
 	children,

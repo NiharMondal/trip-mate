@@ -31,6 +31,12 @@ export default function UserPopover() {
 						>
 							Dashboard
 						</Link>
+						<Link
+							href="/dashboard/admin/manage-trips"
+							className="hover:text-primary"
+						>
+							Manage Trips
+						</Link>
 					</div>
 				);
 			case "user":

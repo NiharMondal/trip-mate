@@ -16,7 +16,7 @@ import { useDebounce } from "use-debounce";
 export default function ManageTrips() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState("");
-	const [limit, setLimit] = useState("");
+	const [limit, setLimit] = useState("12");
 	const [debounceValue] = useDebounce(search, 500);
 	const query: Record<string, string> = {};
 	query["page"] = currentPage.toString();
@@ -80,17 +80,16 @@ export default function ManageTrips() {
 						/>{" "}
 					</div>
 					<div className="w-full flex justify-between items-center">
-						<div>
-							<p>Limit: </p>
-						</div>
+						
 						<select
 							name="limit"
 							id="limit"
 							onChange={(e) => setLimit(e.target.value)}
 							className=" outline-none p-2 border"
 						>
-							<option value="5">3</option>
-							<option value="10">5</option>
+							<option selected>Limit</option>
+							<option value="5">5</option>
+							<option value="10">10</option>
 							<option value="15">15</option>
 							<option value="20">20</option>
 						</select>
