@@ -10,6 +10,13 @@ import BookingSection from "./BookingSection";
 import RelatedTrips from "./RelatedTrips";
 import Review from "./Review";
 import ReviewModal from "@/components/@trip/ReviewModal";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Tour Details - Trip Mate",
+	description:
+		"Discover detailed information about this tour, including itinerary, highlights, and how to join.",
+};
 
 export default async function TourDetailsPage({
 	params,

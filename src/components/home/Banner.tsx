@@ -3,7 +3,7 @@ import React from "react";
 
 import Image from "next/image";
 import { imageHelpers } from "@/assets/image-helpers";
-
+import Link from "next/link";
 
 export default function Banner() {
 	return (
@@ -15,7 +15,7 @@ export default function Banner() {
 							Book With Us!
 						</p>
 						<h1 className="lg:text-8xl heading">
-							Find Next Place To{" "}
+							Find Next Place <br /> To
 							<span className="text-primary">Visit</span>
 						</h1>
 
@@ -24,6 +24,11 @@ export default function Banner() {
 							Shop, Visit interesting places around the world.
 						</p>
 					</div>
+					<Link href="/tours" className="inline-block font-mono mt-8">
+						<button className="btn border border-primary text-primary hover:bg-primary hover:text-white">
+							See Trips
+						</button>
+					</Link>
 				</div>
 				{/* photo section */}
 				<div className="col-span-2 relative z-[-1] hidden lg:flex">

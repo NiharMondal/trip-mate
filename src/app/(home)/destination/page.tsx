@@ -2,8 +2,14 @@ import { getAllDestination } from "@/actions/destination";
 import DestinationCard from "@/components/@ui/DestinationCard";
 
 import PageTitle from "@/components/shared/PageTitle";
+import { Metadata } from "next";
 
-import React from "react";
+
+export const metadata: Metadata = {
+	title: "Destinations - Trip Mate",
+	description:
+		"Explore popular destinations and find your next travel adventure with Trip Mate.",
+};
 
 export default async function DestinationPage() {
 	const destinations = await getAllDestination();

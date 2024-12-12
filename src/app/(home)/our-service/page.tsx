@@ -1,5 +1,6 @@
 import PageTitle from "@/components/shared/PageTitle";
 import WOInfo from "@/components/shared/WOInfo";
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 import { FaHandHoldingDollar, FaMapLocationDot } from "react-icons/fa6";
@@ -7,6 +8,12 @@ import { LiaGlobeAmericasSolid } from "react-icons/lia";
 import { MdSupportAgent } from "react-icons/md";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 import { SiAzuredataexplorer } from "react-icons/si";
+
+export const metadata: Metadata = {
+	title: "Our Services - Trip Mate",
+	description:
+		"Explore the range of services we offer, from trip planning to connecting you with like-minded travel companions.",
+};
 
 export default function OurService() {
 	return (

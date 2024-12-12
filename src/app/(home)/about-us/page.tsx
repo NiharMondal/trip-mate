@@ -5,6 +5,16 @@ import React from "react";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { SiAzuredataexplorer } from "react-icons/si";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+	title: "About Trip Mate",
+	description:
+		"Learn more about Trip Mate, our mission, and how we help you find travel companions for your journeys.",
+};
+
+
 export default function AboutUsPage() {
 	return (
 		<div className="bg-white">

@@ -3,6 +3,8 @@ import React from "react";
 import PageTitle from "@/components/shared/PageTitle";
 import TourDestinationWrapper from "./TourDestinationWrapper";
 
+
+
 export default function TourDestination({
 	params,
 }: {

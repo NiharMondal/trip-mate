@@ -7,6 +7,7 @@ import WebsiteOverview from "@/components/home/WebsiteOverview";
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 
+//Home page  meta data
 
 export default function Home() {
 	return (

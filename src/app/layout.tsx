@@ -1,12 +1,17 @@
-import type { Metadata } from "next";
+
 import "./globals.css";
 //goggle font
 import { Inter } from "next/font/google";
 
 //redux or other providers
 import Providers from "@/components/Providers";
+import { Metadata } from "next";
 
-
+export const metadata: Metadata = {
+	title: "Trip Mate - Your Travel Companion",
+	description:
+		"Discover your next adventure with Trip Mate. Plan trips, find companions, and explore the world.",
+};
 
 //font initializing
 const inter = Inter({
@@ -15,11 +20,7 @@ const inter = Inter({
 	subsets: ["latin"],
 });
 
-//Root layout meta data
-export const metadata: Metadata = {
-	title: "Trip Mate | Home",
-	description: "This is a tour and travel website. ",
-};
+
 
 export default function RootLayout({
 	children,
