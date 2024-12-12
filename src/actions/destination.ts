@@ -8,7 +8,7 @@ export const getAllDestination = async (): Promise<
 > => {
 	try {
 		const res = await fetch(`${base_url}/destination`, {
-			cache: "no-store",
+			next:{revalidate:2500},
 		});
 		if (res.ok) {
 			const data = await res.json();
@@ -24,7 +24,7 @@ export const getPopularDestination = async (): Promise<
 > => {
 	try {
 		const res = await fetch(`${base_url}/destination/popular-destination`, {
-			cache: "no-store",
+			next: { revalidate: 2500 },
 		});
 
 		const data = await res.json();
