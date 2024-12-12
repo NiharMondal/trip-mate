@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import useFetchUser from "@/lib/loadUser";
 import { useCreateBuddyRequestMutation } from "@/redux/api/buddyRequest.api";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { BsCalendarDate } from "react-icons/bs";
@@ -22,7 +22,7 @@ export default function BookingSection({
 	date,
 	tripId,
 }: BookingSectionProps) {
-	const user: any = useAppSelector(selectedUser);
+	const {user} = useFetchUser()
 	const [createBuddyRequest] = useCreateBuddyRequestMutation();
 	const { register, handleSubmit } = useForm();
 

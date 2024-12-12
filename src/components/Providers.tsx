@@ -8,6 +8,13 @@ import { persistStore } from "redux-persist";
 //react toastify css
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+// for rating
+import "@smastrom/react-rating/style.css";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/bundle";
+import "swiper/css/navigation";
+
 const persistor = persistStore(store);
 
 const PersistGate = dynamic(

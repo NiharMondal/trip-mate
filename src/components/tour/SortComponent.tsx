@@ -24,7 +24,7 @@ export default function SortComponent({
 					id="sortBy"
 					className="outline-none p-3 border rounded sm:min-w-[200px]"
 				>
-					<option value="">None</option>
+					<option selected>createdAt</option>
 					<option value="title">Title</option>
 					<option value="budget">Price</option>
 					<option value="rating">Rating</option>

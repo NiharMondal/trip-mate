@@ -1,14 +1,14 @@
 "use client";
 
+import useFetchUser from "@/lib/loadUser";
 import { useDeleteTripMutation, useGetMyTripQuery } from "@/redux/api/trip.api";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
 import React from "react";
 import { RiDeleteBin2Fill, RiFileEditFill } from "react-icons/ri";
 import { toast } from "react-toastify";
 
 export default function TripList() {
-	const user = useAppSelector(selectedUser);
+	const {user} = useFetchUser()
 	const { data: myTrips, isLoading } = useGetMyTripQuery(user?.id as string);
 
 	const [deleteTrip] = useDeleteTripMutation();

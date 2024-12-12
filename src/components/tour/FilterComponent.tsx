@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { clearQueries, updateQueries } from "@/redux/slice/querySlice";
 import { useRouter } from "next/navigation";
 
-
 type QueryParams = {
 	search: string;
 	destination: string;

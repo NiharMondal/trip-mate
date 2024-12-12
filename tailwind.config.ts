@@ -8,10 +8,6 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
-			fontFamily: {
-				mono: ['var(--font-roboto-mono)'],
-				lato: ['var(--font-lato)'],
-			},
 			colors: {
 				text: "#0f0206",
 				background: "#fef3f6",

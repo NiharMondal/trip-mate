@@ -3,8 +3,8 @@ import React from "react";
 import { COMMON_ITEMS, MENU_ITEMS } from "./menu";
 import { IoCloseSharp } from "react-icons/io5";
 import Link from "next/link";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
+import useFetchUser from "@/lib/loadUser";
 type DashboardNavBarProps = {
 	show: boolean;
 	toggle: () => void;
@@ -14,7 +14,7 @@ export default function DashboardNavBar({
 	show,
 	toggle,
 }: DashboardNavBarProps) {
-	const user = useAppSelector(selectedUser);
+	const {user} = useFetchUser()
 	const roleBasedRoutes = MENU_ITEMS[(user?.role as "user") || "admin"] || [];
 
 	return (

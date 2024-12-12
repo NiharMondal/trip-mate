@@ -1,33 +1,19 @@
 import type { Metadata } from "next";
 import "./globals.css";
 //goggle font
-import { Lato ,  Roboto_Mono} from "next/font/google";
+import { Inter } from "next/font/google";
 
 //redux or other providers
 import Providers from "@/components/Providers";
 
-// for rating
-import "@smastrom/react-rating/style.css";
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/bundle';
-import "swiper/css/navigation";
 
 
 //font initializing
-const lato = Lato({
-	weight: ["100", "300", "400", "700", "900"],
-	style:['normal','italic'],
+const inter = Inter({
+	weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+	style: ["normal", "italic"],
 	subsets: ["latin"],
-	variable:'--font-lato'
 });
-
-const roboto_mono = Roboto_Mono({
-	weight:["300","400","500"],
-	style:["italic","normal"],
-	subsets:["latin"],
-	variable:"--font-roboto-mono"
-})
 
 //Root layout meta data
 export const metadata: Metadata = {
@@ -42,10 +28,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${lato.variable} ${roboto_mono.variable} antialiased`}>
-				<Providers>
-					{children}
-				</Providers>
+			<body className={`${inter.className} antialiased`}>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

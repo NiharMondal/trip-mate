@@ -3,8 +3,7 @@ import {
 	useGetIncomingRequestsQuery,
 	useUpdateBuddyRequestStatusMutation,
 } from "@/redux/api/buddyRequest.api";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
 import { MdKeyboardControlKey } from "react-icons/md";
 import {
 	Disclosure,
@@ -12,9 +11,10 @@ import {
 	DisclosurePanel,
 } from "@headlessui/react";
 import { toast } from "react-toastify";
+import useFetchUser from "@/lib/loadUser";
 
 export default function IncomingRequests() {
-	const user = useAppSelector(selectedUser);
+	const {user} = useFetchUser()
 	const [updateBuddyRequestStatus] = useUpdateBuddyRequestStatusMutation();
 	const { data: incomingBuddyRequests, isLoading } =
 		useGetIncomingRequestsQuery(user?.id as string);

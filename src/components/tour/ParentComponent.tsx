@@ -7,10 +7,9 @@ import { useGetAllTripsQuery } from "@/redux/api/trip.api";
 import { useAppSelector } from "@/redux/hooks";
 import { useDebounce } from "use-debounce";
 
-
 export default function ParentComponent() {
 	const query = useAppSelector((state) => state.query);
-	const [search] = useDebounce(query.queries.search, 750);
+	const [search] = useDebounce( query?.queries.search, 0);
 	const [minBudget] = useDebounce(query.queries.minBudget, 750);
 	const [maxBudget] = useDebounce(query.queries.maxBudget, 750);
 	const { data, isLoading } = useGetAllTripsQuery({
@@ -19,7 +18,7 @@ export default function ParentComponent() {
 		minBudget,
 		maxBudget,
 	});
-	console.log(data)
+
 	return (
 		<div className="max-w-7xl mx-auto px-5 py-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
 			<FilterComponent />

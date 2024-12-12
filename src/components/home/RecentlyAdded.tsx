@@ -15,7 +15,6 @@ import TMLoading from "../shared/TMLoading";
 export default function RecentlyAdded() {
 	const swiperRef = useRef<SwiperInstance | null>(null);
 	const { data, isLoading } = useGetFreshlyAddedTripQuery();
-	console.log(data);
 	return (
 		<div className="max-w-7xl mx-auto px-5">
 			<SectionHeading text1="Freshly" text2="Added" />

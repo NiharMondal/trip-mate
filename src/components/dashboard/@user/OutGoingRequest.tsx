@@ -1,12 +1,12 @@
 "use client";
 
+import useFetchUser from "@/lib/loadUser";
 import { useGetOutGoingRequestsQuery } from "@/redux/api/buddyRequest.api";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
 import React from "react";
 
 export default function OutGoingRequest() {
-	const user = useAppSelector(selectedUser);
+	const {user} = useFetchUser()
 	const { data: outGoingRequest, isLoading } = useGetOutGoingRequestsQuery(
 		user?.id as string
 	);

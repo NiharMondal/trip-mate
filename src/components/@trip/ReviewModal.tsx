@@ -1,7 +1,7 @@
 "use client";
+import useFetchUser from "@/lib/loadUser";
 import { useGiveReviewMutation } from "@/redux/api/review.api";
-import { useAppSelector } from "@/redux/hooks";
-import { selectedUser } from "@/redux/slice/authSlice";
+
 import { TReviewRequest } from "@/types";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { Rating } from "@smastrom/react-rating";
@@ -12,8 +12,8 @@ import { toast } from "react-toastify";
 
 export default function ReviewModal({ tripId }: { tripId: string }) {
 	const router = useRouter();
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const user: any = useAppSelector(selectedUser);
+
+	const {user} = useFetchUser()
 	const [giveReview] = useGiveReviewMutation();
 	const { register, handleSubmit } = useForm<TReviewRequest>();
 	const [rating, setRating] = useState(5);
