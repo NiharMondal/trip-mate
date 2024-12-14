@@ -1,43 +1,32 @@
 "use client";
 import React, { useState } from "react";
-
-// react icons
-import { IoMdClose } from "react-icons/io";
-import { CiMenuFries } from "react-icons/ci";
-
-import { helpers } from "@/helpers";
+import { Dialog, DialogPanel } from "@headlessui/react";
 import Link from "next/link";
-import Image from "next/image";
-import { imageHelpers } from "@/assets/image-helpers";
 import UserPopover from "./Popover";
 import useFetchUser from "@/lib/loadUser";
+import { CiMenuFries } from "react-icons/ci";
+import Image from "next/image";
+import { imageHelpers } from "@/assets/image-helpers";
+import { helpers } from "@/helpers";
+import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
-	const { user, loading } = useFetchUser();
-	
-	const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-
-	if (loading) return <p>Please wait...</p>;
-
-	const Content = ({ role }: { role: string }) => {
-		let link = "";
-
-		if (role === "admin") {
-			link = "/dashboard/admin";
-		} else {
-			link = "/dashboard";
-		}
-		return (
-			<Link href={link}>
-				<button className="btn btn-primary text-white">
-					Go to dashboard
-				</button>
-			</Link>
-		);
+	const { user } = useFetchUser();
+	const [isOpen, setIsOpen] = useState(false);
+	const open = () => {
+		setIsOpen(true);
+	};
+	const close = () => {
+		setIsOpen(false);
 	};
 	return (
-		<header className="px-5 sm:px-10 lg:px-28 border">
+		<header className="px-5 sm:px-10 lg:px-28 border-b">
 			<nav className="flex items-center justify-between w-full relative py-5">
+				<CiMenuFries
+					className="text-[1.6rem] text-text cursor-pointer lg:hidden flex"
+					onClick={open}
+				/>
+
 				<Link href="/">
 					<Image
 						src={imageHelpers.logo}
@@ -60,67 +49,51 @@ export default function Navbar() {
 
 				<div className="flex items-center gap-[10px]">
 					{!user?.id ? (
-						<Link
-							href="/login"
-							className="btn btn-primary hidden lg:flex"
-						>
+						<Link href="/login" className="btn btn-primary">
 							<button className="text-sm text-white">
 								Login
 							</button>
 						</Link>
 					) : (
-						<div className="hidden lg:flex">
-							<UserPopover />
-						</div>
+						<UserPopover />
 					)}
-
-					<CiMenuFries
-						className="text-[1.6rem] text-text cursor-pointer lg:hidden flex"
-						onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-					/>
 				</div>
 
-				{/** for small device */}
-				<aside
-					className={` ${
-						mobileSidebarOpen
-							? "translate-x-0 opacity-100 z-50"
-							: "translate-x-full opacity-0 z-[-1]"
-					} lg:hidden bg-accent p-4 text-center fixed top-0 right-0 h-screen w-full sm:w-[330px] transition-all duration-300 overflow-hidden`}
+				<Dialog
+					open={isOpen}
+					onClose={close}
+					className="relative z-50 "
+					as="div"
 				>
-					<div className="flex items-center justify-end pb-10 pt-3 pr-1">
-						<IoMdClose
-							onClick={() =>
-								setMobileSidebarOpen(!mobileSidebarOpen)
-							}
-							className="text-text text-[1.8rem] cursor-pointer"
-						/>
-					</div>
+					<aside className="fixed inset-0 z-10 w-screen">
+						<div
+							className={`absolute top-0 left-0 w-full sm:w-[350px] bg-accent`}
+						>
+							<DialogPanel className="text-white w-full h-screen ">
+								<div className="flex items-center justify-end pb-10 pt-3 pr-1">
+									<IoMdClose
+										onClick={close}
+										className="text-text text-[1.8rem] cursor-pointer"
+									/>
+								</div>
 
-					<ul className="items-center gap-[20px] text-[1rem] text-white flex flex-col mb-20">
-						{helpers.navlinks.map((nav) => (
-							<li key={nav.name}>
-								<Link
-									href={nav.path}
-									className="nav-link-style geist-sans text-text"
-								>
-									{nav.name}
-								</Link>
-							</li>
-						))}
-					</ul>
-					<div>
-						{!user?.id ? (
-							<Link href="/login">
-								<button className="btn btn-primary">
-									Login
-								</button>
-							</Link>
-						) : (
-							<Content role={user?.role} />
-						)}
-					</div>
-				</aside>
+								<ul className="items-center gap-[20px] text-[1rem] text-white flex flex-col mb-20">
+									{helpers.navlinks.map((nav) => (
+										<li key={nav.name}>
+											<Link
+												href={nav.path}
+												onClick={close}
+												className="nav-link-style geist-sans text-text"
+											>
+												{nav.name}
+											</Link>
+										</li>
+									))}
+								</ul>
+							</DialogPanel>
+						</div>
+					</aside>
+				</Dialog>
 			</nav>
 		</header>
 	);
