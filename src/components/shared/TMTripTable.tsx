@@ -1,6 +1,7 @@
+import UpdateTrip from "@/app/dashboard/user/trips/UpdateTrip";
 import { useDeleteTripMutation } from "@/redux/api/trip.api";
 import { TTripResponse } from "@/types";
-import { RiDeleteBin2Fill, RiFileEditFill } from "react-icons/ri";
+import { RiDeleteBin2Fill } from "react-icons/ri";
 import { toast } from "react-toastify";
 
 type TMTripTableProps = {
@@ -31,7 +32,7 @@ export default function TMTripTable({ trips }: TMTripTableProps) {
 						<th>Start date</th>
 						<th>End date</th>
 						<th>Budget</th>
-						<th>Available Seats</th>
+						<th>Max Guests</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -40,10 +41,10 @@ export default function TMTripTable({ trips }: TMTripTableProps) {
 						<tr key={trip._id}>
 							<td>{trip.title}</td>
 							<td>{trip.destination}</td>
-							<td>{trip.startDate.split("T")[0]}</td>
-							<td>{trip.endDate.split("T")[0]}</td>
+							<td>{trip.startDate}</td>
+							<td>{trip.endDate}</td>
 							<td>{trip.budget}</td>
-							<td>{trip.availAbleSeats}</td>
+							<td>{trip.maxGuests}</td>
 
 							<td className="inline-flex gap-x-3">
 								<span
@@ -52,9 +53,7 @@ export default function TMTripTable({ trips }: TMTripTableProps) {
 								>
 									<RiDeleteBin2Fill className="size-5 text-red-500 hover:text-red-600 cursor-pointer" />
 								</span>
-								<span title="Edit Trip">
-									<RiFileEditFill className="size-5 text-teal-500 hover:text-teal-600 cursor-pointer" />
-								</span>
+								<UpdateTrip tripId={trip._id} />
 							</td>
 						</tr>
 					))}

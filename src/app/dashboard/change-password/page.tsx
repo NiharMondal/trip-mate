@@ -23,7 +23,7 @@ export default function ChangePassword() {
 		}
 	};
 	return (
-		<div className="max-w-xl">
+		<div className="max-w-md">
 			<TMForm onSubmit={handleChangePassword}>
 				<TMInput name="oldPassword" label="Old password" />
 				<TMInput name="newPassword" label="New password" />

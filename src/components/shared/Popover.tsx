@@ -1,6 +1,7 @@
+"use client";
 import { userLogout } from "@/actions/auth";
 import { imageHelpers } from "@/assets/image-helpers";
-import useFetchUser from "@/lib/loadUser";
+import { useMyProfileQuery } from "@/redux/api/profile.api";
 import { useAppDispatch } from "@/redux/hooks";
 import { logout } from "@/redux/slice/authSlice";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
@@ -9,8 +10,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function UserPopover() {
+	const { data: user } = useMyProfileQuery(undefined);
+
 	const router = useRouter();
-	const { user } = useFetchUser();
 	const dispatch = useAppDispatch();
 
 	const handleLogout = async () => {
@@ -21,7 +23,7 @@ export default function UserPopover() {
 	};
 
 	const renderRoutes = () => {
-		switch (user?.role) {
+		switch (user?.result?.role) {
 			case "admin":
 				return (
 					<div className="space-y-1 flex flex-col">
@@ -57,14 +59,14 @@ export default function UserPopover() {
 	};
 
 	return (
-		<Popover className="relative ">
-			<PopoverButton className="outline-none">
+		<Popover className="relative " title="Profile">
+			<PopoverButton className="outline-none size-12 rounded-full overflow-hidden">
 				<Image
-					src={imageHelpers.logo}
+					src={user?.result?.avatar || imageHelpers.avatar}
 					height={40}
 					width={40}
 					alt="user-avatar"
-					className="w-full h-full object-cover object-center z-10"
+					className="w-full h-full object-cover object-center z-10 "
 				/>
 			</PopoverButton>
 			<PopoverPanel
@@ -73,12 +75,11 @@ export default function UserPopover() {
 			>
 				<div>
 					<h4 className="font-mono font-medium text-gray-700">
-						Hello, {user?.name}
+						Hello, {user?.result?.name}
 					</h4>
 				</div>
 				<hr />
 				{renderRoutes()}
-
 				<button
 					className="btn btn-primary text-white mt-3"
 					onClick={handleLogout}

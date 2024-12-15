@@ -6,22 +6,20 @@ import { useGetMyTripQuery } from "@/redux/api/trip.api";
 
 import React from "react";
 import CreateTrip from "./CreateTrip";
-import useFetchUser from "@/lib/loadUser";
+import { useAppSelector } from "@/redux/hooks";
+import { selectedUser } from "@/redux/slice/authSlice";
 
 export default function UserTripList() {
-	const {user} = useFetchUser()
+	const user = useAppSelector(selectedUser);
 	const { data: myTrips, isLoading } = useGetMyTripQuery(user?.id as string);
+
 	if (isLoading) return <TMLoading />;
+	if (!myTrips?.result.length) return <TMNoData />;
+
 	return (
-		<div className="space-y-5">
-			<CreateTrip/>
-			<div>
-				{!myTrips?.result.length ? (
-					<TMNoData />
-				) : (
-					<TMTripTable trips={myTrips.result} />
-				)}
-			</div>
+		<div>
+			<CreateTrip />
+			<TMTripTable trips={myTrips.result} />
 		</div>
 	);
 }

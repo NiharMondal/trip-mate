@@ -1,4 +1,4 @@
-import { TResponseFromServer, TTripResponse } from "@/types";
+import { TResponseFromServer, TTrip, TTripResponse } from "@/types";
 import { baseApi } from "./base.api";
 
 const tripApi = baseApi.injectEndpoints({
@@ -35,6 +35,36 @@ const tripApi = baseApi.injectEndpoints({
 				};
 			},
 			providesTags: ["trip"],
+		}),
+
+		tripBySlug: builder.query<TResponseFromServer<TTripResponse>, string>({
+			query: (slug) => ({
+				url: `/trip/${slug}`,
+				method: "GET",
+			}),
+			providesTags: ["trip"],
+		}),
+
+		// get by id
+		tripById: builder.query<TResponseFromServer<TTripResponse>, string>({
+			query: (id) => ({
+				url: `/trip/by-id/${id}`,
+				method: "GET",
+			}),
+			providesTags: ["trip"],
+		}),
+
+		//update-trip
+		updateTrip: builder.mutation<
+			TResponseFromServer<TTripResponse>,
+			{ id: string; payload: Partial<TTrip> }
+		>({
+			query: ({ id, payload }) => ({
+				url: `/trip/${id}`,
+				method: "PATCH",
+				body: payload,
+			}),
+			invalidatesTags: ["trip"],
 		}),
 
 		//delete destinaiton
@@ -94,6 +124,9 @@ const tripApi = baseApi.injectEndpoints({
 export const {
 	useCreateTripMutation,
 	useGetAllTripsQuery,
+	useTripBySlugQuery,
+	useTripByIdQuery,
+	useUpdateTripMutation,
 	useGetPopularTripQuery,
 	useGetFreshlyAddedTripQuery,
 	useRelatedTripQuery,

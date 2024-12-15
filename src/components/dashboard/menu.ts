@@ -38,4 +38,5 @@ export const COMMON_ITEMS: TRoute[] = [
 		label: "Change Password",
 		path: "/dashboard/change-password",
 	},
+	{ label: "Update Profile", path: "/dashboard/update-profile" },
 ];

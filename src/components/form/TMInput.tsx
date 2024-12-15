@@ -1,6 +1,6 @@
 import React from "react";
-import { useFormContext } from "react-hook-form";
-
+// import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 type TMInputProps = {
 	name: string;
 	type?: string;
@@ -14,15 +14,22 @@ export default function TMInput({
 	label,
 	placeholder,
 }: TMInputProps) {
-	const { register } = useFormContext();
+	const { control } = useFormContext();
 	return (
 		<div className="space-y-2 mb-5">
 			<p>{label ? label : null}</p>
-			<input
-				type={type} 
-				{...register(name)}
-				className="p-2 outline-none ring-1 ring-secondary w-full rounded"
-				placeholder={placeholder}
+			<Controller
+				control={control}
+				name={name}
+				render={({ field }) => (
+					<input
+						{...field}
+						type={type}
+						className="p-2 outline-none ring-1 ring-secondary w-full rounded"
+						placeholder={placeholder}
+						onChange={field.onChange}
+					/>
+				)}
 			/>
 		</div>
 	);
