@@ -9,12 +9,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import SubmitBtn from "../@ui/SubmitBtn";
 
 export default function ReviewModal({ tripId }: { tripId: string }) {
 	const router = useRouter();
 
-	const {user} = useFetchUser()
-	const [giveReview] = useGiveReviewMutation();
+	const { user } = useFetchUser();
+	const [giveReview, { isLoading }] = useGiveReviewMutation();
 	const { register, handleSubmit } = useForm<TReviewRequest>();
 	const [rating, setRating] = useState(5);
 
@@ -107,12 +108,12 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 									></textarea>
 								</div>
 								<div>
-									<button
+									<SubmitBtn
+										loading={isLoading}
 										className="btn btn-secondary bg-accent hover:bg-accent/90"
-										type="submit"
 									>
 										Submit Review
-									</button>
+									</SubmitBtn>
 								</div>
 							</form>
 						</DialogPanel>

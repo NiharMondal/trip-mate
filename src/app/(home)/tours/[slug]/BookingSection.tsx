@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import SubmitBtn from "@/components/@ui/SubmitBtn";
 import useFetchUser from "@/lib/loadUser";
 import { useCreateBuddyRequestMutation } from "@/redux/api/buddyRequest.api";
-
 
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { BsCalendarDate } from "react-icons/bs";
@@ -22,8 +22,8 @@ export default function BookingSection({
 	date,
 	tripId,
 }: BookingSectionProps) {
-	const {user} = useFetchUser()
-	const [createBuddyRequest] = useCreateBuddyRequestMutation();
+	const { user } = useFetchUser();
+	const [createBuddyRequest, { isLoading }] = useCreateBuddyRequestMutation();
 	const { register, handleSubmit } = useForm();
 
 	const dt = new Date(date).toLocaleDateString();
@@ -72,12 +72,12 @@ export default function BookingSection({
 					</div>
 
 					<div className="mt-5">
-						<button
-							className="btn btn-primary w-full py-4 mt-5 capitalize text-lg text-white"
-							type="submit"
+						<SubmitBtn
+							loading={isLoading}
+							className="btn btn-primary w-full py-4 mt-5  text-lg text-white"
 						>
-							proceed booking
-						</button>
+							Proceed Booking
+						</SubmitBtn>
 					</div>
 				</form>
 			</div>
