@@ -1,11 +1,11 @@
-import { assets } from '@/assets/image'
-import Image from 'next/image'
-import React from 'react'
+import { assets } from "@/assets/image";
+import Image from "next/image";
+import React from "react";
 
 export default function Footer() {
-  return (
+	return (
 		<footer className="bg-gray-900 py-20 px-5 sm:px-20 md:px-10">
-			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-white gap-8">
+			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-gray-300 gap-8">
 				<div>
 					<Image
 						src={assets.logo}
@@ -13,7 +13,9 @@ export default function Footer() {
 						height={150}
 						alt="logo"
 					/>
-                    <p className='heading text-2xl mt-2 text-accent pl-5'>Trip Mate</p>
+					<p className="heading text-2xl mt-2 text-accent pl-5">
+						Trip Mate
+					</p>
 				</div>
 				<div>
 					<h3 className="heading">Contact</h3>
@@ -61,5 +63,5 @@ export default function Footer() {
 				</div>
 			</div>
 		</footer>
-  );
+	);
 }
