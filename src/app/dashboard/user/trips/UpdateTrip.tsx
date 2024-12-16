@@ -33,7 +33,7 @@ export default function UpdateTrip({ tripId }: { tripId: string }) {
 		setIsOpen(false);
 	}
 
-	const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+	const handleUpdate: SubmitHandler<FieldValues> = async (data) => {
 		data.budget = Number(data.budget);
 		try {
 			const res = await updateTrip({
@@ -63,10 +63,10 @@ export default function UpdateTrip({ tripId }: { tripId: string }) {
 	return (
 		<>
 			<span title="Delete Trip" onClick={open}>
-				<MdEditSquare className="size-5 text-green-500 hover:text-green-600 cursor-pointer" />
+				<MdEditSquare className="size-5 text-teal-500 hover:text-teal-600 cursor-pointer" />
 			</span>
 			<FullModal isOpen={isOpen} close={close}>
-				<TMForm onSubmit={handleSubmit} defaultValues={defaultValues}>
+				<TMForm onSubmit={handleUpdate} defaultValues={defaultValues}>
 					<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
 						<TMInput name="title" label="Title" />
 						<TMInput name="from" label="From" />

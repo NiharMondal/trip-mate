@@ -1,4 +1,5 @@
 import React from "react";
+import TMNoData from "./TMNoData";
 
 // Define the types for the column and table props
 interface Column<T> {
@@ -28,12 +29,11 @@ const TMTable = <T,>({ columns, data, keyField }: TableProps<T>) => {
 
 				{/* Render table body */}
 				<tbody>
+					{!data?.length && <TMNoData />}
 					{data?.map((row, rowIndex) => (
 						<tr key={String(row[keyField]) || rowIndex}>
 							{columns.map((col, colIndex) => (
-								<td
-									key={colIndex}
-								>
+								<td key={colIndex}>
 									{col.accessor
 										? (row[col.accessor] as React.ReactNode)
 										: col.render?.(row)}
