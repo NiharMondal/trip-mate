@@ -6,20 +6,20 @@ import { Rating } from "@smastrom/react-rating";
 import Link from "next/link";
 import { TTripResponse } from "@/types";
 
-
 type PopularTripCardProops = {
 	data: TTripResponse;
 };
 
 export default function PopularTripCard({ data }: PopularTripCardProops) {
-	
 	return (
 		<div>
 			<div className="relative rounded-xl overflow-hidden group h-[480px] group">
 				<Image
 					src={data?.photo}
 					alt={data.title}
-					fill={true}
+					width={200}
+					height={200}
+					loading="lazy"
 					className="h-full w-full object-cover object-left"
 				/>
 				<div className="bg_darken"></div>

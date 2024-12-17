@@ -8,7 +8,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function CreateDestination() {
-    const [createDestination]  = useCreateDestinationMutation()
+	const [createDestination, { isLoading }] = useCreateDestinationMutation();
 	const [modal, setModal] = useState(false);
 	const open = () => {
 		setModal(true);
@@ -17,17 +17,19 @@ export default function CreateDestination() {
 		setModal(false);
 	};
 
-	const handleCreateDestination: SubmitHandler<FieldValues> = async (data) => {
+	const handleCreateDestination: SubmitHandler<FieldValues> = async (
+		data
+	) => {
 		try {
-            const res = await createDestination(data).unwrap();
-            if(res.success){
-                toast.success("Destination created successfully");
-                close()
-            }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        } catch (error:any) {
-            toast.error(error?.data?.message)
-        }
+			const res = await createDestination(data).unwrap();
+			if (res.success) {
+				toast.success("Destination created successfully");
+				close();
+			}
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			toast.error(error?.data?.message);
+		}
 	};
 	return (
 		<div>
@@ -44,7 +46,9 @@ export default function CreateDestination() {
 						label="Thumbnail URL"
 						placeholder="https://images.unsplash.com/photo-1496372412473-e8548ffd82bc"
 					/>
-					<SubmitBtn>Create</SubmitBtn>
+					<SubmitBtn loading={isLoading}>
+						Create Destination
+					</SubmitBtn>
 				</TMForm>
 			</TMModal>
 		</div>

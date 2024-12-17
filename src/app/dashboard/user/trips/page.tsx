@@ -5,7 +5,7 @@ import TMTripTable from "@/components/shared/TMTripTable";
 import { useGetMyTripQuery } from "@/redux/api/trip.api";
 
 import React from "react";
-import CreateTrip from "./CreateTrip";
+import CreateTrip from "../../../../components/dashboard/CreateTrip";
 import { useAppSelector } from "@/redux/hooks";
 import { selectedUser } from "@/redux/slice/authSlice";
 

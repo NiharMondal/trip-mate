@@ -9,10 +9,11 @@ import {
 import { TTripResponse } from "@/types";
 import React, { useState } from "react";
 import { RiDeleteBin2Fill } from "react-icons/ri";
-import { MdEditSquare } from "react-icons/md";
 
 import { toast } from "react-toastify";
 import { useDebounce } from "use-debounce";
+import CreateTrip from "@/components/dashboard/CreateTrip";
+import UpdateTrip from "@/components/dashboard/UpdateTrip";
 
 export default function ManageTrips() {
 	const [currentPage, setCurrentPage] = useState(1);
@@ -58,9 +59,7 @@ export default function ManageTrips() {
 					>
 						<RiDeleteBin2Fill className="size-5 text-red-500 hover:text-red-600 cursor-pointer" />
 					</span>
-					<span title="Edit Trip">
-						<MdEditSquare className="size-5 text-teal-500 hover:text-teal-600 cursor-pointer" />
-					</span>
+					<UpdateTrip tripId={trip._id} />
 				</span>
 			),
 		},
@@ -68,6 +67,7 @@ export default function ManageTrips() {
 
 	return (
 		<div>
+			<CreateTrip />
 			<div className="flex flex-col sm:flex-row gap-8 justify-between items-center py-10">
 				<div className="w-full">
 					<input

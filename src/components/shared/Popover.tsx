@@ -80,10 +80,7 @@ export default function UserPopover() {
 				</div>
 				<hr />
 				{renderRoutes()}
-				<button
-					className="btn btn-primary text-white mt-3"
-					onClick={handleLogout}
-				>
+				<button className="btn btn-secondary" onClick={handleLogout}>
 					Logout
 				</button>
 			</PopoverPanel>

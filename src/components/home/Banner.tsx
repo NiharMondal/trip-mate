@@ -25,7 +25,7 @@ export default function Banner() {
 						</p>
 					</div>
 					<Link href="/tours" className="inline-block font-mono mt-8">
-						<button className="btn border border-primary text-primary hover:bg-primary hover:text-white">
+						<button className="btn btn-primary text-white">
 							See Trips
 						</button>
 					</Link>
@@ -34,9 +34,12 @@ export default function Banner() {
 				<div className="col-span-2 relative z-[-1] hidden lg:flex">
 					<Image
 						src={imageHelpers.heroRight}
-						fill
+						// loading="lazy"
+						height={600}
+						width={500}
 						alt="avatar"
-						className="object-center object-cover rounded-md"
+						priority={true}
+						className="w-full h-full object-center object-cover rounded-md"
 					/>
 				</div>
 			</div>

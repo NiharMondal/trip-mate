@@ -18,7 +18,8 @@ export default function DestinationCard({
 		>
 			<Image
 				src={data?.thumbnail}
-				fill
+				width={400}
+				height={500}
 				alt={data.destination}
 				className="h-full w-full object-cover object-center"
 			/>

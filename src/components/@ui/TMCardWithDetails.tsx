@@ -5,18 +5,26 @@ import { TTripResponse } from "@/types";
 
 type TMCardWithDetailsProps = {
 	trip: TTripResponse;
-	imageHeight?: string
-    cardHeight?: string;
+	imageHeight?: string;
+	cardHeight?: string;
 };
-export default function TMCardWithDetails({ trip, imageHeight="h-[200px]", cardHeight="h-[400px]" }: TMCardWithDetailsProps) {
+
+export default function TMCardWithDetails({
+	trip,
+	imageHeight = "h-[200px]",
+	cardHeight = "h-[400px]",
+}: TMCardWithDetailsProps) {
 	return (
-		<div className={`bg-white rounded-lg shadow-md overflow-hidden ${cardHeight}`}>
+		<div
+			className={`bg-white rounded-lg shadow-md overflow-hidden ${cardHeight}`}
+		>
 			<Link href={`/tours/${trip.slug}`}>
 				<Image
 					alt={trip.slug}
 					src={trip.photo}
 					height={200}
 					width={200}
+					loading="lazy"
 					className={`w-full object-cover object-center ${imageHeight}`}
 				/>
 			</Link>

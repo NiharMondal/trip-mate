@@ -6,6 +6,7 @@ type TMInputProps = {
 	type?: string;
 	label?: string;
 	placeholder?: string;
+	disabled?: boolean;
 };
 
 export default function TMInput({
@@ -13,11 +14,12 @@ export default function TMInput({
 	type = "text",
 	label,
 	placeholder,
+	disabled,
 }: TMInputProps) {
 	const { control } = useFormContext();
 	return (
 		<div className="space-y-2 mb-5">
-			<p>{label ? label : null}</p>
+			<p className="text-white">{label ? label : null}</p>
 			<Controller
 				control={control}
 				name={name}
@@ -28,6 +30,7 @@ export default function TMInput({
 						className="p-2 outline-none ring-1 ring-secondary w-full rounded"
 						placeholder={placeholder}
 						onChange={field.onChange}
+						disabled={disabled}
 					/>
 				)}
 			/>

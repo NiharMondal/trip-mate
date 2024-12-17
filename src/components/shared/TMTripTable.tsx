@@ -1,4 +1,4 @@
-import UpdateTrip from "@/app/dashboard/user/trips/UpdateTrip";
+import UpdateTrip from "@/components/dashboard/UpdateTrip";
 import { useDeleteTripMutation } from "@/redux/api/trip.api";
 import { TTripResponse } from "@/types";
 import { RiDeleteBin2Fill } from "react-icons/ri";
