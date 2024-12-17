@@ -6,24 +6,24 @@ A user-friendly platform where travelers can create trips, request for trip mate
 
 #### Common Features
 
-    - Explore Popular Trips
-    - Discover the most popular trips based on ratings and user reviews.
-    - Browse the latest trips added to the platform.
+-   Explore Popular Trips
+-   Discover the most popular trips based on ratings and user reviews.
+-   Browse the latest trips added to the platform.
 
 #### User Features 🧑‍💻
 
 **1. Dashboard Management**
 
-    - Users can manage their trips: create, edit, and delete.
-    - View and respond to incoming trip-mate requests.
-    - Track outgoing requests sent to join other trips.
-    - Update personal profile information.
-    - Share trip reviews and ratings after completion.
+-   Users can manage their trips: create, edit, and delete.
+-   View and respond to incoming trip-mate requests.
+-   Track outgoing requests sent to join other trips.
+-   Update personal profile information.
+-   Share trip reviews and ratings after completion.
 
 **2. Advanced Filtering Options**
 
-    - Filter by Destination: Explore trips by continent or specific destinations.
-    -Filter by Title or Price Range: Narrow down trips based on a title keyword and minimum-maximum price ranges.
+-   Filter by Destination: Explore trips by continent or specific destinations.
+-   Filter by Title or Price Range: Narrow down trips based on a title keyword and minimum-maximum price ranges.
 
 **3. Sorting**
 
@@ -40,15 +40,25 @@ A user-friendly platform where travelers can create trips, request for trip mate
 
 #### Admin Features 🔑
 
-**1. Trip and Review Management** - Admins can view, edit, or delete all trips and user reviews.
+**1. Trip and Review Management**
 
-**2. Destination Management** - Only admins can create, update, or delete official destinations.
+-   Admins can view, edit, or delete all trips and user reviews.
 
-**3. User Overview** - View all registered users and manage their activities.
+**2. Destination Management**
 
-**4. Admin Profile Update** - Admins can update their personal profile information.
+-   Only admins can create, update, or delete official destinations.
 
-**5. Overall Dashboard Overview** - Access a complete overview of trips, reviews, and user activities.
+**3. User Overview**
+
+-   View all registered users and manage their activities.
+
+**4. Admin Profile Update**
+
+-   Admins can update their personal profile information.
+
+**5. Overall Dashboard Overview**
+
+-   Access a complete overview of trips, reviews, and user activities.
 
 ## Tech Stack 🛠️
 
@@ -103,9 +113,9 @@ Follow these steps to set up the project locally:
 ## Screenshots 📸
 
 **Home Page**
-
+![preview](public/preview/home-page.png)
 **User Dashboard**
-Screenshot of trip management, incoming/outgoing requests, and reviews.
+![preview](public/preview/user-dashboard.png)
 
 **Admin Dashboard**
-Screenshot showing admin access to manage trips, users, and destinations.
+![preview](public/preview/admin-dashboard.png)
