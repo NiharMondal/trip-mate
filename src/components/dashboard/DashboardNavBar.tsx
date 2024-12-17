@@ -5,6 +5,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import Link from "next/link";
 
 import useFetchUser from "@/lib/loadUser";
+import { usePathname } from "next/navigation";
 type DashboardNavBarProps = {
 	show: boolean;
 	toggle: () => void;
@@ -14,7 +15,9 @@ export default function DashboardNavBar({
 	show,
 	toggle,
 }: DashboardNavBarProps) {
-	const {user} = useFetchUser()
+	const path = usePathname();
+	console.log(path);
+	const { user } = useFetchUser();
 	const roleBasedRoutes = MENU_ITEMS[(user?.role as "user") || "admin"] || [];
 
 	return (
@@ -34,7 +37,9 @@ export default function DashboardNavBar({
 				{roleBasedRoutes.map((item, index) => (
 					<li
 						key={index}
-						className="hover:text-secondary transition-colors duration-200 cursor-pointer"
+						className={`hover:text-accent transition-colors duration-200 cursor-pointer ${
+							path === item.path ? "text-accent" : ""
+						}`}
 					>
 						<Link href={item.path}>{item.label}</Link>
 					</li>
@@ -44,7 +49,9 @@ export default function DashboardNavBar({
 				{COMMON_ITEMS.map((item, index) => (
 					<li
 						key={`common-${index}`}
-						className="hover:text-secondary transition-colors duration-200 cursor-pointer"
+						className={`hover:text-accent transition-colors duration-200 cursor-pointer ${
+							path === item.path ? "text-accent" : ""
+						}`}
 					>
 						<Link href={item.path}>{item.label}</Link>
 					</li>

@@ -10,7 +10,6 @@ import { useSignUpMutation, useLoginMutation } from "@/redux/api/auth.api";
 import { useAppDispatch } from "@/redux/hooks";
 import { setCredentials } from "@/redux/slice/authSlice";
 
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -50,11 +49,19 @@ export default function SignupForm() {
 	return (
 		<div className="min-w-[400px] mt-5">
 			<TMForm onSubmit={handleSubmit}>
-				<TMInput name="name" label="Full name" />
-				<TMInput name="email" type="email" label="Email" />
-				<TMInput name="password" type="password" label="Password" />
+				<TMInput name="name" placeholder="Full name" />
+				<TMInput
+					name="email"
+					type="email"
+					placeholder="Email address"
+				/>
+				<TMInput
+					name="password"
+					type="password"
+					placeholder="Password"
+				/>
 				<SubmitBtn loading={isLoading} className="btn btn-primary">
-					Sign up
+					Register
 				</SubmitBtn>
 				<div className="mt-5">
 					<p>

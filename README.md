@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TripMate 🚀
 
-## Getting Started
+A user-friendly platform where travelers can create trips, request for trip mates, manage trips, and share reviews. The platform provides features for users to manage their trips seamlessly from a personal dashboard.
 
-First, run the development server:
+# Features ✨
+
+#### Common Features
+
+    - Explore Popular Trips
+    - Discover the most popular trips based on ratings and user reviews.
+    - Browse the latest trips added to the platform.
+
+#### User Features 🧑‍💻
+
+**1. Dashboard Management**
+
+    - Users can manage their trips: create, edit, and delete.
+    - View and respond to incoming trip-mate requests.
+    - Track outgoing requests sent to join other trips.
+    - Update personal profile information.
+    - Share trip reviews and ratings after completion.
+
+**2. Advanced Filtering Options**
+
+    - Filter by Destination: Explore trips by continent or specific destinations.
+    -Filter by Title or Price Range: Narrow down trips based on a title keyword and minimum-maximum price ranges.
+
+**3. Sorting**
+
+-   Sort trips by:
+    -   Title (alphabetical order)
+    -   CreatedAt (recently added trips)
+    -   Price (ascending/descending)
+    -   Rating (user reviews)
+    -   Freshly Added Trips
+
+**4. Pagination**
+
+-   Optimized page navigation for a seamless user experience.
+
+#### Admin Features 🔑
+
+**1. Trip and Review Management** - Admins can view, edit, or delete all trips and user reviews.
+
+**2. Destination Management** - Only admins can create, update, or delete official destinations.
+
+**3. User Overview** - View all registered users and manage their activities.
+
+**4. Admin Profile Update** - Admins can update their personal profile information.
+
+**5. Overall Dashboard Overview** - Access a complete overview of trips, reviews, and user activities.
+
+## Tech Stack 🛠️
+
+-   Frontend: Next.js, TypeScript, TailwindCSS
+-   Backend: Node.js, Express.js
+-   Database: MongoDB with Mongoose
+-   State Management: Redux Toolkit
+-   Authentication: JWT
+-   Authorization: Role-based access control (RBAC)
+-   Pagination & Filtering: Efficient API querying
+-   Deployment: Vercel
+
+## Installation ⚙️
+
+Follow these steps to set up the project locally:
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    git clone https://github.com/NiharMondal/trip-mate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project folder:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    cd trip-mate
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Install dependencies:
 
-## Learn More
+```bash
+    npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Set up environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   Create a **.env.local** file in the root directory.
+-   Add the required environment variables:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+    NEXT_PUBLIC_BACKEND_URL = "http://localhost:5000/api/v1"
+```
 
-## Deploy on Vercel
+5. Start the development server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+    npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Access the app at http://localhost:3000.
+
+## Screenshots 📸
+
+**Home Page**
+
+**User Dashboard**
+Screenshot of trip management, incoming/outgoing requests, and reviews.
+
+**Admin Dashboard**
+Screenshot showing admin access to manage trips, users, and destinations.

@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
 	}
 
 	if (cookie && path === "/login") {
-		if (user?.role === "admin" || "superadmin") {
+		if (user?.role === "admin") {
 			return NextResponse.redirect(
 				new URL("/dashboard/admin", request.url)
 			);
@@ -22,7 +22,7 @@ export function middleware(request: NextRequest) {
 			return NextResponse.redirect(new URL("/dashboard", request.url));
 		}
 	}
-	
+
 	if (cookie && user?.role === "admin" && path === "/dashboard") {
 		return NextResponse.redirect(new URL("/", request.url));
 	}

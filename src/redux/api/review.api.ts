@@ -13,19 +13,19 @@ const reviewApi = baseApi.injectEndpoints({
 				method: "POST",
 				body: payload,
 			}),
+			invalidatesTags: ["review"],
 		}),
 
-		getReview: builder.query<
-			TResponseFromServer<TReviewsResponse[]>,
-			void
-		>({
-			query: () => ({
-				url: "/review",
-				method: "GET",
-			}),
-		}),
+		getReview: builder.query<TResponseFromServer<TReviewsResponse[]>, void>(
+			{
+				query: () => ({
+					url: "/review",
+					method: "GET",
+				}),
+				providesTags: ["review"],
+			}
+		),
 	}),
 });
 
-
-export const {useGetReviewQuery, useGiveReviewMutation} = reviewApi;
+export const { useGetReviewQuery, useGiveReviewMutation } = reviewApi;

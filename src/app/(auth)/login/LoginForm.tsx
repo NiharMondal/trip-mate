@@ -44,8 +44,16 @@ export default function LoginForm() {
 	return (
 		<div className="min-w-[400px] mt-5">
 			<TMForm onSubmit={handleSubmit}>
-				<TMInput name="email" type="email" label="Email" />
-				<TMInput name="password" type="password" label="Password" />
+				<TMInput
+					name="email"
+					type="email"
+					placeholder="Your email address"
+				/>
+				<TMInput
+					name="password"
+					type="password"
+					placeholder="Password"
+				/>
 				<SubmitBtn loading={isLoading} className="btn btn-primary">
 					Login
 				</SubmitBtn>
