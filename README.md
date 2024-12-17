@@ -114,8 +114,38 @@ Follow these steps to set up the project locally:
 
 **Home Page**
 ![preview](public/preview/home-page.png)
+
 **User Dashboard**
 ![preview](public/preview/user-dashboard.png)
 
 **Admin Dashboard**
 ![preview](public/preview/admin-dashboard.png)
+
+### How to Contribute 🤝
+
+Contributions are welcome! Follow these steps:
+
+**1. Fork the project.**
+**2. Create a new branch:**
+
+```bash
+    git checkout -b feature/your-feature-name
+```
+
+**3. Commit your changes:**
+
+```bash
+    git commit -m "Add some feature"
+```
+
+**4. Push the branch:**
+
+```bash
+    git push origin feature/your-feature-name
+```
+
+**5. Open a Pull Request.**
+
+### License 📝
+
+This project is licensed under the MIT License.
