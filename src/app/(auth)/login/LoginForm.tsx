@@ -1,60 +1,71 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { userLogin } from "@/actions/auth";
 
 import SubmitBtn from "@/components/@ui/SubmitBtn";
-import TMForm from "@/components/form/TMForm";
-import TMInput from "@/components/form/TMInput";
-
 import { decodeToken } from "@/helpers/decodeToken";
-import { useLoginMutation } from "@/redux/api/auth.api";
 import { useAppDispatch } from "@/redux/hooks";
 import { setCredentials } from "@/redux/slice/authSlice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function LoginForm() {
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const [login, { isLoading }] = useLoginMutation();
+	const [loading, setLoading] = useState(false);
 
-	const handleSubmit: SubmitHandler<FieldValues> = async (data) => {
+	const handleLogin = async (formData: FormData) => {
+		setLoading(true); // Start loading
 		try {
-			const response = await login(data).unwrap();
-			if (response.success) {
-				const token = response?.result?.accessToken;
-				const user: any = decodeToken(token);
+			const res = await userLogin(formData);
 
-				dispatch(setCredentials({ user: user, token: token }));
-
+			if (res.success) {
+				const user: any = decodeToken(res?.result?.accessToken);
 				toast.success("Logged in successfully");
-				if (user?.role === "admin") {
+				dispatch(
+					setCredentials({
+						user: user,
+						token: res?.result?.accessToken,
+					})
+				);
+				if (user.role === "admin") {
 					router.push("/dashboard/admin");
 				} else {
 					router.push("/dashboard");
 				}
+			} else {
+				toast.error("Invalid credentials!");
 			}
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error: any) {
-			toast.error(error?.data?.message);
+			toast.error("Something went wrong!");
+		} finally {
+			setLoading(false); // Stop loading
 		}
 	};
+
 	return (
 		<div className="min-w-[400px] mt-5">
-			<TMForm onSubmit={handleSubmit}>
-				<TMInput
-					name="email"
+			<form
+				action={(formData) => handleLogin(formData)}
+				className="flex flex-col gap-y-8"
+			>
+				<input
 					type="email"
+					name="email"
 					placeholder="Your email address"
+					className="p-2 outline-none ring-1 ring-secondary w-full rounded"
 				/>
-				<TMInput
-					name="password"
+				<input
 					type="password"
-					placeholder="Password"
+					name="password"
+					placeholder="Type your password"
+					className="p-2 outline-none ring-1 ring-secondary w-full rounded"
 				/>
-				<SubmitBtn loading={isLoading} className="btn btn-primary">
+				<SubmitBtn loading={loading} className="btn btn-primary">
 					Login
 				</SubmitBtn>
 				<div className="mt-5">
@@ -68,7 +79,7 @@ export default function LoginForm() {
 						</Link>
 					</p>
 				</div>
-			</TMForm>
+			</form>
 		</div>
 	);
 }

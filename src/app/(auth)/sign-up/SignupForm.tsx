@@ -5,11 +5,7 @@ import SubmitBtn from "@/components/@ui/SubmitBtn";
 import TMForm from "@/components/form/TMForm";
 import TMInput from "@/components/form/TMInput";
 
-import { decodeToken } from "@/helpers/decodeToken";
-import { useSignUpMutation, useLoginMutation } from "@/redux/api/auth.api";
-import { useAppDispatch } from "@/redux/hooks";
-import { setCredentials } from "@/redux/slice/authSlice";
-
+import { useSignUpMutation } from "@/redux/api/auth.api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -17,30 +13,15 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function SignupForm() {
-	const dispatch = useAppDispatch();
 	const router = useRouter();
-	const [signUp] = useSignUpMutation();
-	const [login, { isLoading }] = useLoginMutation();
+	const [signUp, { isLoading }] = useSignUpMutation();
 
 	const handleSubmit: SubmitHandler<FieldValues> = async (values) => {
 		try {
 			const res = await signUp(values).unwrap();
 			if (res.success) {
-				const data = await login({
-					email: values.email,
-					password: values.password,
-				}).unwrap();
-				const token = data?.result?.accessToken;
-				const user: any = decodeToken(token);
-
-				dispatch(setCredentials({ user: user, token: token }));
-
 				toast.success("Account created successfully");
-				if (user?.role === "admin") {
-					router.push("/dashboard/admin");
-				} else {
-					router.push("/dashboard");
-				}
+				router.push("/login");
 			}
 		} catch (error: any) {
 			toast.error(error?.data?.message);
