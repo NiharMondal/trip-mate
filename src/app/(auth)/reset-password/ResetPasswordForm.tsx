@@ -7,13 +7,20 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-export default function ResetPasswordForm() {
+export default function ResetPasswordForm({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
 	const router = useRouter();
 	const [resetPassword, { isLoading }] = useResetPasswordMutation();
 	const { register, handleSubmit } = useForm<TResetPasswordRequest>();
 	const onSubmit: SubmitHandler<TResetPasswordRequest> = async (data) => {
 		try {
-			const res = await resetPassword(data).unwrap();
+			const res = await resetPassword({
+				payload: data,
+				searchParams: searchParams,
+			}).unwrap();
 
 			if (res.success) {
 				toast.success("Successfully reseted your password");

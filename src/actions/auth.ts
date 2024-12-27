@@ -23,11 +23,11 @@ export const userLogin = async (formData: FormData) => {
 	const data = await res.json();
 
 	cookies().set("tm", data?.result?.accessToken, {
-		httpOnly: true,
-		secure: true,
-		domain: "/",
+		secure: process.env.NODE_ENV ? true : false,
+		httpOnly: process.env.NODE_ENV ? true : false,
 		sameSite: "lax",
 		maxAge: 60 * 60 * 24 * 3,
+		path: "/",
 	});
 
 	return data;
