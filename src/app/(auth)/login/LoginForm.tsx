@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-
 import { userLogin } from "@/actions/auth";
 
 import SubmitBtn from "@/components/@ui/SubmitBtn";
@@ -18,8 +17,8 @@ export default function LoginForm() {
 	const [loading, setLoading] = useState(false);
 
 	const handleLogin = async (formData: FormData) => {
-		setLoading(true); // Start loading
 		try {
+			setLoading(true); // Start loading
 			const res = await userLogin(formData);
 
 			if (res.success) {
@@ -42,6 +41,7 @@ export default function LoginForm() {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error: any) {
 			toast.error("Something went wrong!");
+			setLoading(false); // Stop loading
 		} finally {
 			setLoading(false); // Stop loading
 		}
@@ -68,7 +68,7 @@ export default function LoginForm() {
 				<SubmitBtn loading={loading} className="btn btn-primary">
 					Login
 				</SubmitBtn>
-				<div className="mt-5">
+				<div className=" space-y-2">
 					<p>
 						Don&apos;t have an account?{" "}
 						<Link
@@ -76,6 +76,14 @@ export default function LoginForm() {
 							className="text-primary hover:underline geist-sans"
 						>
 							Create one
+						</Link>
+					</p>
+					<p>
+						<Link
+							href={"/forgot-password"}
+							className="text-sm font-semibold hover:underline"
+						>
+							Forgot your password?
 						</Link>
 					</p>
 				</div>

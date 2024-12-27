@@ -21,7 +21,14 @@ export const userLogin = async (formData: FormData) => {
 		return { success: false, message: "Invalid credentials" };
 	}
 	const data = await res.json();
-	cookies().set("tm", data?.result?.accessToken);
+
+	cookies().set("tm", data?.result?.accessToken, {
+		httpOnly: true,
+		secure: true,
+		domain: "/",
+		sameSite: "lax",
+		maxAge: 60 * 60 * 24 * 3,
+	});
 
 	return data;
 };

@@ -135,3 +135,8 @@ export type TChangePassword = {
 	newPassword: string;
 	confirmPassword: string;
 };
+
+export type TResetPasswordRequest = {
+	password: string;
+	confirmPassword: string;
+};
