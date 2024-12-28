@@ -87,4 +87,9 @@ body {
 	.bg_darken {
 		@apply absolute inset-0 bg-black/30 group-hover:bg-black/70 duration-200;
 	}
+
+	.registration_form .f_label,
+	.login_form .f_label {
+		@apply text-gray-700;
+	}
 }

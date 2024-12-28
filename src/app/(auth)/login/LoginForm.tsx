@@ -1,27 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { userLogin } from "@/actions/auth";
 
+import { setCookie } from "@/actions/auth";
 import SubmitBtn from "@/components/@ui/SubmitBtn";
+import TMForm from "@/components/form/TMForm";
+import TMInput from "@/components/form/TMInput";
 import { decodeToken } from "@/helpers/decodeToken";
+import { useLoginMutation } from "@/redux/api/auth.api";
 import { useAppDispatch } from "@/redux/hooks";
 import { setCredentials } from "@/redux/slice/authSlice";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function LoginForm() {
 	const router = useRouter();
+	const [login, { isLoading }] = useLoginMutation();
 	const dispatch = useAppDispatch();
-	const [loading, setLoading] = useState(false);
 
-	const handleLogin = async (formData: FormData) => {
+	const handleLogin: SubmitHandler<FieldValues> = async (data) => {
 		try {
-			setLoading(true); // Start loading
-			const res = await userLogin(formData);
+			const res = await login(data).unwrap();
 
 			if (res.success) {
+				setCookie(res?.result?.accessToken);
 				const user: any = decodeToken(res?.result?.accessToken);
 				toast.success("Logged in successfully");
 				dispatch(
@@ -41,53 +44,38 @@ export default function LoginForm() {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error: any) {
 			toast.error("Something went wrong!");
-			setLoading(false); // Stop loading
-		} finally {
-			setLoading(false); // Stop loading
 		}
 	};
 
 	return (
-		<div className="min-w-[400px] mt-5">
-			<form
-				action={(formData) => handleLogin(formData)}
-				className="flex flex-col gap-y-8"
-			>
-				<input
-					type="email"
-					name="email"
-					placeholder="Your email address"
-					className="p-2 outline-none ring-1 ring-secondary w-full rounded"
-				/>
-				<input
-					type="password"
-					name="password"
-					placeholder="Type your password"
-					className="p-2 outline-none ring-1 ring-secondary w-full rounded"
-				/>
-				<SubmitBtn loading={loading} className="btn btn-primary">
+		<div className="min-w-[400px] mt-5 login_form">
+			<TMForm onSubmit={handleLogin}>
+				<TMInput name="email" label="Email" type="email" />
+				<TMInput name="password" label="Password" type="password" />
+
+				<SubmitBtn className="bg-primary" loading={isLoading}>
 					Login
 				</SubmitBtn>
-				<div className=" space-y-2">
-					<p>
-						Don&apos;t have an account?{" "}
-						<Link
-							href="/sign-up"
-							className="text-primary hover:underline geist-sans"
-						>
-							Create one
-						</Link>
-					</p>
-					<p>
-						<Link
-							href={"/forgot-password"}
-							className="text-sm font-semibold hover:underline"
-						>
-							Forgot your password?
-						</Link>
-					</p>
-				</div>
-			</form>
+			</TMForm>
+			<div className=" space-y-2 mt-5">
+				<p>
+					Don&apos;t have an account?{" "}
+					<Link
+						href="/sign-up"
+						className="text-primary hover:underline geist-sans"
+					>
+						Create one
+					</Link>
+				</p>
+				<p>
+					<Link
+						href={"/forgot-password"}
+						className="text-sm font-semibold hover:underline"
+					>
+						Forgot your password?
+					</Link>
+				</p>
+			</div>
 		</div>
 	);
 }

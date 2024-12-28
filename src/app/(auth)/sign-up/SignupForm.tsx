@@ -28,21 +28,27 @@ export default function SignupForm() {
 		}
 	};
 	return (
-		<div className="min-w-[400px] mt-5">
+		<div className="min-w-[400px] mt-5 registration_form">
 			<TMForm onSubmit={handleSubmit}>
-				<TMInput name="name" placeholder="Full name" />
+				<TMInput
+					name="name"
+					placeholder="Full name"
+					label="Full name"
+				/>
 				<TMInput
 					name="email"
 					type="email"
 					placeholder="Email address"
+					label="Email"
 				/>
 				<TMInput
 					name="password"
 					type="password"
 					placeholder="Password"
+					label="Password"
 				/>
 				<SubmitBtn loading={isLoading} className="btn btn-primary">
-					Register
+					Create Account
 				</SubmitBtn>
 				<div className="mt-5">
 					<p>
