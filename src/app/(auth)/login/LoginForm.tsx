@@ -24,8 +24,8 @@ export default function LoginForm() {
 			const res = await login(data).unwrap();
 
 			if (res.success) {
-				setCookie(res?.result?.accessToken);
 				const user: any = decodeToken(res?.result?.accessToken);
+				setCookie(res?.result?.accessToken);
 				toast.success("Logged in successfully");
 				dispatch(
 					setCredentials({
@@ -33,11 +33,7 @@ export default function LoginForm() {
 						token: res?.result?.accessToken,
 					})
 				);
-				if (user.role === "admin") {
-					router.push("/dashboard/admin");
-				} else {
-					router.push("/dashboard");
-				}
+				router.push("/");
 			} else {
 				toast.error("Invalid credentials!");
 			}
