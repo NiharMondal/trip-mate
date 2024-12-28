@@ -19,7 +19,11 @@ export default function TMInput({
 	const { control } = useFormContext();
 	return (
 		<div className="space-y-2 mb-5">
-			<p className="text-white">{label ? label : null}</p>
+			{label && (
+				<label htmlFor={name} className="text-white f_label">
+					{label}
+				</label>
+			)}
 			<Controller
 				control={control}
 				name={name}
@@ -27,7 +31,7 @@ export default function TMInput({
 					<input
 						{...field}
 						type={type}
-						className="p-2 outline-none ring-1 ring-secondary w-full rounded"
+						className="w-full outline-none p-2 ring-1 focus:ring-primary rounded-md"
 						placeholder={placeholder}
 						onChange={field.onChange}
 						disabled={disabled}
