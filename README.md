@@ -2,6 +2,8 @@
 
 A user-friendly platform where travelers can create trips, request for trip mates, manage trips, and share reviews. The platform provides features for users to manage their trips seamlessly from a personal dashboard.
 
+Here is the link of backend code - **[Trip Mate Backend Link](https://github.com/NiharMondal/trip-mate-backend)**
+
 # Features ✨
 
 #### Common Features
@@ -9,6 +11,7 @@ A user-friendly platform where travelers can create trips, request for trip mate
 -   Explore Popular Trips
 -   Discover the most popular trips based on ratings and user reviews.
 -   Browse the latest trips added to the platform.
+-   See all trips but when you logged in you will not see your created trip in the trip list. Becase you are the host. Surely you will not sent buddy request on your own trip. 😍
 
 #### User Features 🧑‍💻
 
