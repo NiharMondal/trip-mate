@@ -11,11 +11,7 @@ import { useCreateTripMutation } from "@/redux/api/trip.api";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-type TDestinationResponse = {
-	_id: string;
-	destination: string;
-	slug: string;
-};
+
 export default function CreateTrip() {
 	const { user } = useFetchUser();
 	const query: Record<string, string> = {};
@@ -37,7 +33,7 @@ export default function CreateTrip() {
 		data.user = user?.id;
 		data.budget = Number(data.budget);
 		data.maxGuests = Number(data.maxGuests);
-		console.log(data)
+		console.log(data);
 		try {
 			const res = await createTrip(data).unwrap();
 			if (res.success) {
@@ -51,53 +47,58 @@ export default function CreateTrip() {
 	};
 
 	return (
-		<div className="p-5">
+		<>
 			<button className="text-gray-700 btn btn-secondary" onClick={open}>
 				Create new trip
 			</button>
+			<div className="p-5">
+				<FullModal isOpen={isOpen} close={close}>
+					<TMForm onSubmit={handleSubmit}>
+						<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 modal_label">
+							<TMInput name="title" label="Title" />
+							<TMInput name="from" label="From" />
+							<TMSelect
+								name="destination"
+								label="Select destination"
+								data={destinations?.result}
+							></TMSelect>
+							<TMInput
+								name="photo"
+								label="Photo url"
+								placeholder="https://unsplash.com/photos/shallow-focus-photography"
+							/>
 
-			<FullModal isOpen={isOpen} close={close}>
-				<TMForm onSubmit={handleSubmit}>
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
-						<TMInput name="title" label="Title" />
-						<TMInput name="from" label="From" />
-						<TMSelect name="destination" label="Select destination">
-							{destinations?.result?.map(
-								(value: TDestinationResponse) => (
-									<option key={value._id} value={value.slug}>
-										{value.destination}
-									</option>
-								)
-							)}
-						</TMSelect>
-						<TMInput
-							name="photo"
-							label="Photo url"
-							placeholder="https://unsplash.com/photos/shallow-focus-photography"
+							<TMInput
+								name="startDate"
+								label="Start date"
+								type="date"
+							/>
+							<TMInput
+								name="endDate"
+								label="End date"
+								type="date"
+							/>
+							<TMInput
+								name="budget"
+								label="Price"
+								type="number"
+							/>
+							<TMInput
+								name="maxGuests"
+								label="Max Guests"
+								type="number"
+							/>
+						</div>
+						<TMTextArea
+							name="details"
+							label="Write details"
+							placeholder="Give some information about this trip..."
 						/>
 
-						<TMInput
-							name="startDate"
-							label="Start date"
-							type="date"
-						/>
-						<TMInput name="endDate" label="End date" type="date" />
-						<TMInput name="budget" label="Price" type="number" />
-						<TMInput
-							name="maxGuests"
-							label="Max Guests"
-							type="number"
-						/>
-					</div>
-					<TMTextArea
-						name="details"
-						label="Write details"
-						placeholder="Give some information about this trip..."
-					/>
-
-					<SubmitBtn loading={isLoading}>Create Trip</SubmitBtn>
-				</TMForm>
-			</FullModal>
-		</div>
+						<SubmitBtn loading={isLoading}>Create Trip</SubmitBtn>
+					</TMForm>
+				</FullModal>
+			</div>
+		</>
 	);
 }

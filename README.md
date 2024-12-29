@@ -6,6 +6,12 @@ Here is the link of backend code - **[Trip Mate Backend Link](https://github.com
 
 # Features ✨
 
+**Exclusive**
+
+-   Change your password
+-   Reset your password if you forgot password. For that you will need a email address that belongs to you.
+-   Update your profile.
+
 #### Common Features
 
 -   Explore Popular Trips

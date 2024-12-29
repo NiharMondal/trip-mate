@@ -15,7 +15,9 @@ export default function SortComponent({
 	};
 	return (
 		<div className="space-y-5">
-			<h4 className="font-semibold heading">{totalCount} Result Found</h4>
+			<h4 className="font-semibold heading">
+				Total {totalCount} Trips Found
+			</h4>
 			<div className="flex items-center gap-x-4">
 				<p>Sort By</p>
 				<select
@@ -24,7 +26,8 @@ export default function SortComponent({
 					id="sortBy"
 					className="outline-none p-3 border rounded sm:min-w-[200px]"
 				>
-					<option selected>createdAt</option>
+					<option>Sort By</option>
+					<option value="createdAt">Created At</option>
 					<option value="title">Title</option>
 					<option value="budget">Price</option>
 					<option value="rating">Rating</option>
@@ -36,6 +39,7 @@ export default function SortComponent({
 					id="order"
 					className="outline-none p-3 border rounded sm:min-w-[200px]"
 				>
+					<option>Sort Order</option>
 					<option value="asc">Ascending</option>
 					<option value="desc">Decending</option>
 				</select>

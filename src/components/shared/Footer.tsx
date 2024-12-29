@@ -18,7 +18,7 @@ export default function Footer() {
 					</p>
 				</div>
 				<div>
-					<h3 className="heading">Contact</h3>
+					<h3 className="text-2xl heading">Contact</h3>
 					<div className="mt-6 space-y-3">
 						<p>
 							Telephone:{" "}
@@ -36,7 +36,7 @@ export default function Footer() {
 					</div>
 				</div>
 				<div>
-					<h3 className="heading">Useful Links</h3>
+					<h3 className="text-2xl heading">Useful Links</h3>
 					<ul className="mt-6 space-y-3">
 						<li>
 							<a href="/">Home</a>
@@ -53,7 +53,7 @@ export default function Footer() {
 					</ul>
 				</div>
 				<div>
-					<h3 className="heading">Pay Safely with us</h3>
+					<h3 className="text-2xl heading">Pay Safely with us</h3>
 					<div className="mt-6 space-y-3">
 						<p>
 							The payment is encrypted and transmitted securely

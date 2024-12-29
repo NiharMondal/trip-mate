@@ -20,7 +20,7 @@ export default function TMInput({
 	return (
 		<div className="space-y-2 mb-5">
 			{label && (
-				<label htmlFor={name} className="text-white f_label">
+				<label htmlFor={name} className="text-gray-700 f_label">
 					{label}
 				</label>
 			)}
@@ -31,6 +31,7 @@ export default function TMInput({
 					<input
 						{...field}
 						type={type}
+						id={name}
 						className="w-full outline-none p-2 ring-1 focus:ring-primary rounded-md"
 						placeholder={placeholder}
 						onChange={field.onChange}

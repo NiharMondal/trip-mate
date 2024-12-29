@@ -11,11 +11,7 @@ import { useTripByIdQuery, useUpdateTripMutation } from "@/redux/api/trip.api";
 import React, { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "react-toastify";
-type TDestinationResponse = {
-	_id: string;
-	destination: string;
-	slug: string;
-};
+
 export default function UpdateTrip({ tripId }: { tripId: string }) {
 	const { data: tripDetails } = useTripByIdQuery(tripId);
 	const query: Record<string, string> = {};
@@ -67,18 +63,14 @@ export default function UpdateTrip({ tripId }: { tripId: string }) {
 			</span>
 			<FullModal isOpen={isOpen} close={close}>
 				<TMForm onSubmit={handleUpdate} defaultValues={defaultValues}>
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2">
+					<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-2 modal_label">
 						<TMInput name="title" label="Title" />
 						<TMInput name="from" label="From" />
-						<TMSelect name="destination" label="Select destination">
-							{destinations?.result?.map(
-								(value: TDestinationResponse) => (
-									<option key={value._id} value={value.slug}>
-										{value.destination}
-									</option>
-								)
-							)}
-						</TMSelect>
+						<TMSelect
+							name="destination"
+							label="Select destination"
+							data={destinations?.result}
+						/>
 						<TMInput
 							name="photo"
 							label="Photo url"

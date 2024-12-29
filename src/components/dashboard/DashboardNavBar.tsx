@@ -16,7 +16,6 @@ export default function DashboardNavBar({
 	toggle,
 }: DashboardNavBarProps) {
 	const path = usePathname();
-	console.log(path);
 	const { user } = useFetchUser();
 	const roleBasedRoutes = MENU_ITEMS[(user?.role as "user") || "admin"] || [];
 
