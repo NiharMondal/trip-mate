@@ -15,7 +15,7 @@ body {
 
 @layer base {
 	h1 {
-		@apply text-[3rem] md:text-[3.5rem];
+		@apply text-4xl md:text-5xl xl:text-6xl font-semibold ;
 	}
 	h2 {
 		@apply text-[2rem] md:text-[2.5rem];
@@ -92,4 +92,92 @@ body {
 	 {
 		@apply text-white;
 	}
+
+	
+	
+}
+
+
+/* Positioning container */
+.swiper-container-wrapper {
+	position: relative;
+	padding-left: 60px;
+   /* space for left-side bullets */
+}
+			
+@media (max-width: 768px) {
+	.swiper-container-wrapper {
+		padding-left: 0;
+		padding-bottom: 80px;
+	}
+}
+.custom-swiper{
+	
+	padding-top: 50px;
+}
+/* Custom bullet container */
+.custom-swiper .swiper-pagination {
+	display: flex !important;
+	flex-direction: column !important;
+	gap: 20px;
+	position: absolute !important;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%) !important;
+	z-index: 10;
+}
+			
+@media (max-width: 768px) {
+	.custom-swiper .swiper-pagination {
+		flex-direction: row;
+		bottom: 10px;
+		top: auto;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+			
+/* Bullets like screenshot */
+.custom-bullet {
+	width: 40px !important;
+	height: 40px !important;
+	border-radius: 50%;
+	background-color: white;
+	color: #ff6600;
+	font-weight: bold;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	position: relative;
+	
+	
+	z-index: 1;
+}
+/* Connector line effect using ::before and ::after */
+.custom-bullet::before,
+.custom-bullet::after {
+	content: "";
+	position: absolute;
+	width: 4px;
+	height: 20px;
+	background-color: #ff6600;
+	left: 50%;
+	transform: translateX(-50%);
+	/* z-index: 0; */
+}
+.custom-bullet::before {
+	top: -20px;
+}
+.custom-bullet::after {
+	bottom: -20px;
+}
+/* Active state styling */
+.swiper-pagination-bullet-active.custom-bullet {
+	background-color: #ff6600;
+	color: white;
+}
+/* Remove line for first and last bullets */
+.custom-bullet:first-child::before,
+.custom-bullet:last-child::after {
+	display: none;
 }

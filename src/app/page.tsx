@@ -11,7 +11,7 @@ import Navbar from "@/components/shared/Navbar";
 
 export default function Home() {
 	return (
-		<section className="space-y-20">
+		<>
 			<Navbar />
 			<Banner />
 			<TopDestination />
@@ -20,6 +20,6 @@ export default function Home() {
 			<HighlightSection />
 			<WebsiteOverview />
 			<Footer />
-		</section>
+		</>
 	);
 }
