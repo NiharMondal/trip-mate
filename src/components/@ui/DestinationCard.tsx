@@ -14,15 +14,17 @@ export default function DestinationCard({
 }: DestinationCardProps) {
 	return (
 		<div
-			className={`relative rounded-xl overflow-hidden group h-[260px] bg-black ${height}`}
+			className={`relative rounded-xl overflow-hidden group h-[260px] bg-black group ${height}`}
 		>
-			<Image
-				src={data?.thumbnail}
-				width={400}
-				height={500}
-				alt={data.destination}
-				className="h-full w-full object-cover object-center"
-			/>
+			<div className="overflow-hidden h-full">
+				<Image
+					src={data?.thumbnail}
+					width={400}
+					height={500}
+					alt={data.destination}
+					className="h-full w-full object-cover object-center group-hover:scale-110 duration-300"
+				/>
+			</div>
 			<div className="absolute top-3 right-3 px-4 py-2 bg-primary text-white rounded-md z-20">
 				<p className="font-semibold text-sm">
 					{data.trips?.length} tours

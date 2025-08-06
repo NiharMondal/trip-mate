@@ -92,92 +92,57 @@ body {
 	 {
 		@apply text-white;
 	}
-
 	
+	.image-spin{
+		animation: spin_image 30s infinite forwards linear;
+	}
 	
-}
-
-
-/* Positioning container */
-.swiper-container-wrapper {
-	position: relative;
-	padding-left: 60px;
-   /* space for left-side bullets */
-}
-			
-@media (max-width: 768px) {
-	.swiper-container-wrapper {
-		padding-left: 0;
-		padding-bottom: 80px;
+	@keyframes spin_image {
+		from {
+			transform: rotate(0deg);
+			transform-origin: center;
+	
+		}
+		to {
+			transform: rotate(360deg);
+			transform-origin: center;
+		}
 	}
 }
-.custom-swiper{
-	
-	padding-top: 50px;
-}
-/* Custom bullet container */
-.custom-swiper .swiper-pagination {
-	display: flex !important;
-	flex-direction: column !important;
+/**Swiper pagination customization */
+.mySwiper .swiper-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	gap: 20px;
-	position: absolute !important;
-	left: 10px;
-	top: 50%;
-	transform: translateY(-50%) !important;
-	z-index: 10;
+	z-index: 20;
 }
-			
-@media (max-width: 768px) {
-	.custom-swiper .swiper-pagination {
-		flex-direction: row;
-		bottom: 10px;
-		top: auto;
-		left: 50%;
-		transform: translateX(-50%);
+@media (min-width: 768px) {
+	.mySwiper .swiper-pagination {
+		position: absolute;
+		bottom:  -20px;
 	}
 }
-			
-/* Bullets like screenshot */
-.custom-bullet {
-	width: 40px !important;
-	height: 40px !important;
-	border-radius: 50%;
-	background-color: white;
-	color: #ff6600;
-	font-weight: bold;
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	position: relative;
-	
-	
+.swiper-pagination .custom-bullet  {
+	width: 40px ;
+	height: 40px ;
+	border-radius: 50% ;
+	background-color: black ;
+	color: white ;
+	font-weight: bold ;
+	display: flex ;
+	align-items: center ;
+	justify-content: center ;
+	position: relative ;
+	bottom: 0 ;
 	z-index: 1;
 }
-/* Connector line effect using ::before and ::after */
-.custom-bullet::before,
-.custom-bullet::after {
-	content: "";
-	position: absolute;
-	width: 4px;
-	height: 20px;
-	background-color: #ff6600;
-	left: 50%;
-	transform: translateX(-50%);
-	/* z-index: 0; */
-}
-.custom-bullet::before {
-	top: -20px;
-}
-.custom-bullet::after {
-	bottom: -20px;
-}
-/* Active state styling */
+
 .swiper-pagination-bullet-active.custom-bullet {
-	background-color: #ff6600;
-	color: white;
+	background-color: #ff6600 !important;
+	color: white !important;
 }
-/* Remove line for first and last bullets */
-.custom-bullet:first-child::before,
-.custom-bullet:last-child::after {
-	display: none;
-}
+
+
+
+

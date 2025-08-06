@@ -9,64 +9,72 @@ import { Navigation, Autoplay } from "swiper/modules";
 import { useGetPopularTripQuery } from "@/redux/api/trip.api";
 import { Swiper as SwiperInstance } from "swiper/types";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
+import Image from "next/image";
 
-
-
-export default  function PopularTour() {
+export default function PopularTour() {
 	const { data } = useGetPopularTripQuery();
-	
+
 	const swiperRef = useRef<SwiperInstance | null>(null);
 
-
 	return (
-		<div className="max-w-7xl mx-auto px-5">
-			<SectionHeading text1="Popular" text2="Tours" />
-			{!data?.result && <p>No data found!</p>}
-
-			<div className="flex justify-end items-center gap-x-6 mt-20 text-white">
-				<button
-					className="size-[56px] p-4 bg-primary rounded-full"
-					onClick={() => swiperRef.current?.slidePrev()}
-				>
-					<FaArrowLeftLong className="size-6" />
-				</button>
-				<button
-					className="size-[56px] p-4 bg-primary rounded-full"
-					onClick={() => swiperRef.current?.slideNext()}
-				>
-					<FaArrowRightLong className="size-6" />
-				</button>
+		<section className="relative bg-[url('/images/section-bg.png')] overflow-hidden">
+			<div className=" hidden lg:block absolute -bottom-4 left-4 size-[150px]">
+				<Image
+					src={"/images/dot.png"}
+					height={200}
+					width={200}
+					alt="dot-png"
+					className="-z-20 w-full h-full object-cover object-center  animate-bounce"
+				/>
 			</div>
-			<Swiper
-				className="mt-5 rounded-xl overflow-hidden"
-				
-				modules={[Navigation, Autoplay]}
-				slidesPerView={3}
-				spaceBetween={30}
-				navigation={{
-					prevEl: ".swiper-button-prev",
-					nextEl: ".swiper-button-next",
-				}}
-				autoplay={{
-					delay: 9000,
-					disableOnInteraction: false,
-				}}
-				onSwiper={(swiper) => (swiperRef.current = swiper)}
-				breakpoints={{
-					// Responsive breakpoints
-					320: { slidesPerView: 1, spaceBetween: 10 }, // Mobile
-					640: { slidesPerView: 2, spaceBetween: 20 }, // Tablet
-					1024: { slidesPerView: 3, spaceBetween: 30 }, // Desktop
-				}}
-			>
-				{data?.result.map((popularTrip) => (
-					<SwiperSlide key={popularTrip._id}>
-						<PopularTripCard data={popularTrip} />
-					</SwiperSlide>
-				))}
-			</Swiper>
+			<div className="max-w-7xl mx-auto px-5 py-10">
+				<SectionHeading text1="Popular" text2="Tours" />
+				{!data?.result && <p>No data found!</p>}
 
-			<LinkButton href="/tours" title="See more" />
-		</div>
+				<div className="flex justify-end items-center gap-x-6 mt-20 text-white">
+					<button
+						className="size-[56px] p-4 bg-primary rounded-full"
+						onClick={() => swiperRef.current?.slidePrev()}
+					>
+						<FaArrowLeftLong className="size-6" />
+					</button>
+					<button
+						className="size-[56px] p-4 bg-primary rounded-full"
+						onClick={() => swiperRef.current?.slideNext()}
+					>
+						<FaArrowRightLong className="size-6" />
+					</button>
+				</div>
+				<Swiper
+					className="mt-5 rounded-xl overflow-hidden"
+					modules={[Navigation, Autoplay]}
+					slidesPerView={3}
+					spaceBetween={30}
+					navigation={{
+						prevEl: ".swiper-button-prev",
+						nextEl: ".swiper-button-next",
+					}}
+					autoplay={{
+						delay: 9000,
+						disableOnInteraction: false,
+					}}
+					onSwiper={(swiper) => (swiperRef.current = swiper)}
+					breakpoints={{
+						// Responsive breakpoints
+						320: { slidesPerView: 1, spaceBetween: 10 }, // Mobile
+						640: { slidesPerView: 2, spaceBetween: 20 }, // Tablet
+						1024: { slidesPerView: 3, spaceBetween: 30 }, // Desktop
+					}}
+				>
+					{data?.result.map((popularTrip) => (
+						<SwiperSlide key={popularTrip._id}>
+							<PopularTripCard data={popularTrip} />
+						</SwiperSlide>
+					))}
+				</Swiper>
+
+				<LinkButton href="/tours" title="See more" />
+			</div>
+		</section>
 	);
 }

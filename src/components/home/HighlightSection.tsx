@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 export default function HighlightSection() {
 	return (
-		<div className="mx-auto max-w-7xl px-5 ">
+		<div className="mx-auto max-w-7xl px-5 py-10">
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 				<div className="h-[330px] rounded-md beach-bg">
 					<div className="flex flex-col space-y-4 justify-center p-10 h-full z-10 text-white">

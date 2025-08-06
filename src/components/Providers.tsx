@@ -5,17 +5,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 
-//react toastify css
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
-// for rating
-import "@smastrom/react-rating/style.css";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 const persistor = persistStore(store);
 
 const PersistGate = dynamic(
@@ -30,7 +19,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
 				{children}
-				<ToastContainer autoClose={2500} />
 			</PersistGate>
 		</Provider>
 	);

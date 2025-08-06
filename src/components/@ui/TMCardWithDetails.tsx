@@ -16,20 +16,25 @@ export default function TMCardWithDetails({
 }: TMCardWithDetailsProps) {
 	return (
 		<div
-			className={`bg-white rounded-lg shadow-md overflow-hidden ${cardHeight}`}
+			className={`bg-[url('/images/card-bg.png')] rounded-lg shadow-md border border-primary/20 group ${cardHeight}`}
 		>
-			<Link href={`/tours/${trip.slug}`}>
-				<Image
-					alt={trip.slug}
-					src={trip.photo}
-					height={200}
-					width={200}
-					loading="lazy"
-					className={`w-full object-cover object-center ${imageHeight}`}
-				/>
-			</Link>
-			<div className="p-6">
+			<div className="overflow-hidden">
 				<Link href={`/tours/${trip.slug}`}>
+					<Image
+						alt={trip.slug}
+						src={trip.photo}
+						height={200}
+						width={200}
+						loading="lazy"
+						className={`group-hover:scale-110 duration-300 transition-all w-full object-cover object-center ${imageHeight}`}
+					/>
+				</Link>
+			</div>
+			<div className="p-6">
+				<Link
+					href={`/tours/${trip.slug}`}
+					className="group-hover:underline"
+				>
 					<h4 className="text-2xl heading mb-2">{trip.title}</h4>
 				</Link>
 				<div className="inline-flex gap-2 items-center">
