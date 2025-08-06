@@ -27,10 +27,10 @@ export default function Banner() {
 					{heroSlideData.map((item, index) => (
 						<SwiperSlide
 							key={index}
-							className="relative h-full py-10 bg-[url('/images/banner-bg.png')]"
+							className="relative h-full py-10 bg-[url('/images/banner-bg.png')] -z-50"
 						>
 							{/* Absolutely positioned wrapper to overlay */}
-							<div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-between ">
+							<div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-between -z-40">
 								{/* Left text content */}
 								<div className="space-y-6 max-w-xl">
 									<p className="text-xl font-semibold text-orange-500">

@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import useFetchUser from "@/lib/loadUser";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { imageHelpers } from "@/assets/image-helpers";
 type DashboardNavBarProps = {
 	show: boolean;
 	toggle: () => void;
@@ -21,23 +23,37 @@ export default function DashboardNavBar({
 
 	return (
 		<aside
-			className={`lg:relative min-w-[300px] fixed bg-gray-500 min-h-screen  ${
+			className={`lg:relative min-w-[300px] fixed bg-black min-h-screen  ${
 				show ? "" : "hidden lg:block"
 			}`}
 		>
 			<div className="absolute top-4 right-4">
 				<IoCloseSharp
-					className="size-8 cursor-pointer text-gray-800 block lg:hidden"
+					className="size-8 cursor-pointer text-white block lg:hidden"
 					onClick={toggle}
 				/>
 			</div>
-			<ul className="pl-10 pt-10 space-y-4 text-white">
+			<div className="pt-10">
+				<div className="flex items-center justify-center w-full -pl-10">
+					<Link href={"/"}>
+						<Image
+							src={imageHelpers.logo}
+							width={100}
+							height={100}
+							alt="logo"
+						/>
+					</Link>
+				</div>
+			</div>
+			<ul className="mt-10 space-y-2 px-2 text-white">
 				{/* Role-based routes */}
 				{roleBasedRoutes.map((item, index) => (
 					<li
 						key={index}
-						className={`hover:text-accent transition-colors duration-200 cursor-pointer ${
-							path === item.path ? "text-accent" : ""
+						className={`pl-5 py-2 bg-primary/30 hover:text-accent transition-colors duration-200 cursor-pointer rounded-md ${
+							path === item.path
+								? "text-primary font-semibold"
+								: "font-medium"
 						}`}
 					>
 						<Link href={item.path}>{item.label}</Link>
@@ -48,8 +64,10 @@ export default function DashboardNavBar({
 				{COMMON_ITEMS.map((item, index) => (
 					<li
 						key={`common-${index}`}
-						className={`hover:text-accent transition-colors duration-200 cursor-pointer ${
-							path === item.path ? "text-accent" : ""
+						className={`pl-5 py-2 bg-primary/30 hover:text-accent transition-colors duration-200 cursor-pointer rounded-md ${
+							path === item.path
+								? "text-primary font-semibold"
+								: "font-medium"
 						}`}
 					>
 						<Link href={item.path}>{item.label}</Link>

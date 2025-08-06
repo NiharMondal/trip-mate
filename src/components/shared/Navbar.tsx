@@ -7,7 +7,7 @@ import useFetchUser from "@/lib/loadUser";
 import { CiMenuFries } from "react-icons/ci";
 import Image from "next/image";
 import { imageHelpers } from "@/assets/image-helpers";
-import { helpers } from "@/helpers";
+import { navLinks } from "@/helpers";
 import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
 					/>
 				</Link>
 				<ul className="hidden lg:flex items-center gap-[20px] text-[1rem] text-text">
-					{helpers.navlinks.map((nav) => (
+					{navLinks.map((nav) => (
 						<li key={nav.name}>
 							<Link
 								href={nav.path}
@@ -78,7 +78,7 @@ export default function Navbar() {
 								</div>
 
 								<ul className="items-center gap-[20px] text-[1rem] text-white flex flex-col mb-20">
-									{helpers.navlinks.map((nav) => (
+									{navLinks.map((nav) => (
 										<li key={nav.name}>
 											<Link
 												href={nav.path}

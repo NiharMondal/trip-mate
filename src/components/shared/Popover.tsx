@@ -59,7 +59,7 @@ export default function UserPopover() {
 	};
 
 	return (
-		<Popover className="relative " title="Profile">
+		<Popover className="relative z-50" title="Profile">
 			<PopoverButton className="outline-none size-12 rounded-full overflow-hidden">
 				<Image
 					src={user?.result?.avatar || imageHelpers.avatar}
@@ -71,7 +71,7 @@ export default function UserPopover() {
 			</PopoverButton>
 			<PopoverPanel
 				anchor="bottom end"
-				className="flex flex-col p-5 bg-white w-60 rounded border space-y-2"
+				className="flex flex-col p-5 bg-white w-60 rounded border space-y-2 z-50"
 			>
 				<div>
 					<h4 className="font-mono font-medium text-gray-700">
