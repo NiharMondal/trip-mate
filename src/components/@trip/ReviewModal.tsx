@@ -1,7 +1,7 @@
 "use client";
+
 import useFetchUser from "@/lib/loadUser";
 import { useGiveReviewMutation } from "@/redux/api/review.api";
-
 import { TReviewRequest } from "@/types";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { Rating } from "@smastrom/react-rating";
@@ -51,7 +51,7 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 	};
 
 	return (
-		<>
+		<div className="bg-white">
 			<Button onClick={open} className="btn btn-primary text-white">
 				Write Review
 			</Button>
@@ -70,7 +70,7 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 						>
 							<DialogTitle
 								as="h3"
-								className="text-base/7 font-medium text-white"
+								className="text-lg font-semibold text-white"
 							>
 								Write a review for this trip
 							</DialogTitle>
@@ -87,9 +87,12 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 										</pre>
 									</label>
 									<Rating
+										style={{
+											color: "yellow",
+											maxWidth: "120px",
+										}}
 										value={rating}
 										onChange={setRating}
-										className="max-w-[100px]"
 									/>
 								</div>
 								<div className="flex flex-col">
@@ -120,6 +123,6 @@ export default function ReviewModal({ tripId }: { tripId: string }) {
 					</div>
 				</div>
 			</Dialog>
-		</>
+		</div>
 	);
 }
