@@ -20,7 +20,7 @@ export default function Navbar() {
 		setIsOpen(false);
 	};
 	return (
-		<header className="px-5 sm:px-10 lg:px-28 border-b">
+		<header className="px-5 sm:px-10 lg:px-28 border-b bg-white">
 			<nav className="flex items-center justify-between w-full relative py-5">
 				<CiMenuFries
 					className="text-[1.6rem] text-text cursor-pointer lg:hidden flex"

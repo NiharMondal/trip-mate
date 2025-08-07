@@ -43,8 +43,34 @@ export default function LoginForm() {
 		}
 	};
 
+	//	Demo login function
+	const handleDemoLogin = async (type: "user" | "admin") => {
+		const credentials = {
+			email: type === "admin" ? "david@gmail.com" : "john@gmail.com",
+			password: "123456",
+		};
+		await handleLogin(credentials);
+	};
 	return (
 		<div className="min-w-[400px] mt-5 login_form">
+			{/* 🚀 Demo login buttons */}
+			<div className="flex gap-3 my-4">
+				<button
+					onClick={() => handleDemoLogin("user")}
+					className="px-4 py-2 border rounded-md bg-primary/20 hover:bg-gray-100 hover:text-primary text-sm"
+					type="button"
+				>
+					Demo User
+				</button>
+				<button
+					onClick={() => handleDemoLogin("admin")}
+					className="px-4 py-2 border rounded-md bg-primary/20 hover:bg-gray-100 hover:text-primary text-sm"
+					type="button"
+				>
+					Demo Admin
+				</button>
+			</div>
+
 			<TMForm onSubmit={handleLogin}>
 				<TMInput name="email" label="Email" type="email" />
 				<TMInput name="password" label="Password" type="password" />

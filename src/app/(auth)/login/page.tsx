@@ -6,7 +6,6 @@ import { svgColors } from "@/helpers";
 import { Metadata } from "next";
 
 import LoginForm from "./LoginForm";
-import LoginCredentials from "./LoginCredentials";
 
 export const metadata: Metadata = {
 	title: "Login - Trip Mate",
@@ -27,8 +26,6 @@ export default function LoginPage() {
 				</h4>
 
 				<LoginForm />
-
-				<LoginCredentials />
 			</div>
 		</div>
 	);
