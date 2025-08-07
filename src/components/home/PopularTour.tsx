@@ -18,13 +18,13 @@ export default function PopularTour() {
 
 	return (
 		<section className="relative bg-[url('/images/section-bg.png')] overflow-hidden">
-			<div className=" hidden lg:block absolute -bottom-4 left-4 size-[150px]">
+			<div className="hidden lg:block absolute top-6 left-10 h-[150px] w-[250px] overflow-hidden ">
 				<Image
-					src={"/images/dot.png"}
-					height={200}
-					width={200}
+					src={"/images/plane.png"}
+					height={300}
+					width={300}
 					alt="dot-png"
-					className="-z-20 w-full h-full object-cover object-center  animate-bounce"
+					className="-z-20 w-full h-full object-contain object-center image-pulse-scale"
 				/>
 			</div>
 			<div className="max-w-7xl mx-auto px-5 py-10">

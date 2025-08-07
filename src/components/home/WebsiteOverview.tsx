@@ -1,29 +1,34 @@
 import React from "react";
-import { LiaGlobeAmericasSolid } from "react-icons/lia";
-import { FaHandHoldingDollar } from "react-icons/fa6";
-import { MdSupportAgent } from "react-icons/md";
-import WOInfo from "../shared/WOInfo";
+
+import { siteInformation } from "@/helpers/site-information";
 
 export default function WebsiteOverview() {
 	return (
-		<div className="bg-white py-28 px-5 sm:px-28 md:px-5">
-			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-5">
-				<WOInfo
-					icon={<LiaGlobeAmericasSolid />}
-					subHeading="700 Destinations"
-					details="Our expert team handpicked all destinations in this site"
-				/>
-				<WOInfo
-					icon={<FaHandHoldingDollar />}
-					subHeading="Best Price Gurantee"
-					details="Price match within 48 hours of order confirmation"
-				/>
-				<WOInfo
-					icon={<MdSupportAgent />}
-					subHeading="Top Notch Support"
-					details="We are here to help, before, during, and even after your trip."
-				/>
+		<section className="relative bg-[url(/images/section-bg.png)] py-20 md:py-32 xl:py-40  ">
+			<div className="max-w-7xl mx-auto px-5 ">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9">
+					{siteInformation.map((item, index) => (
+						<div
+							key={index}
+							className="bg-[url(/images/features.png)] bg-primary hover:bg-accent duration-500 transition-colors rounded-md overflow-hidden bg-blend-lighten "
+						>
+							<div className="text-white text-center py-8 px-6">
+								<div className="mx-auto w-fit mb-3">
+									{
+										<item.icon className="size-20 text-white" />
+									}
+								</div>
+								<p className="text-2xl font-semibold mb-1">
+									{item.title}
+								</p>
+								<p className=" text-gray-100">
+									{item.subTitle}
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 }

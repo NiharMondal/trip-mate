@@ -11,7 +11,7 @@ export default async function TopDestination() {
 
 	return (
 		<section className="relative overflow-hidden">
-			<div className="hidden xl:block absolute -top-16 -left-16 size-[320px] ">
+			<div className="hidden xl:block absolute -top-16 -right-16 size-[320px] ">
 				<Image
 					src={"/images/circle.png"}
 					height={200}

@@ -96,7 +96,9 @@ body {
 	.image-spin{
 		animation: spin_image 30s infinite forwards linear;
 	}
-	
+	.image-pulse-scale{
+		animation: pulse_scale 5s infinite linear forwards alternate-reverse ;
+	}
 	@keyframes spin_image {
 		from {
 			transform: rotate(0deg);
@@ -106,6 +108,24 @@ body {
 		to {
 			transform: rotate(360deg);
 			transform-origin: center;
+		}
+	}
+	@keyframes pulse_scale {
+		0% {
+			transform: scale(.5);
+			transform-origin: center;
+			opacity: 0;
+	
+		}
+		50%{
+			transform: scale(.8);
+			transform-origin: center;
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1);
+			transform-origin: center;
+			opacity: 0;
 		}
 	}
 }
